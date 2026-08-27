@@ -3136,3 +3136,525 @@ input, select, textarea {
 					}
 
 	}
+
+/* ==========================================================================
+   Black Theme & Square Buttons Styles for Grant Uher Portfolio
+   ========================================================================== */
+
+/* Dark Theme Base Overrides */
+html, body {
+	background: #0a0b0e !important;
+	color: #cbd5e1 !important;
+}
+
+body.homepage #header {
+	background-image: linear-gradient(rgba(10, 11, 14, 0.85), rgba(10, 11, 14, 0.95)), url("../../images/header.jpg");
+	background-size: cover;
+	background-position: center center;
+	background-color: #0a0b0e;
+}
+
+body.homepage #header:after {
+	background: #050608 !important;
+}
+
+#header h1, #header h1 a {
+	color: #ffffff !important;
+	text-shadow: 0 2px 10px rgba(0, 0, 0, 0.7);
+	letter-spacing: 0.05em;
+}
+
+#header header > p {
+	color: #94a3b8 !important;
+	font-weight: 300;
+	letter-spacing: 0.08em;
+	text-transform: uppercase;
+	font-size: 1.1em;
+}
+
+#header hr {
+	border-bottom-color: rgba(255, 255, 255, 0.15) !important;
+	box-shadow: inset 0 1px 0 0 rgba(255, 255, 255, 0.15) !important;
+}
+
+#header hr:before, #header hr:after {
+	background: rgba(255, 255, 255, 0.15) !important;
+}
+
+/* Nav in Dark Theme */
+#nav {
+	background: rgba(10, 11, 14, 0.88);
+	backdrop-filter: blur(10px);
+	-webkit-backdrop-filter: blur(10px);
+	border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+#nav > ul {
+	border-left: solid 1px rgba(255, 255, 255, 0.15) !important;
+	border-right: solid 1px rgba(255, 255, 255, 0.15) !important;
+}
+
+#nav > ul:before, #nav > ul:after {
+	border-top: solid 1px rgba(255, 255, 255, 0.15) !important;
+	border-bottom: solid 1px rgba(255, 255, 255, 0.15) !important;
+}
+
+#nav > ul > li {
+	color: #94a3b8;
+}
+
+#nav > ul > li:hover, #nav > ul > li.active {
+	color: #ffffff !important;
+	border-color: rgba(255, 255, 255, 0.25) !important;
+	background: rgba(255, 255, 255, 0.05);
+}
+
+#nav > ul > li > a {
+	color: inherit;
+}
+
+/* Square Action Buttons */
+.square-buttons-container {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	gap: 1.75em;
+	margin-top: 2.5em;
+	flex-wrap: wrap;
+}
+
+.square-btn {
+	width: 124px;
+	height: 124px;
+	min-width: 124px;
+	min-height: 124px;
+	aspect-ratio: 1 / 1;
+	display: flex !important;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	text-align: center;
+	border-radius: 0px !important; /* Strictly square */
+	background: #13161f !important;
+	border: 1px solid rgba(255, 255, 255, 0.18) !important;
+	color: #f1f5f9 !important;
+	text-decoration: none !important;
+	padding: 0 !important;
+	line-height: normal !important;
+	transition: all 0.25s ease-in-out;
+	cursor: pointer;
+	box-shadow: 0 4px 16px rgba(0, 0, 0, 0.5);
+	position: relative;
+	overflow: hidden;
+}
+
+.square-btn i, .square-btn .icon {
+	font-size: 2.1em;
+	margin-bottom: 0.4em;
+	transition: transform 0.25s ease, color 0.25s ease;
+	color: #f1f5f9;
+}
+
+.square-btn .btn-label {
+	font-size: 0.85em;
+	font-weight: 600;
+	letter-spacing: 0.06em;
+	text-transform: uppercase;
+	white-space: nowrap;
+	color: #e2e8f0;
+}
+
+.square-btn:hover {
+	transform: translateY(-5px);
+	background: #1c212e !important;
+	border-color: rgba(255, 255, 255, 0.45) !important;
+	box-shadow: 0 10px 28px rgba(0, 0, 0, 0.75), 0 0 16px rgba(255, 255, 255, 0.1);
+	color: #ffffff !important;
+}
+
+.square-btn:hover i {
+	transform: scale(1.15);
+}
+
+.square-btn-linkedin:hover {
+	border-color: #0077b5 !important;
+	box-shadow: 0 10px 28px rgba(0, 0, 0, 0.75), 0 0 18px rgba(0, 119, 181, 0.4);
+}
+
+.square-btn-linkedin:hover i {
+	color: #38bdf8;
+}
+
+.square-btn-about:hover {
+	border-color: #60a5fa !important;
+	box-shadow: 0 10px 28px rgba(0, 0, 0, 0.75), 0 0 18px rgba(96, 165, 250, 0.4);
+}
+
+.square-btn-about:hover i {
+	color: #93c5fd;
+}
+
+.square-btn-projects:hover {
+	border-color: #10b981 !important;
+	box-shadow: 0 10px 28px rgba(0, 0, 0, 0.75), 0 0 18px rgba(16, 185, 129, 0.4);
+}
+
+.square-btn-projects:hover i {
+	color: #34d399;
+}
+
+.square-btn-github:hover {
+	border-color: #e2e8f0 !important;
+	box-shadow: 0 10px 28px rgba(0, 0, 0, 0.75), 0 0 18px rgba(255, 255, 255, 0.3);
+}
+
+.square-btn-github:hover i {
+	color: #ffffff;
+}
+
+/* Projects Page Styles */
+.projects-header {
+	text-align: center;
+	margin-bottom: 3em;
+}
+
+.projects-header h2 {
+	font-size: 2.8em;
+	color: #ffffff;
+	letter-spacing: 0.04em;
+	margin-bottom: 0.25em;
+}
+
+.projects-header p {
+	color: #94a3b8;
+	font-size: 1.2em;
+	max-width: 680px;
+	margin: 0 auto;
+}
+
+.projects-grid {
+	display: grid;
+	grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+	gap: 2em;
+	margin-bottom: 3.5em;
+}
+
+.project-card {
+	background: #141720;
+	border: 1px solid rgba(255, 255, 255, 0.08);
+	border-radius: 0px;
+	padding: 2.25em 2em;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+	transition: transform 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease;
+	box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
+}
+
+.project-card:hover {
+	transform: translateY(-6px);
+	border-color: rgba(255, 255, 255, 0.25);
+	box-shadow: 0 16px 36px rgba(0, 0, 0, 0.7), 0 0 15px rgba(255, 255, 255, 0.05);
+}
+
+.project-card-top {
+	margin-bottom: 1.5em;
+}
+
+.project-card-header {
+	display: flex;
+	align-items: flex-start;
+	justify-content: space-between;
+	gap: 1em;
+	margin-bottom: 1em;
+}
+
+.project-card-icon {
+	width: 48px;
+	height: 48px;
+	min-width: 48px;
+	background: #1c212e;
+	border: 1px solid rgba(255, 255, 255, 0.12);
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	color: #60a5fa;
+	font-size: 1.3em;
+}
+
+.project-card-badge {
+	font-size: 0.75em;
+	text-transform: uppercase;
+	letter-spacing: 0.08em;
+	padding: 0.35em 0.85em;
+	background: rgba(96, 165, 250, 0.12);
+	border: 1px solid rgba(96, 165, 250, 0.3);
+	color: #93c5fd;
+	font-weight: 600;
+}
+
+.project-card h3 {
+	font-size: 1.45em;
+	color: #ffffff;
+	margin-bottom: 0.6em;
+	letter-spacing: 0.02em;
+}
+
+.project-card-desc {
+	color: #cbd5e1;
+	font-size: 0.98em;
+	line-height: 1.7em;
+}
+
+.project-card-tech {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 0.5em;
+	margin-top: 1.25em;
+	margin-bottom: 1.5em;
+}
+
+.tech-badge {
+	font-size: 0.8em;
+	background: #0f1218;
+	color: #94a3b8;
+	border: 1px solid rgba(255, 255, 255, 0.08);
+	padding: 0.25em 0.75em;
+	font-weight: 500;
+}
+
+.project-card-actions {
+	display: flex;
+	align-items: center;
+	gap: 1em;
+	border-top: 1px solid rgba(255, 255, 255, 0.08);
+	padding-top: 1.25em;
+}
+
+.project-link-btn {
+	display: inline-flex;
+	align-items: center;
+	gap: 0.5em;
+	color: #60a5fa;
+	text-decoration: none;
+	font-size: 0.9em;
+	font-weight: 600;
+	transition: color 0.2s;
+}
+
+.project-link-btn:hover {
+	color: #93c5fd;
+	text-decoration: underline;
+}
+
+.project-link-btn.secondary {
+	color: #94a3b8;
+}
+
+.project-link-btn.secondary:hover {
+	color: #ffffff;
+}
+
+/* Wrapper & About Me Dark Section */
+.wrapper.style-dark {
+	background: #0d0f14;
+	border-top: 1px solid rgba(255, 255, 255, 0.08);
+	border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+	padding: 5.5em 1.5em;
+	margin: 0;
+}
+
+.about-card {
+	background: #141720;
+	border: 1px solid rgba(255, 255, 255, 0.08);
+	border-radius: 0px;
+	padding: 4em 3.5em;
+	max-width: 920px;
+	margin: 0 auto;
+	box-shadow: 0 12px 36px rgba(0, 0, 0, 0.6);
+	text-align: left;
+}
+
+.about-card header h2 {
+	font-size: 2.6em;
+	color: #ffffff;
+	margin-bottom: 0.25em;
+	letter-spacing: 0.03em;
+	text-align: center;
+}
+
+.about-card header p.subtitle {
+	color: #94a3b8;
+	font-size: 1.25em;
+	text-align: center;
+	margin-bottom: 2.25em;
+}
+
+.about-bio {
+	font-size: 1.15em;
+	line-height: 1.85em;
+	color: #cbd5e1;
+	margin-bottom: 2em;
+}
+
+.about-section-title {
+	color: #f8fafc;
+	font-size: 1.3em;
+	font-weight: 600;
+	letter-spacing: 0.04em;
+	margin: 1.8em 0 0.8em 0;
+	display: flex;
+	align-items: center;
+	gap: 0.5em;
+}
+
+.skills-grid {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 0.75em;
+	margin: 1em 0 2em 0;
+}
+
+.skill-tag {
+	background: #1c212e;
+	border: 1px solid rgba(255, 255, 255, 0.12);
+	color: #e2e8f0;
+	padding: 0.45em 1.1em;
+	font-size: 0.95em;
+	border-radius: 0px;
+	font-weight: 400;
+	letter-spacing: 0.03em;
+	transition: border-color 0.2s;
+}
+
+.skill-tag:hover {
+	border-color: rgba(255, 255, 255, 0.35);
+	color: #ffffff;
+}
+
+.contact-highlight {
+	background: #0f1218;
+	border: 1px solid rgba(255, 255, 255, 0.08);
+	padding: 1.75em;
+	margin-top: 2.5em;
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	flex-wrap: wrap;
+	gap: 1.25em;
+}
+
+.contact-highlight a.contact-link {
+	color: #60a5fa;
+	text-decoration: none;
+	font-weight: 500;
+	transition: color 0.2s;
+	display: inline-flex;
+	align-items: center;
+	gap: 0.4em;
+}
+
+.contact-highlight a.contact-link:hover {
+	color: #93c5fd;
+	text-decoration: underline;
+}
+
+/* Footer Dark */
+#footer {
+	background: #08090c;
+	color: #64748b;
+	padding: 3.5em 0 3em 0;
+	border-top: 1px solid rgba(255, 255, 255, 0.05);
+	text-align: center;
+}
+
+#footer ul.icons {
+	display: flex;
+	justify-content: center;
+	gap: 1.25em;
+	margin-bottom: 1.5em;
+	padding: 0;
+}
+
+#footer ul.icons li {
+	display: inline-block;
+	margin: 0;
+	padding: 0;
+}
+
+#footer ul.icons li a {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	width: 46px;
+	height: 46px;
+	background: #141720;
+	border: 1px solid rgba(255, 255, 255, 0.12);
+	border-radius: 0px;
+	color: #94a3b8;
+	font-size: 1.2em;
+	transition: all 0.25s ease;
+	text-decoration: none;
+}
+
+#footer ul.icons li a:hover {
+	background: #1e2432;
+	color: #ffffff;
+	border-color: rgba(255, 255, 255, 0.35);
+}
+
+#footer .copyright {
+	color: #64748b;
+	font-size: 0.9em;
+}
+
+#footer .copyright a {
+	color: #94a3b8;
+	text-decoration: none;
+}
+
+#footer .copyright a:hover {
+	color: #ffffff;
+}
+
+@media screen and (max-width: 736px) {
+	.square-buttons-container {
+		gap: 1em;
+	}
+	.square-btn {
+		width: 100px;
+		height: 100px;
+		min-width: 100px;
+		min-height: 100px;
+	}
+	.square-btn i, .square-btn .icon {
+		font-size: 1.6em;
+	}
+	.about-card {
+		padding: 2.25em 1.5em;
+	}
+}
+
+html {
+	scroll-behavior: smooth;
+}
+
+#navPanel {
+	background: #0d0f14 !important;
+	border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+#navPanel .link {
+	color: #94a3b8 !important;
+}
+
+#navPanel .link:hover, #navPanel .link.depth-0 {
+	color: #ffffff !important;
+}
+
+#navButton .toggle {
+	background: rgba(19, 22, 31, 0.85);
+	border: 1px solid rgba(255, 255, 255, 0.15);
+	border-radius: 0px;
+}
+
