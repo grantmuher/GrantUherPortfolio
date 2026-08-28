@@ -71,10 +71,13 @@
 								</div>
 								<div class="project-card-actions">
 									<button class="project-btn modal-trigger" data-modal="modal-schematic-digital" id="btn-schematic-digital">
-										<i class="icon solid fa-file-pdf"></i> Schematic PDF
+										<i class="icon solid fa-file-pdf"></i> Schematic
+									</button>
+									<button class="project-btn btn-3d modal-trigger" data-modal="modal-3d-digital" id="btn-3d-digital">
+										<i class="icon solid fa-cube"></i> 3D Board View
 									</button>
 									<button class="project-btn secondary modal-trigger" data-modal="modal-writeup-digital" id="btn-writeup-digital">
-										<i class="icon solid fa-book-open"></i> Technical Writeup
+										<i class="icon solid fa-book-open"></i> Writeup
 									</button>
 								</div>
 							</div>
@@ -103,10 +106,13 @@
 								</div>
 								<div class="project-card-actions">
 									<button class="project-btn modal-trigger" data-modal="modal-schematic-bspd" id="btn-schematic-bspd">
-										<i class="icon solid fa-file-pdf"></i> Schematic PDF
+										<i class="icon solid fa-file-pdf"></i> Schematic
+									</button>
+									<button class="project-btn btn-3d modal-trigger" data-modal="modal-3d-bspd" id="btn-3d-bspd">
+										<i class="icon solid fa-cube"></i> 3D Board View
 									</button>
 									<button class="project-btn secondary modal-trigger" data-modal="modal-writeup-bspd" id="btn-writeup-bspd">
-										<i class="icon solid fa-book-open"></i> Technical Writeup
+										<i class="icon solid fa-book-open"></i> Writeup
 									</button>
 								</div>
 							</div>
@@ -135,10 +141,13 @@
 								</div>
 								<div class="project-card-actions">
 									<button class="project-btn modal-trigger" data-modal="modal-schematic-relay" id="btn-schematic-relay">
-										<i class="icon solid fa-file-pdf"></i> Schematic PDF
+										<i class="icon solid fa-file-pdf"></i> Schematic
+									</button>
+									<button class="project-btn btn-3d modal-trigger" data-modal="modal-3d-relay" id="btn-3d-relay">
+										<i class="icon solid fa-cube"></i> 3D Board View
 									</button>
 									<button class="project-btn secondary modal-trigger" data-modal="modal-writeup-relay" id="btn-writeup-relay">
-										<i class="icon solid fa-book-open"></i> Technical Writeup
+										<i class="icon solid fa-book-open"></i> Writeup
 									</button>
 								</div>
 							</div>
@@ -156,290 +165,210 @@
 				</div>
 
 			<!-- ==========================================================================
-			     MODALS: SCHEMATIC PDF VIEWERS & UPLOADS
+			     MODALS: SCHEMATICS, 3D VIEWS, AND WRITEUPS
 			     ========================================================================== -->
 
 			<!-- 1. Digital Board Schematic Modal -->
 			<div class="ee-modal-backdrop" id="modal-schematic-digital">
-				<div class="ee-modal" style="max-width: 1000px;">
+				<div class="ee-modal modal-large" style="max-width: 1240px; height: 90vh;">
 					<div class="ee-modal-header">
 						<div class="ee-modal-header-left">
 							<span class="project-card-badge badge-daq">Digital Board</span>
-							<h3 class="ee-modal-title">Schematic PDF &bull; DAQ &amp; High-Speed Processing</h3>
+							<h3 class="ee-modal-title">Schematic PDF</h3>
 						</div>
-						<button class="ee-modal-close" data-close title="Close Modal"><i class="icon solid fa-times"></i></button>
+						<div style="display: flex; align-items: center; gap: 0.6em;">
+							<a href="assets/docs/digital-board-schematic.pdf" target="_blank" class="project-btn" style="padding: 0.45em 0.9em; font-size: 0.82em; font-weight: 500;">
+								<i class="icon solid fa-external-link-alt"></i> Open in New Tab
+							</a>
+							<a href="assets/docs/digital-board-schematic.pdf" download="Digital_Board_Schematic.pdf" class="project-btn secondary" style="padding: 0.45em 0.9em; font-size: 0.82em; font-weight: 500;">
+								<i class="icon solid fa-download"></i> Download PDF
+							</a>
+							<button class="ee-modal-close" data-close title="Close Modal"><i class="icon solid fa-times"></i></button>
+						</div>
 					</div>
-					<div class="ee-modal-body">
-						<div class="schematic-toolbar">
-							<div class="schematic-meta">
-								<i class="icon solid fa-file-pdf" style="color: #38bdf8; font-size: 1.3em;"></i>
-								<span class="pdf-status-text" id="status-schematic-digital">Altium Schematic (PDF Ready / Drop your exported PDF here)</span>
+					<div class="ee-modal-body" style="padding: 0; background: #1e293b; overflow: hidden; flex: 1;">
+						<iframe 
+							src="assets/docs/digital-board-schematic.pdf#toolbar=1&navpanes=1&statusbar=1&view=FitH" 
+							type="application/pdf" 
+							width="100%" 
+							height="100%" 
+							style="width: 100%; height: 100%; border: none; min-height: 520px; display: block;" 
+							title="Digital Board Schematic PDF">
+							<div style="padding: 2.5em; text-align: center; color: #ffffff;">
+								<p>Your browser does not support inline PDF viewing.</p>
+								<a href="assets/docs/digital-board-schematic.pdf" target="_blank" class="project-btn">Download or Open PDF</a>
 							</div>
-							<div class="schematic-actions">
-								<label class="project-btn" style="cursor: pointer; margin: 0;">
-									<i class="icon solid fa-upload"></i> Upload PDF
-									<input type="file" accept="application/pdf" class="pdf-file-input" data-target-viewer="viewer-digital" style="display: none;" />
-								</label>
-								<a href="#" class="project-btn secondary pdf-download-btn" id="dl-schematic-digital" download="Grant_Uher_Digital_Board_Schematic.pdf" style="display: none;">
-									<i class="icon solid fa-download"></i> Download
-								</a>
-							</div>
-						</div>
-
-						<div class="schematic-viewport" id="viewer-digital">
-							<div class="schematic-placeholder">
-								<i class="icon solid fa-microchip"></i>
-								<h3 style="color: #ffffff; margin-bottom: 0.5em;">Digital Board Schematic</h3>
-								<p style="color: #94a3b8; font-size: 0.95em;">
-									STM32H563 High-Speed Microcontroller, 100-BaseTX Discrete Magnetics, RMII/MDI Routing &amp; Dual-Band L1/L5 GNSS Front-End.
-								</p>
-								<div class="upload-dropzone" data-target-viewer="viewer-digital">
-									<i class="icon solid fa-cloud-upload-alt" style="font-size: 2em; color: #60a5fa; margin-bottom: 0.3em;"></i>
-									<div style="color: #ffffff; font-weight: 600;">Drag &amp; drop your exported Altium schematic PDF here</div>
-									<div style="color: #94a3b8; font-size: 0.85em; margin-top: 0.3em;">or click "Upload PDF" above to embed and view your schematic</div>
-								</div>
-							</div>
-						</div>
+						</iframe>
 					</div>
 				</div>
 			</div>
 
-			<!-- 2. BSPD Schematic Modal -->
-			<div class="ee-modal-backdrop" id="modal-schematic-bspd">
-				<div class="ee-modal" style="max-width: 1000px;">
+			<!-- 1. Digital Board 3D CAD Modal -->
+			<div class="ee-modal-backdrop" id="modal-3d-digital">
+				<div class="ee-modal modal-large">
 					<div class="ee-modal-header">
 						<div class="ee-modal-header-left">
-							<span class="project-card-badge badge-safety">BSPD</span>
-							<h3 class="ee-modal-title">Schematic PDF &bull; Brake System Plausibility Device</h3>
+							<span class="project-card-badge badge-daq">Digital Board</span>
+							<h3 class="ee-modal-title">3D Board &amp; CAD View</h3>
 						</div>
 						<button class="ee-modal-close" data-close title="Close Modal"><i class="icon solid fa-times"></i></button>
 					</div>
 					<div class="ee-modal-body">
-						<div class="schematic-toolbar">
-							<div class="schematic-meta">
-								<i class="icon solid fa-file-pdf" style="color: #fb7185; font-size: 1.3em;"></i>
-								<span class="pdf-status-text" id="status-schematic-bspd">Altium Schematic (PDF Ready / Drop your exported PDF here)</span>
+						<div class="cad-viewer-container">
+							<div class="cad-stage-wrapper">
+								<div class="cad-stage-toolbar">
+									<span style="font-size: 0.88em; color: #94a3b8; font-weight: 600;"><i class="icon solid fa-cube" style="color: #38bdf8; margin-right: 0.4em;"></i> 3D Hardware Render</span>
+									<span style="font-size: 0.8em; color: #64748b;">Mines FSAE DAQ</span>
+								</div>
+								<div class="cad-stage-body" id="stage-3d-digital">
+									<img src="images/digital-board-3d.png" alt="Digital Board 3D Render" class="cad-stage-image" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';" />
+									<div class="cad-placeholder-box" style="display: none;">
+										<i class="icon solid fa-cube"></i>
+										<h4 style="color: #ffffff; margin-bottom: 0.4em;">3D Render Placeholder</h4>
+										<p style="font-size: 0.9em; line-height: 1.6em; margin-bottom: 0;">
+											Follow the instructions on the right to place your Altium 3D isometric screenshot or STEP CAD file.
+										</p>
+									</div>
+								</div>
 							</div>
-							<div class="schematic-actions">
-								<label class="project-btn" style="cursor: pointer; margin: 0;">
-									<i class="icon solid fa-upload"></i> Upload PDF
-									<input type="file" accept="application/pdf" class="pdf-file-input" data-target-viewer="viewer-bspd" style="display: none;" />
-								</label>
-								<a href="#" class="project-btn secondary pdf-download-btn" id="dl-schematic-bspd" download="Grant_Uher_BSPD_Schematic.pdf" style="display: none;">
-									<i class="icon solid fa-download"></i> Download
-								</a>
-							</div>
-						</div>
-
-						<div class="schematic-viewport" id="viewer-bspd">
-							<div class="schematic-placeholder">
-								<i class="icon solid fa-shield-alt" style="color: #fb7185;"></i>
-								<h3 style="color: #ffffff; margin-bottom: 0.5em;">BSPD Safety Circuit Schematic</h3>
-								<p style="color: #94a3b8; font-size: 0.95em;">
-									Non-programmable discrete analog comparators, RC pulse timing, binary counting logic, and fault latching topology for Formula SAE EV/IC safety.
-								</p>
-								<div class="upload-dropzone" data-target-viewer="viewer-bspd">
-									<i class="icon solid fa-cloud-upload-alt" style="font-size: 2em; color: #fb7185; margin-bottom: 0.3em;"></i>
-									<div style="color: #ffffff; font-weight: 600;">Drag &amp; drop your exported Altium schematic PDF here</div>
-									<div style="color: #94a3b8; font-size: 0.85em; margin-top: 0.3em;">or click "Upload PDF" above to embed and view your schematic</div>
+							<div class="cad-info-panel">
+								<div>
+									<h4 style="color: #ffffff; font-size: 1.1em; margin-bottom: 0.4em;">Digital Board 3D CAD</h4>
+									<p style="font-size: 0.88em; color: #94a3b8; line-height: 1.6em; margin-bottom: 0;">
+										High-density STM32H5 microcontroller layout with differential Ethernet pairs and integrated GNSS antenna placement.
+									</p>
+									<div class="cad-instructions-box">
+										<h5><i class="icon solid fa-info-circle"></i> How to add your 3D Render:</h5>
+										<ol>
+											<li>In Altium, press <code>3</code> to enter 3D view.</li>
+											<li>Take a high-res screenshot or export image.</li>
+											<li>Save the image file to:<br/><code>images/digital-board-3d.png</code></li>
+										</ol>
+									</div>
+								</div>
+								<div>
+									<a href="assets/cad/digital-board-model.step" download class="project-btn" style="width: 100%; justify-content: center;" onclick="if(!this.getAttribute('data-exists')){ alert('Place your STEP file at /assets/cad/digital-board-model.step to enable visitor downloads.'); return false; }">
+										<i class="icon solid fa-download"></i> Download .STEP Model
+									</a>
 								</div>
 							</div>
 						</div>
 					</div>
 				</div>
 			</div>
-
-			<!-- 3. BSPD Relay Schematic Modal -->
-			<div class="ee-modal-backdrop" id="modal-schematic-relay">
-				<div class="ee-modal" style="max-width: 1000px;">
-					<div class="ee-modal-header">
-						<div class="ee-modal-header-left">
-							<span class="project-card-badge badge-power">BSPD Relay</span>
-							<h3 class="ee-modal-title">Schematic PDF &bull; Solid State Relay &amp; Power Stage</h3>
-						</div>
-						<button class="ee-modal-close" data-close title="Close Modal"><i class="icon solid fa-times"></i></button>
-					</div>
-					<div class="ee-modal-body">
-						<div class="schematic-toolbar">
-							<div class="schematic-meta">
-								<i class="icon solid fa-file-pdf" style="color: #facc15; font-size: 1.3em;"></i>
-								<span class="pdf-status-text" id="status-schematic-relay">Altium Schematic (PDF Ready / Drop your exported PDF here)</span>
-							</div>
-							<div class="schematic-actions">
-								<label class="project-btn" style="cursor: pointer; margin: 0;">
-									<i class="icon solid fa-upload"></i> Upload PDF
-									<input type="file" accept="application/pdf" class="pdf-file-input" data-target-viewer="viewer-relay" style="display: none;" />
-								</label>
-								<a href="#" class="project-btn secondary pdf-download-btn" id="dl-schematic-relay" download="Grant_Uher_BSPD_Relay_Schematic.pdf" style="display: none;">
-									<i class="icon solid fa-download"></i> Download
-								</a>
-							</div>
-						</div>
-
-						<div class="schematic-viewport" id="viewer-relay">
-							<div class="schematic-placeholder">
-								<i class="icon solid fa-bolt" style="color: #facc15;"></i>
-								<h3 style="color: #ffffff; margin-bottom: 0.5em;">BSPD Relay Power Stage Schematic</h3>
-								<p style="color: #94a3b8; font-size: 0.95em;">
-									7A continuous power handling, bi-directional MOSFET array, gate drive isolation, and flyback suppression.
-								</p>
-								<div class="upload-dropzone" data-target-viewer="viewer-relay">
-									<i class="icon solid fa-cloud-upload-alt" style="font-size: 2em; color: #facc15; margin-bottom: 0.3em;"></i>
-									<div style="color: #ffffff; font-weight: 600;">Drag &amp; drop your exported Altium schematic PDF here</div>
-									<div style="color: #94a3b8; font-size: 0.85em; margin-top: 0.3em;">or click "Upload PDF" above to embed and view your schematic</div>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-
-			<!-- ==========================================================================
-			     MODALS: PROJECT WRITEUPS WITH EMBEDDED PICTURE TEMPLATES ON RIGHT
-			     ========================================================================== -->
 
 			<!-- 1. Digital Board Writeup Modal -->
 			<div class="ee-modal-backdrop" id="modal-writeup-digital">
 				<div class="ee-modal">
 					<div class="ee-modal-header">
 						<div class="ee-modal-header-left">
-							<span class="project-card-badge badge-daq">Mines FSAE</span>
-							<h3 class="ee-modal-title">Digital Board &bull; Technical Design Writeup</h3>
+							<span class="project-card-badge badge-daq">Digital Board</span>
+							<h3 class="ee-modal-title">Technical Design Writeup</h3>
+						</div>
+						<button class="ee-modal-close" data-close title="Close Modal"><i class="icon solid fa-times"></i></button>
+					</div>
+					<div class="ee-modal-body" style="align-items: center; justify-content: center;">
+						<div class="wip-container">
+							<div class="wip-icon-wrapper" style="border-color: rgba(56, 189, 248, 0.3);">
+								<i class="icon solid fa-book-open" style="color: #38bdf8;"></i>
+							</div>
+							<h3 class="wip-title">Design Writeup In Progress</h3>
+							<p class="wip-subtitle">
+								Detailed architecture breakdowns, 3D PCB renders, oscilloscope captures, and hardware bring-up notes for the <strong>Digital Board</strong> are currently being prepared.
+							</p>
+							<div class="wip-badge">
+								<span class="pulse-dot" style="background: #38bdf8; box-shadow: 0 0 8px #38bdf8;"></span>
+								Work In Progress
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<!-- 2. BSPD Schematic Modal (Direct Original PDF Viewer) -->
+			<div class="ee-modal-backdrop" id="modal-schematic-bspd">
+				<div class="ee-modal modal-large" style="max-width: 1240px; height: 90vh;">
+					<div class="ee-modal-header">
+						<div class="ee-modal-header-left">
+							<span class="project-card-badge badge-safety">BSPD</span>
+							<h3 class="ee-modal-title">Schematic PDF (Altium Multi-Sheet)</h3>
+						</div>
+						<div style="display: flex; align-items: center; gap: 0.6em;">
+							<a href="assets/docs/bspd-schematic.pdf" target="_blank" class="project-btn" style="padding: 0.45em 0.9em; font-size: 0.82em; font-weight: 500;" id="btn-open-pdf-bspd" title="Open original PDF in new tab">
+								<i class="icon solid fa-external-link-alt"></i> Open in New Tab
+							</a>
+							<a href="assets/docs/bspd-schematic.pdf" download="BSPD_Schematic_MF14.pdf" class="project-btn secondary" style="padding: 0.45em 0.9em; font-size: 0.82em; font-weight: 500;" id="btn-download-pdf-bspd" title="Download original PDF">
+								<i class="icon solid fa-download"></i> Download PDF
+							</a>
+							<button class="ee-modal-close" data-close title="Close Modal"><i class="icon solid fa-times"></i></button>
+						</div>
+					</div>
+					<div class="ee-modal-body" style="padding: 0; background: #1e293b; overflow: hidden; flex: 1;">
+						<iframe 
+							src="assets/docs/bspd-schematic.pdf#toolbar=1&navpanes=1&statusbar=1&view=FitH" 
+							type="application/pdf" 
+							width="100%" 
+							height="100%" 
+							style="width: 100%; height: 100%; border: none; min-height: 520px; display: block;" 
+							id="pdf-frame-bspd"
+							title="BSPD Schematic PDF">
+							<div style="padding: 2.5em; text-align: center; color: #ffffff;">
+								<p>Your browser does not support inline PDF viewing.</p>
+								<a href="assets/docs/bspd-schematic.pdf" target="_blank" class="project-btn">Download or Open PDF</a>
+							</div>
+						</iframe>
+					</div>
+				</div>
+			</div>
+
+			<!-- 2. BSPD 3D CAD Modal -->
+			<div class="ee-modal-backdrop" id="modal-3d-bspd">
+				<div class="ee-modal modal-large">
+					<div class="ee-modal-header">
+						<div class="ee-modal-header-left">
+							<span class="project-card-badge badge-safety">BSPD</span>
+							<h3 class="ee-modal-title">3D Board &amp; CAD View</h3>
 						</div>
 						<button class="ee-modal-close" data-close title="Close Modal"><i class="icon solid fa-times"></i></button>
 					</div>
 					<div class="ee-modal-body">
-						<div class="writeup-container">
-
-							<!-- Left Column: Technical Text & Specifications -->
-							<div class="writeup-content">
-								<h4><i class="icon solid fa-info-circle" style="color: #38bdf8;"></i> Project Overview</h4>
-								<p>
-									The <strong>Digital Board</strong> serves as the central data acquisition (DAQ) and processing brain for Mines Formula SAE. It captures critical telemetry from across the vehicle, handles sensor aggregation, high-speed Ethernet communications, and precise positioning.
-								</p>
-
-								<h4><i class="icon solid fa-cogs" style="color: #38bdf8;"></i> Hardware Architecture &amp; Key Design Highlights</h4>
-								<p>
-									<strong>High-Speed Processing:</strong> Powered by an <strong>STM32H5 series</strong> ARM Cortex-M33 microcontroller running at high clock rates, featuring integrated crypto accelerators and dedicated DMA channels for uninterrupted data throughput.
-								</p>
-								<p>
-									<strong>100-BaseTX Ethernet &amp; Discrete Magnetics:</strong> Implemented discrete magnetic termination circuits to interface the Ethernet PHY over RMII and MDI. Routed differential pairs with matched 100&Omega; differential impedance, continuous reference planes, and length-matching within strict 5 mil tolerances.
-								</p>
-								<p>
-									<strong>Dual-Band GNSS:</strong> Integrated a high-precision L1/L5 dual-frequency GNSS receiver for sub-meter velocity and trajectory logging with dedicated RF trace geometry (50&Omega; coplanar waveguide with ground) and low-noise LDO power filtering.
-								</p>
-
-								<h4><i class="icon solid fa-list-alt" style="color: #38bdf8;"></i> Technical Specifications</h4>
-								<table class="spec-table">
-									<thead>
-										<tr>
-											<th>Parameter</th>
-											<th>Specification</th>
-										</tr>
-									</thead>
-									<tbody>
-										<tr>
-											<td>Microcontroller</td>
-											<td class="val">STM32H563 ARM Cortex-M33</td>
-										</tr>
-										<tr>
-											<td>Layer Stackup</td>
-											<td class="val">4-Layer FR-4 (Signal - GND - PWR - Signal)</td>
-										</tr>
-										<tr>
-											<td>Ethernet Interface</td>
-											<td class="val">100-BaseTX (RMII / MDI Discrete Termination)</td>
-										</tr>
-										<tr>
-											<td>Positioning Module</td>
-											<td class="val">Dual-Band L1/L5 Concurrent GNSS</td>
-										</tr>
-										<tr>
-											<td>Controlled Impedance</td>
-											<td class="val">100&Omega; Diff (Ethernet) / 50&Omega; SE (RF)</td>
-										</tr>
-										<tr>
-											<td>CAD Software</td>
-											<td class="val">Altium Designer</td>
-										</tr>
-									</tbody>
-								</table>
-
-								<h4><i class="icon solid fa-check-circle" style="color: #38bdf8;"></i> Testing, Validation &amp; Bring-Up</h4>
-								<p>
-									Verified signal integrity across RMII clock lines and differential TX/RX pairs with high-bandwidth oscilloscopes. Measured return loss and eye diagrams to validate reliable Ethernet link negotiation under noisy automotive motor-controller environments.
-								</p>
+						<div class="cad-viewer-container">
+							<div class="cad-stage-wrapper">
+								<div class="cad-stage-toolbar">
+									<span style="font-size: 0.88em; color: #94a3b8; font-weight: 600;"><i class="icon solid fa-cube" style="color: #fb7185; margin-right: 0.4em;"></i> 3D Hardware Render</span>
+									<span style="font-size: 0.8em; color: #64748b;">Mines FSAE Safety Circuit</span>
+								</div>
+								<div class="cad-stage-body" id="stage-3d-bspd">
+									<img src="images/bspd-3d.png" alt="BSPD 3D Board Render" class="cad-stage-image" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';" />
+									<div class="cad-placeholder-box" style="display: none;">
+										<i class="icon solid fa-cube" style="color: #fb7185;"></i>
+										<h4 style="color: #ffffff; margin-bottom: 0.4em;">3D Render Ready for Image</h4>
+										<p style="font-size: 0.9em; line-height: 1.6em; margin-bottom: 0;">
+											Drop your Altium 3D isometric render into the images folder as described on the right.
+										</p>
+									</div>
+								</div>
 							</div>
-
-							<!-- Right Column: Embedded Pictures Template Spots -->
-							<div class="writeup-gallery">
-
-								<!-- Picture Slot 1 -->
-								<div class="picture-slot">
-									<label class="picture-preview-box" data-slot="digital-pic-1">
-										<i class="icon solid fa-cube"></i>
-										<div><strong>Click to Insert 3D Render</strong></div>
-										<div style="font-size: 0.78em; margin-top: 0.25em;">Altium 3D Isometric View</div>
-										<input type="file" accept="image/*" class="slot-image-input" style="display: none;" />
-									</label>
-									<div class="picture-slot-label">
-										<span>[Image 1: 3D Board Model]</span>
-									</div>
-									<div class="picture-slot-caption">
-										3D isometric CAD view showing STM32 MCU, RJ45 Ethernet jack, and GNSS RF front-end.
+							<div class="cad-info-panel">
+								<div>
+									<h4 style="color: #ffffff; font-size: 1.1em; margin-bottom: 0.4em;">BSPD Board 3D CAD</h4>
+									<p style="font-size: 0.88em; color: #94a3b8; line-height: 1.6em; margin-bottom: 0;">
+										Compact 2-layer safety PCB designed for vehicle harness integration with TE automotive header and discrete IC placement.
+									</p>
+									<div class="cad-instructions-box">
+										<h5><i class="icon solid fa-info-circle"></i> Where to put your files:</h5>
+										<ol>
+											<li><strong>3D Render Image:</strong><br/>Place image at:<br/><code>images/bspd-3d.png</code></li>
+											<li><strong>Raw .STEP CAD Model:</strong><br/>Place STEP file at:<br/><code>assets/cad/bspd-model.step</code></li>
+										</ol>
 									</div>
 								</div>
-
-								<!-- Picture Slot 2 -->
-								<div class="picture-slot">
-									<label class="picture-preview-box" data-slot="digital-pic-2">
-										<i class="icon solid fa-layer-group"></i>
-										<div><strong>Click to Insert PCB Layout</strong></div>
-										<div style="font-size: 0.78em; margin-top: 0.25em;">Routing &amp; Differential Pairs</div>
-										<input type="file" accept="image/*" class="slot-image-input" style="display: none;" />
-									</label>
-									<div class="picture-slot-label">
-										<span>[Image 2: PCB Routing]</span>
-									</div>
-									<div class="picture-slot-caption">
-										Top and inner signal routing showcasing 100&Omega; differential length tuning for 100-BaseTX.
-									</div>
+								<div>
+									<a href="assets/cad/bspd-model.step" download class="project-btn" style="width: 100%; justify-content: center;" onclick="if(!this.getAttribute('data-exists')){ alert('Place your STEP file at /assets/cad/bspd-model.step to enable visitor downloads.'); return false; }">
+										<i class="icon solid fa-download"></i> Download .STEP Model
+									</a>
 								</div>
-
-								<!-- Picture Slot 3 -->
-								<div class="picture-slot">
-									<label class="picture-preview-box" data-slot="digital-pic-3">
-										<i class="icon solid fa-wave-square"></i>
-										<div><strong>Click to Insert Scope Capture</strong></div>
-										<div style="font-size: 0.78em; margin-top: 0.25em;">Signal Integrity / Eye Diagram</div>
-										<input type="file" accept="image/*" class="slot-image-input" style="display: none;" />
-									</label>
-									<div class="picture-slot-label">
-										<span>[Image 3: Signal Validation]</span>
-									</div>
-									<div class="picture-slot-caption">
-										Oscilloscope waveform validation demonstrating clean rise times and low jitter.
-									</div>
-								</div>
-
-								<!-- Picture Slot 4 -->
-								<div class="picture-slot">
-									<label class="picture-preview-box" data-slot="digital-pic-4">
-										<i class="icon solid fa-camera"></i>
-										<div><strong>Click to Insert Physical Board</strong></div>
-										<div style="font-size: 0.78em; margin-top: 0.25em;">Assembled Hardware Photo</div>
-										<input type="file" accept="image/*" class="slot-image-input" style="display: none;" />
-									</label>
-									<div class="picture-slot-label">
-										<span>[Image 4: Assembled PCB]</span>
-									</div>
-									<div class="picture-slot-caption">
-										Physical manufactured PCB populated and installed into the Mines FSAE chassis.
-									</div>
-								</div>
-
 							</div>
-
 						</div>
 					</div>
 				</div>
@@ -450,143 +379,112 @@
 				<div class="ee-modal">
 					<div class="ee-modal-header">
 						<div class="ee-modal-header-left">
-							<span class="project-card-badge badge-safety">Mines FSAE</span>
-							<h3 class="ee-modal-title">BSPD &bull; Technical Design Writeup</h3>
+							<span class="project-card-badge badge-safety">BSPD</span>
+							<h3 class="ee-modal-title">Technical Design Writeup</h3>
+						</div>
+						<button class="ee-modal-close" data-close title="Close Modal"><i class="icon solid fa-times"></i></button>
+					</div>
+					<div class="ee-modal-body" style="align-items: center; justify-content: center;">
+						<div class="wip-container">
+							<div class="wip-icon-wrapper" style="border-color: rgba(251, 113, 133, 0.3);">
+								<i class="icon solid fa-book-open" style="color: #fb7185;"></i>
+							</div>
+							<h3 class="wip-title">Design Writeup In Progress</h3>
+							<p class="wip-subtitle">
+								Theory of operation, LTSpice transient simulations, comparator tolerance analyses, and bench test photos for the <strong>BSPD</strong> are currently being drafted.
+							</p>
+							<div class="wip-badge">
+								<span class="pulse-dot" style="background: #fb7185; box-shadow: 0 0 8px #fb7185;"></span>
+								Work In Progress
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<!-- 3. BSPD Relay Schematic Modal -->
+			<div class="ee-modal-backdrop" id="modal-schematic-relay">
+				<div class="ee-modal modal-large" style="max-width: 1240px; height: 90vh;">
+					<div class="ee-modal-header">
+						<div class="ee-modal-header-left">
+							<span class="project-card-badge badge-power">BSPD Relay</span>
+							<h3 class="ee-modal-title">Schematic PDF</h3>
+						</div>
+						<div style="display: flex; align-items: center; gap: 0.6em;">
+							<a href="assets/docs/bspd-relay-schematic.pdf" target="_blank" class="project-btn" style="padding: 0.45em 0.9em; font-size: 0.82em; font-weight: 500;">
+								<i class="icon solid fa-external-link-alt"></i> Open in New Tab
+							</a>
+							<a href="assets/docs/bspd-relay-schematic.pdf" download="BSPD_Relay_Schematic.pdf" class="project-btn secondary" style="padding: 0.45em 0.9em; font-size: 0.82em; font-weight: 500;">
+								<i class="icon solid fa-download"></i> Download PDF
+							</a>
+							<button class="ee-modal-close" data-close title="Close Modal"><i class="icon solid fa-times"></i></button>
+						</div>
+					</div>
+					<div class="ee-modal-body" style="padding: 0; background: #1e293b; overflow: hidden; flex: 1;">
+						<iframe 
+							src="assets/docs/bspd-relay-schematic.pdf#toolbar=1&navpanes=1&statusbar=1&view=FitH" 
+							type="application/pdf" 
+							width="100%" 
+							height="100%" 
+							style="width: 100%; height: 100%; border: none; min-height: 520px; display: block;" 
+							title="BSPD Relay Schematic PDF">
+							<div style="padding: 2.5em; text-align: center; color: #ffffff;">
+								<p>Your browser does not support inline PDF viewing.</p>
+								<a href="assets/docs/bspd-relay-schematic.pdf" target="_blank" class="project-btn">Download or Open PDF</a>
+							</div>
+						</iframe>
+					</div>
+				</div>
+			</div>
+
+			<!-- 3. BSPD Relay 3D CAD Modal -->
+			<div class="ee-modal-backdrop" id="modal-3d-relay">
+				<div class="ee-modal modal-large">
+					<div class="ee-modal-header">
+						<div class="ee-modal-header-left">
+							<span class="project-card-badge badge-power">BSPD Relay</span>
+							<h3 class="ee-modal-title">3D Board &amp; CAD View</h3>
 						</div>
 						<button class="ee-modal-close" data-close title="Close Modal"><i class="icon solid fa-times"></i></button>
 					</div>
 					<div class="ee-modal-body">
-						<div class="writeup-container">
-
-							<!-- Left Column: Technical Text & Specifications -->
-							<div class="writeup-content">
-								<h4><i class="icon solid fa-shield-alt" style="color: #fb7185;"></i> Safety System Overview</h4>
-								<p>
-									The <strong>Brake System Plausibility Device (BSPD)</strong> is a critical safety circuit mandated by Formula SAE competition rules (EV 4.7 / IC rules). Its role is to continuously monitor both brake pedal force and throttle position to immediately and irreversibly trip the vehicle's shutdown circuit if hard braking occurs simultaneously with substantial power delivery.
-								</p>
-
-								<h4><i class="icon solid fa-microchip" style="color: #fb7185;"></i> Non-Programmable Discrete Architecture</h4>
-								<p>
-									Per Formula SAE rules, the BSPD <strong>must not contain programmable logic, microcontrollers, or software</strong>. The entire logic is implemented through discrete analog and digital ICs:
-								</p>
-								<p>
-									<strong>Analog Window Comparators:</strong> Precision comparator networks monitor the analog voltage outputs from hydraulic pressure transducers and throttle position sensors (TPS), with low-pass RC filters to eliminate mechanical vibration noise.
-								</p>
-								<p>
-									<strong>Time-Delay &amp; Counting Logic:</strong> Built with hardware decade and binary counter ICs clocked by an onboard precision oscillator to establish an exact, immutable 500ms trip threshold before asserting an emergency shutdown latch.
-								</p>
-
-								<h4><i class="icon solid fa-list-alt" style="color: #fb7185;"></i> Technical Specifications</h4>
-								<table class="spec-table">
-									<thead>
-										<tr>
-											<th>Parameter</th>
-											<th>Specification</th>
-										</tr>
-									</thead>
-									<tbody>
-										<tr>
-											<td>Circuit Type</td>
-											<td class="val">100% Non-Programmable Hardware Logic</td>
-										</tr>
-										<tr>
-											<td>Trip Condition</td>
-											<td class="val">Hard Brake (&gt;30 bar) + Active Power (&gt;5kW) &gt; 500ms</td>
-										</tr>
-										<tr>
-											<td>Logic Components</td>
-											<td class="val">Analog Comparators, Binary Counters, Decade Decoders</td>
-										</tr>
-										<tr>
-											<td>Latching Topology</td>
-											<td class="val">Hardware Set/Reset Latch (Power-Cycle Reset Only)</td>
-										</tr>
-										<tr>
-											<td>Simulation Tool</td>
-											<td class="val">LTSpice (Monte Carlo &amp; Worst-Case Tolerance Analysis)</td>
-										</tr>
-										<tr>
-											<td>CAD Tool</td>
-											<td class="val">Altium Designer</td>
-										</tr>
-									</tbody>
-								</table>
-
-								<h4><i class="icon solid fa-check-circle" style="color: #fb7185;"></i> Simulation &amp; Rule Compliance</h4>
-								<p>
-									Simulated extensively in LTSpice to verify timing stability across temperature swings (-40&deg;C to +85&deg;C) and supply rail fluctuations, guaranteeing false-trip immunity while guaranteeing 100% compliance during technical inspection.
-								</p>
+						<div class="cad-viewer-container">
+							<div class="cad-stage-wrapper">
+								<div class="cad-stage-toolbar">
+									<span style="font-size: 0.88em; color: #94a3b8; font-weight: 600;"><i class="icon solid fa-cube" style="color: #facc15; margin-right: 0.4em;"></i> 3D Hardware Render</span>
+									<span style="font-size: 0.8em; color: #64748b;">Mines FSAE Power Stage</span>
+								</div>
+								<div class="cad-stage-body" id="stage-3d-relay">
+									<img src="images/bspd-relay-3d.png" alt="BSPD Relay 3D Render" class="cad-stage-image" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';" />
+									<div class="cad-placeholder-box" style="display: none;">
+										<i class="icon solid fa-cube" style="color: #facc15;"></i>
+										<h4 style="color: #ffffff; margin-bottom: 0.4em;">3D Render Ready for Image</h4>
+										<p style="font-size: 0.9em; line-height: 1.6em; margin-bottom: 0;">
+											Place your Altium 3D isometric screenshot in the images folder as described on the right.
+										</p>
+									</div>
+								</div>
 							</div>
-
-							<!-- Right Column: Embedded Pictures Template Spots -->
-							<div class="writeup-gallery">
-
-								<!-- Picture Slot 1 -->
-								<div class="picture-slot">
-									<label class="picture-preview-box" data-slot="bspd-pic-1">
-										<i class="icon solid fa-cube"></i>
-										<div><strong>Click to Insert 3D Render</strong></div>
-										<div style="font-size: 0.78em; margin-top: 0.25em;">Altium 3D View of BSPD</div>
-										<input type="file" accept="image/*" class="slot-image-input" style="display: none;" />
-									</label>
-									<div class="picture-slot-label">
-										<span>[Image 1: 3D Render]</span>
-									</div>
-									<div class="picture-slot-caption">
-										3D view displaying analog comparator stages and safety latch logic ICs.
+							<div class="cad-info-panel">
+								<div>
+									<h4 style="color: #ffffff; font-size: 1.1em; margin-bottom: 0.4em;">BSPD Relay 3D CAD</h4>
+									<p style="font-size: 0.88em; color: #94a3b8; line-height: 1.6em; margin-bottom: 0;">
+										Bi-directional power MOSFET Solid State Relay (SSR) engineered for 7A continuous current handling and thermal dissipation.
+									</p>
+									<div class="cad-instructions-box">
+										<h5><i class="icon solid fa-info-circle"></i> Where to put your files:</h5>
+										<ol>
+											<li><strong>3D Render Image:</strong><br/>Place image at:<br/><code>images/bspd-relay-3d.png</code></li>
+											<li><strong>Raw .STEP CAD Model:</strong><br/>Place STEP file at:<br/><code>assets/cad/bspd-relay-model.step</code></li>
+										</ol>
 									</div>
 								</div>
-
-								<!-- Picture Slot 2 -->
-								<div class="picture-slot">
-									<label class="picture-preview-box" data-slot="bspd-pic-2">
-										<i class="icon solid fa-project-diagram"></i>
-										<div><strong>Click to Insert Schematic / Flow</strong></div>
-										<div style="font-size: 0.78em; margin-top: 0.25em;">Comparator &amp; Latch Topology</div>
-										<input type="file" accept="image/*" class="slot-image-input" style="display: none;" />
-									</label>
-									<div class="picture-slot-label">
-										<span>[Image 2: Circuit Topology]</span>
-									</div>
-									<div class="picture-slot-caption">
-										Schematic block breakdown of analog threshold detection and counting logic.
-									</div>
+								<div>
+									<a href="assets/cad/bspd-relay-model.step" download class="project-btn" style="width: 100%; justify-content: center;" onclick="if(!this.getAttribute('data-exists')){ alert('Place your STEP file at /assets/cad/bspd-relay-model.step to enable visitor downloads.'); return false; }">
+										<i class="icon solid fa-download"></i> Download .STEP Model
+									</a>
 								</div>
-
-								<!-- Picture Slot 3 -->
-								<div class="picture-slot">
-									<label class="picture-preview-box" data-slot="bspd-pic-3">
-										<i class="icon solid fa-chart-line"></i>
-										<div><strong>Click to Insert LTSpice Waveforms</strong></div>
-										<div style="font-size: 0.78em; margin-top: 0.25em;">Transient &amp; Timing Verification</div>
-										<input type="file" accept="image/*" class="slot-image-input" style="display: none;" />
-									</label>
-									<div class="picture-slot-label">
-										<span>[Image 3: LTSpice Simulation]</span>
-									</div>
-									<div class="picture-slot-caption">
-										500ms time-delay response curve and shutdown latch trigger waveforms.
-									</div>
-								</div>
-
-								<!-- Picture Slot 4 -->
-								<div class="picture-slot">
-									<label class="picture-preview-box" data-slot="bspd-pic-4">
-										<i class="icon solid fa-tools"></i>
-										<div><strong>Click to Insert Bench Testing Photo</strong></div>
-										<div style="font-size: 0.78em; margin-top: 0.25em;">Physical Board Testing</div>
-										<input type="file" accept="image/*" class="slot-image-input" style="display: none;" />
-									</label>
-									<div class="picture-slot-label">
-										<span>[Image 4: Hardware Testbench]</span>
-									</div>
-									<div class="picture-slot-caption">
-										Bench testing with simulated brake pressure and throttle voltage injections.
-									</div>
-								</div>
-
 							</div>
-
 						</div>
 					</div>
 				</div>
@@ -597,143 +495,24 @@
 				<div class="ee-modal">
 					<div class="ee-modal-header">
 						<div class="ee-modal-header-left">
-							<span class="project-card-badge badge-power">Mines FSAE</span>
-							<h3 class="ee-modal-title">BSPD Relay &bull; Technical Design Writeup</h3>
+							<span class="project-card-badge badge-power">BSPD Relay</span>
+							<h3 class="ee-modal-title">Technical Design Writeup</h3>
 						</div>
 						<button class="ee-modal-close" data-close title="Close Modal"><i class="icon solid fa-times"></i></button>
 					</div>
-					<div class="ee-modal-body">
-						<div class="writeup-container">
-
-							<!-- Left Column: Technical Text & Specifications -->
-							<div class="writeup-content">
-								<h4><i class="icon solid fa-bolt" style="color: #facc15;"></i> Power Switching Architecture</h4>
-								<p>
-									The <strong>BSPD Relay Board</strong> is an auxiliary high-reliability power management PCB designed to interface directly with the main BSPD. It provides rapid, galvanic disconnect of vehicle shutdown loops carrying continuous loads up to <strong>7 Amperes</strong>.
-								</p>
-
-								<h4><i class="icon solid fa-plug" style="color: #facc15;"></i> Bi-Directional MOSFET Solid State Design</h4>
-								<p>
-									Unlike traditional mechanical relays that suffer from contact bounce, contact welding, and shock-induced vibration disconnects during competition racing, this custom design utilizes an ultra-low $R_{DS(on)}$ <strong>bi-directional N-channel power MOSFET solid state relay (SSR)</strong> stage.
-								</p>
-								<p>
-									<strong>High-Current Copper Geometry:</strong> Sized high-copper polygon pours on 2oz outer layers with thermal via arrays to dissipate heat efficiently under continuous 7A conduction without requiring bulky heatsinks.
-								</p>
-								<p>
-									<strong>Galvanic Isolation:</strong> Optocoupled gate drivers provide complete isolation between noisy shutdown actuator coils and sensitive low-voltage logic circuitry.
-								</p>
-
-								<h4><i class="icon solid fa-list-alt" style="color: #facc15;"></i> Technical Specifications</h4>
-								<table class="spec-table">
-									<thead>
-										<tr>
-											<th>Parameter</th>
-											<th>Specification</th>
-										</tr>
-									</thead>
-									<tbody>
-										<tr>
-											<td>Continuous Current Rating</td>
-											<td class="val">7.0 Amperes Continuous</td>
-										</tr>
-										<tr>
-											<td>Switching Device</td>
-											<td class="val">Back-to-Back Dual Power MOSFETs (SSR)</td>
-										</tr>
-										<tr>
-											<td>On-Resistance ($R_{DS(on)}$)</td>
-											<td class="val">&lt; 15 m&Omega; Total Conduction Path</td>
-										</tr>
-										<tr>
-											<td>Copper Weight</td>
-											<td class="val">2 oz Cu with Thermal Via Stitching</td>
-										</tr>
-										<tr>
-											<td>Isolation Voltage</td>
-											<td class="val">2.5 kV Galvanic Isolation</td>
-										</tr>
-										<tr>
-											<td>Actuation Response Time</td>
-											<td class="val">&lt; 150 &mu;s (Fast Shutdown Response)</td>
-										</tr>
-									</tbody>
-								</table>
-
-								<h4><i class="icon solid fa-check-circle" style="color: #facc15;"></i> Thermal &amp; Load Validation</h4>
-								<p>
-									Thermally profiled under full 7A continuous current test cycles with an infrared thermal camera. Measured peak junction temperature rise of less than 18&deg;C above ambient, proving robust thermal headroom.
-								</p>
+					<div class="ee-modal-body" style="align-items: center; justify-content: center;">
+						<div class="wip-container">
+							<div class="wip-icon-wrapper" style="border-color: rgba(250, 204, 21, 0.3);">
+								<i class="icon solid fa-book-open" style="color: #facc15;"></i>
 							</div>
-
-							<!-- Right Column: Embedded Pictures Template Spots -->
-							<div class="writeup-gallery">
-
-								<!-- Picture Slot 1 -->
-								<div class="picture-slot">
-									<label class="picture-preview-box" data-slot="relay-pic-1">
-										<i class="icon solid fa-cube"></i>
-										<div><strong>Click to Insert 3D Render</strong></div>
-										<div style="font-size: 0.78em; margin-top: 0.25em;">Altium 3D SSR Model</div>
-										<input type="file" accept="image/*" class="slot-image-input" style="display: none;" />
-									</label>
-									<div class="picture-slot-label">
-										<span>[Image 1: 3D Board Model]</span>
-									</div>
-									<div class="picture-slot-caption">
-										3D view illustrating power MOSFET footprints and high-current screw terminals.
-									</div>
-								</div>
-
-								<!-- Picture Slot 2 -->
-								<div class="picture-slot">
-									<label class="picture-preview-box" data-slot="relay-pic-2">
-										<i class="icon solid fa-fire"></i>
-										<div><strong>Click to Insert Thermal Analysis</strong></div>
-										<div style="font-size: 0.78em; margin-top: 0.25em;">Thermal Camera / Copper Pour</div>
-										<input type="file" accept="image/*" class="slot-image-input" style="display: none;" />
-									</label>
-									<div class="picture-slot-label">
-										<span>[Image 2: Thermal Management]</span>
-									</div>
-									<div class="picture-slot-caption">
-										2oz copper polygon pours and thermal stitching via matrix for 7A power handling.
-									</div>
-								</div>
-
-								<!-- Picture Slot 3 -->
-								<div class="picture-slot">
-									<label class="picture-preview-box" data-slot="relay-pic-3">
-										<i class="icon solid fa-tachometer-alt"></i>
-										<div><strong>Click to Insert Current Test</strong></div>
-										<div style="font-size: 0.78em; margin-top: 0.25em;">Load Bank &amp; Oscilloscope</div>
-										<input type="file" accept="image/*" class="slot-image-input" style="display: none;" />
-									</label>
-									<div class="picture-slot-label">
-										<span>[Image 3: Current Load Testing]</span>
-									</div>
-									<div class="picture-slot-caption">
-										Oscilloscope capture demonstrating sub-150&mu;s fault turn-off time under inductive load.
-									</div>
-								</div>
-
-								<!-- Picture Slot 4 -->
-								<div class="picture-slot">
-									<label class="picture-preview-box" data-slot="relay-pic-4">
-										<i class="icon solid fa-microchip"></i>
-										<div><strong>Click to Insert System Wiring</strong></div>
-										<div style="font-size: 0.78em; margin-top: 0.25em;">In-Chassis Interconnect</div>
-										<input type="file" accept="image/*" class="slot-image-input" style="display: none;" />
-									</label>
-									<div class="picture-slot-label">
-										<span>[Image 4: System Integration]</span>
-									</div>
-									<div class="picture-slot-caption">
-										Relay module wired inline with the shutdown loop inside the vehicle electronics enclosure.
-									</div>
-								</div>
-
+							<h3 class="wip-title">Design Writeup In Progress</h3>
+							<p class="wip-subtitle">
+								High-current trace calculations, thermal camera captures under 7A load, and bi-directional MOSFET switching waveforms are currently being documented.
+							</p>
+							<div class="wip-badge">
+								<span class="pulse-dot" style="background: #facc15; box-shadow: 0 0 8px #facc15;"></span>
+								Work In Progress
 							</div>
-
 						</div>
 					</div>
 				</div>
@@ -764,7 +543,7 @@
 			<script src="assets/js/util.js"></script>
 			<script src="assets/js/main.js"></script>
 
-			<!-- Custom Modal & Interactive PDF/Picture Upload Logic -->
+			<!-- Custom Modal, Schematic Zoom, and Sheet Switcher Logic -->
 			<script>
 				(function() {
 					// Open Modal
@@ -784,7 +563,6 @@
 					function closeModal(modal) {
 						if (modal) {
 							modal.classList.remove('is-open');
-							// Check if any other modal is still open
 							if (!document.querySelector('.ee-modal-backdrop.is-open')) {
 								document.body.style.overflow = '';
 							}
@@ -817,98 +595,6 @@
 								closeModal(openModal);
 							}
 						}
-					});
-
-					// Schematic PDF Upload & Preview Handler
-					function handlePdfFile(file, viewerId, statusId, downloadBtnId) {
-						if (!file || file.type !== 'application/pdf') {
-							alert('Please select a valid PDF file.');
-							return;
-						}
-						var fileUrl = URL.createObjectURL(file);
-						var viewer = document.getElementById(viewerId);
-						if (viewer) {
-							viewer.innerHTML = '<iframe class="schematic-frame" src="' + fileUrl + '" title="Schematic Viewer"></iframe>';
-						}
-						if (statusId) {
-							var statusEl = document.getElementById(statusId);
-							if (statusEl) {
-								statusEl.innerHTML = '<strong>Loaded:</strong> ' + file.name + ' (' + (file.size / 1024).toFixed(1) + ' KB)';
-							}
-						}
-						if (downloadBtnId) {
-							var dlBtn = document.getElementById(downloadBtnId);
-							if (dlBtn) {
-								dlBtn.href = fileUrl;
-								dlBtn.download = file.name;
-								dlBtn.style.display = 'inline-flex';
-							}
-						}
-					}
-
-					// File Input change for PDFs
-					document.querySelectorAll('.pdf-file-input').forEach(function(input) {
-						input.addEventListener('change', function(e) {
-							var file = e.target.files && e.target.files[0];
-							if (file) {
-								var viewerId = this.getAttribute('data-target-viewer');
-								var modal = this.closest('.ee-modal-backdrop');
-								var modalId = modal ? modal.id : '';
-								var suffix = viewerId.replace('viewer-', '');
-								handlePdfFile(file, viewerId, 'status-schematic-' + suffix, 'dl-schematic-' + suffix);
-							}
-						});
-					});
-
-					// Drag and Drop for PDF Dropzones
-					document.querySelectorAll('.upload-dropzone').forEach(function(dropzone) {
-						dropzone.addEventListener('dragover', function(e) {
-							e.preventDefault();
-							this.classList.add('dragover');
-						});
-						dropzone.addEventListener('dragleave', function() {
-							this.classList.remove('dragover');
-						});
-						dropzone.addEventListener('drop', function(e) {
-							e.preventDefault();
-							this.classList.remove('dragover');
-							var files = e.dataTransfer.files;
-							if (files && files.length > 0) {
-								var file = files[0];
-								var viewerId = this.getAttribute('data-target-viewer');
-								var suffix = viewerId.replace('viewer-', '');
-								handlePdfFile(file, viewerId, 'status-schematic-' + suffix, 'dl-schematic-' + suffix);
-							}
-						});
-						dropzone.addEventListener('click', function() {
-							var modal = this.closest('.ee-modal-backdrop');
-							if (modal) {
-								var fileInput = modal.querySelector('.pdf-file-input');
-								if (fileInput) fileInput.click();
-							}
-						});
-					});
-
-					// Picture Slots Image Upload Handler
-					document.querySelectorAll('.slot-image-input').forEach(function(input) {
-						input.addEventListener('change', function(e) {
-							var file = e.target.files && e.target.files[0];
-							if (file && file.type.startsWith('image/')) {
-								var reader = new FileReader();
-								var previewBox = this.closest('.picture-preview-box');
-								reader.onload = function(evt) {
-									if (previewBox) {
-										previewBox.innerHTML = '<img src="' + evt.target.result + '" alt="Uploaded PCB view" style="width:100%; height:100%; object-fit:cover; display:block;" /><input type="file" accept="image/*" class="slot-image-input" style="display:none;" />';
-										// rebind input in the updated box
-										var newInput = previewBox.querySelector('.slot-image-input');
-										if (newInput) {
-											newInput.addEventListener('change', input.onchange);
-										}
-									}
-								};
-								reader.readAsDataURL(file);
-							}
-						});
 					});
 				})();
 			</script>

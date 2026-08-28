@@ -3147,6 +3147,11 @@ html, body {
 	color: #cbd5e1 !important;
 }
 
+strong, b {
+	color: #ffffff !important;
+	font-weight: 600;
+}
+
 body.homepage #header {
 	background-image: linear-gradient(rgba(10, 11, 14, 0.85), rgba(10, 11, 14, 0.95)), url("../../images/header.jpg");
 	background-size: cover;
@@ -3443,7 +3448,7 @@ body.homepage #header:after {
 	color: #f1f5f9;
 	font-size: 0.88em;
 	font-weight: 600;
-	padding: 0.6em 1.2em;
+	padding: 0.55em 1em;
 	border-radius: 0px;
 	cursor: pointer;
 	transition: all 0.2s ease-in-out;
@@ -3457,6 +3462,19 @@ body.homepage #header:after {
 	color: #ffffff;
 	transform: translateY(-2px);
 	box-shadow: 0 4px 12px rgba(96, 165, 250, 0.25);
+}
+
+.project-btn.btn-3d {
+	background: #151e2e;
+	border-color: rgba(56, 189, 248, 0.35);
+	color: #38bdf8;
+}
+
+.project-btn.btn-3d:hover {
+	background: #1e2c40;
+	border-color: #38bdf8;
+	color: #ffffff;
+	box-shadow: 0 4px 14px rgba(56, 189, 248, 0.3);
 }
 
 .project-btn.secondary {
@@ -3490,7 +3508,7 @@ body.homepage #header:after {
 }
 
 /* ==========================================================================
-   Modals & Popups for Schematic and Writeup
+   Modals & Popups for Schematic, 3D Board View, and Writeup
    ========================================================================== */
 
 .ee-modal-backdrop {
@@ -3499,7 +3517,7 @@ body.homepage #header:after {
 	left: 0;
 	width: 100vw;
 	height: 100vh;
-	background: rgba(4, 5, 8, 0.85);
+	background: rgba(4, 5, 8, 0.88);
 	backdrop-filter: blur(8px);
 	-webkit-backdrop-filter: blur(8px);
 	z-index: 10000;
@@ -3521,7 +3539,7 @@ body.homepage #header:after {
 	background: #11141c;
 	border: 1px solid rgba(255, 255, 255, 0.15);
 	width: 100%;
-	max-width: 1100px;
+	max-width: 800px;
 	max-height: 90vh;
 	display: flex;
 	flex-direction: column;
@@ -3529,6 +3547,11 @@ body.homepage #header:after {
 	overflow: hidden;
 	position: relative;
 	animation: modalSlideUp 0.25s ease-out;
+}
+
+.ee-modal.modal-large {
+	max-width: 1180px;
+	height: 88vh;
 }
 
 @keyframes modalSlideUp {
@@ -3546,7 +3569,7 @@ body.homepage #header:after {
 	display: flex;
 	align-items: center;
 	justify-content: space-between;
-	padding: 1.25em 1.75em;
+	padding: 1.1em 1.6em;
 	background: #161a24;
 	border-bottom: 1px solid rgba(255, 255, 255, 0.1);
 	gap: 1em;
@@ -3555,13 +3578,13 @@ body.homepage #header:after {
 .ee-modal-header-left {
 	display: flex;
 	align-items: center;
-	gap: 1em;
+	gap: 0.85em;
 	flex-wrap: wrap;
 }
 
 .ee-modal-title {
 	margin: 0;
-	font-size: 1.4em;
+	font-size: 1.25em;
 	color: #ffffff;
 	font-weight: 600;
 	letter-spacing: 0.02em;
@@ -3593,221 +3616,270 @@ body.homepage #header:after {
 	flex: 1;
 	background: #0f121a;
 	color: #cbd5e1;
+	display: flex;
+	flex-direction: column;
 }
 
-/* Schematic Viewer Popup Layout */
-.schematic-toolbar {
+/* Schematic Viewer Toolbar & Display */
+.schematic-tab-bar {
 	display: flex;
+	align-items: center;
 	justify-content: space-between;
-	align-items: center;
-	background: #171b26;
+	background: #161a24;
 	border: 1px solid rgba(255, 255, 255, 0.1);
-	padding: 0.85em 1.25em;
-	margin-bottom: 1.25em;
+	padding: 0.6em 1em;
+	margin-bottom: 1em;
 	flex-wrap: wrap;
-	gap: 0.75em;
-}
-
-.schematic-meta {
-	font-size: 0.9em;
-	color: #94a3b8;
-	display: flex;
-	align-items: center;
 	gap: 0.8em;
 }
 
-.schematic-actions {
+.schematic-tabs {
 	display: flex;
-	gap: 0.6em;
-	align-items: center;
-}
-
-.schematic-viewport {
-	background: #090b10;
-	border: 1px solid rgba(255, 255, 255, 0.1);
-	min-height: 520px;
-	display: flex;
-	flex-direction: column;
-	align-items: center;
-	justify-content: center;
-	position: relative;
-	overflow: hidden;
-}
-
-.schematic-frame {
-	width: 100%;
-	height: 580px;
-	border: none;
-	background: #ffffff;
-}
-
-.schematic-placeholder {
-	padding: 3.5em 2em;
-	text-align: center;
-	max-width: 600px;
-}
-
-.schematic-placeholder i {
-	font-size: 3.5em;
-	color: #38bdf8;
-	margin-bottom: 0.4em;
-}
-
-.upload-dropzone {
-	border: 2px dashed rgba(255, 255, 255, 0.2);
-	background: rgba(255, 255, 255, 0.02);
-	padding: 2.2em 1.5em;
-	margin-top: 1.5em;
-	cursor: pointer;
-	transition: all 0.2s ease;
-}
-
-.upload-dropzone:hover, .upload-dropzone.dragover {
-	border-color: #60a5fa;
-	background: rgba(96, 165, 250, 0.06);
-}
-
-/* Writeup Two-Column Layout */
-.writeup-container {
-	display: grid;
-	grid-template-columns: 1fr 380px;
-	gap: 2.5em;
-}
-
-.writeup-content h4 {
-	font-size: 1.25em;
-	color: #ffffff;
-	margin: 1.6em 0 0.5em 0;
-	display: flex;
-	align-items: center;
 	gap: 0.5em;
 }
 
-.writeup-content h4:first-child {
-	margin-top: 0;
-}
-
-.writeup-content p {
-	font-size: 1em;
-	line-height: 1.8em;
-	color: #cbd5e1;
-	margin-bottom: 1.2em;
-}
-
-.spec-table {
-	width: 100%;
-	border-collapse: collapse;
-	margin: 1.5em 0;
-	font-size: 0.92em;
-}
-
-.spec-table th, .spec-table td {
-	padding: 0.6em 0.85em;
-	border: 1px solid rgba(255, 255, 255, 0.08);
-	text-align: left;
-}
-
-.spec-table th {
-	background: #171b26;
-	color: #ffffff;
-	font-weight: 600;
-}
-
-.spec-table td {
-	background: #11141d;
-	color: #94a3b8;
-}
-
-.spec-table td.val {
-	color: #e2e8f0;
-	font-family: monospace;
-}
-
-/* Writeup Pictures Column (Right Side) */
-.writeup-gallery {
-	display: flex;
-	flex-direction: column;
-	gap: 1.5em;
-}
-
-.picture-slot {
-	background: #161a24;
+.schematic-tab-btn {
+	background: #0e1118;
 	border: 1px solid rgba(255, 255, 255, 0.1);
-	padding: 0.75em;
-}
-
-.picture-preview-box {
-	width: 100%;
-	height: 190px;
-	background: #090b10;
-	border: 1px dashed rgba(255, 255, 255, 0.15);
-	display: flex;
-	flex-direction: column;
-	align-items: center;
-	justify-content: center;
-	text-align: center;
-	color: #64748b;
-	padding: 1em;
-	box-sizing: border-box;
-	position: relative;
-	overflow: hidden;
+	color: #94a3b8;
+	padding: 0.4em 0.9em;
+	font-size: 0.88em;
+	font-weight: 600;
 	cursor: pointer;
 	transition: all 0.2s ease;
 }
 
-.picture-preview-box:hover {
+.schematic-tab-btn.active, .schematic-tab-btn:hover {
+	background: #1f2636;
 	border-color: #60a5fa;
-	background: #0d1017;
-	color: #94a3b8;
+	color: #ffffff;
 }
 
-.picture-preview-box img {
-	width: 100%;
-	height: 100%;
-	object-fit: cover;
-	display: block;
+.schematic-zoom-controls {
+	display: flex;
+	align-items: center;
+	gap: 0.4em;
 }
 
-.picture-preview-box i {
-	font-size: 2em;
-	margin-bottom: 0.35em;
-	color: #60a5fa;
-}
-
-.picture-slot-label {
+.zoom-btn {
+	background: #11141c;
+	border: 1px solid rgba(255, 255, 255, 0.12);
+	color: #cbd5e1;
+	width: 32px;
+	height: 32px;
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	cursor: pointer;
 	font-size: 0.85em;
-	color: #e2e8f0;
-	font-weight: 600;
-	margin-top: 0.6em;
+	padding: 0;
+	transition: all 0.2s;
+}
+
+.zoom-btn:hover {
+	background: #232938;
+	color: #ffffff;
+	border-color: #60a5fa;
+}
+
+.schematic-canvas-box {
+	background: #ffffff;
+	border: 1px solid rgba(255, 255, 255, 0.15);
+	flex: 1;
+	min-height: 480px;
+	overflow: auto;
+	position: relative;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	padding: 1em;
+}
+
+.schematic-sheet-img {
+	max-width: 100%;
+	height: auto;
+	transition: transform 0.2s ease-out;
+	transform-origin: center center;
+	box-shadow: 0 4px 18px rgba(0, 0, 0, 0.2);
+}
+
+.schematic-sheet-info {
+	background: #141822;
+	border: 1px solid rgba(255, 255, 255, 0.08);
+	padding: 0.9em 1.2em;
+	margin-top: 1em;
 	display: flex;
 	justify-content: space-between;
 	align-items: center;
+	flex-wrap: wrap;
+	gap: 0.8em;
+	font-size: 0.9em;
 }
 
-.picture-slot-caption {
-	font-size: 0.78em;
+/* 3D Board View Modal Layout */
+.cad-viewer-container {
+	display: grid;
+	grid-template-columns: 1fr 340px;
+	gap: 1.75em;
+	flex: 1;
+}
+
+.cad-stage-wrapper {
+	background: #090b10;
+	border: 1px solid rgba(255, 255, 255, 0.12);
+	display: flex;
+	flex-direction: column;
+	overflow: hidden;
+}
+
+.cad-stage-toolbar {
+	background: #141722;
+	border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+	padding: 0.6em 1em;
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+}
+
+.cad-stage-body {
+	flex: 1;
+	min-height: 380px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	padding: 1.5em;
+	position: relative;
+}
+
+.cad-stage-image {
+	max-width: 100%;
+	max-height: 100%;
+	object-fit: contain;
+	display: block;
+}
+
+.cad-placeholder-box {
+	text-align: center;
+	max-width: 440px;
 	color: #94a3b8;
-	margin-top: 0.25em;
-	line-height: 1.4em;
 }
 
-@media screen and (max-width: 980px) {
-	.writeup-container {
+.cad-placeholder-box i {
+	font-size: 4em;
+	color: #38bdf8;
+	margin-bottom: 0.3em;
+	opacity: 0.9;
+}
+
+.cad-info-panel {
+	background: #141822;
+	border: 1px solid rgba(255, 255, 255, 0.1);
+	padding: 1.5em;
+	display: flex;
+	flex-direction: column;
+	gap: 1.25em;
+}
+
+.cad-instructions-box {
+	background: #0d1017;
+	border: 1px solid rgba(56, 189, 248, 0.25);
+	padding: 1.1em;
+	font-size: 0.88em;
+	line-height: 1.6em;
+}
+
+.cad-instructions-box h5 {
+	color: #38bdf8;
+	font-size: 0.95em;
+	margin-bottom: 0.6em;
+	display: flex;
+	align-items: center;
+	gap: 0.4em;
+}
+
+.cad-instructions-box code {
+	background: #1a202c;
+	color: #38bdf8;
+	padding: 0.15em 0.45em;
+	font-family: monospace;
+	font-size: 0.92em;
+	border-radius: 2px;
+}
+
+.cad-instructions-box ol {
+	margin: 0;
+	padding-left: 1.3em;
+	color: #cbd5e1;
+}
+
+.cad-instructions-box li {
+	margin-bottom: 0.4em;
+}
+
+@media screen and (max-width: 900px) {
+	.cad-viewer-container {
 		grid-template-columns: 1fr;
-	}
-	.writeup-gallery {
-		display: grid;
-		grid-template-columns: 1fr 1fr;
 	}
 }
 
-@media screen and (max-width: 640px) {
-	.writeup-gallery {
-		grid-template-columns: 1fr;
-	}
-	.ee-modal-body {
-		padding: 1.25em;
-	}
+/* Work In Progress Display */
+.wip-container {
+	text-align: center;
+	max-width: 540px;
+	margin: 0 auto;
+}
+
+.wip-icon-wrapper {
+	width: 80px;
+	height: 80px;
+	border-radius: 50%;
+	background: #171b26;
+	border: 1px solid rgba(255, 255, 255, 0.12);
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	margin: 0 auto 1.5em auto;
+	box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
+}
+
+.wip-icon-wrapper i {
+	font-size: 2.2em;
+}
+
+.wip-title {
+	font-size: 1.6em;
+	color: #ffffff;
+	margin-bottom: 0.5em;
+	font-weight: 600;
+	letter-spacing: 0.02em;
+}
+
+.wip-subtitle {
+	color: #94a3b8;
+	font-size: 1.05em;
+	line-height: 1.7em;
+	margin-bottom: 1.8em;
+}
+
+.wip-badge {
+	display: inline-flex;
+	align-items: center;
+	gap: 0.5em;
+	background: #171c26;
+	border: 1px solid rgba(255, 255, 255, 0.1);
+	color: #94a3b8;
+	font-size: 0.85em;
+	padding: 0.4em 1em;
+	text-transform: uppercase;
+	letter-spacing: 0.06em;
+}
+
+.wip-badge span.pulse-dot {
+	width: 8px;
+	height: 8px;
+	border-radius: 50%;
+	background: #38bdf8;
+	box-shadow: 0 0 8px #38bdf8;
 }
 
 /* Wrapper & About Me Dark Section */
