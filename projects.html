@@ -561,25 +561,300 @@
 
 			<!-- 2. BSPD Writeup Modal -->
 			<div class="ee-modal-backdrop" id="modal-writeup-bspd">
-				<div class="ee-modal">
+				<div class="ee-modal modal-large" style="max-width: 1180px; height: 90vh;">
 					<div class="ee-modal-header">
 						<div class="ee-modal-header-left">
-							<span class="project-card-badge badge-safety">BSPD</span>
-							<h3 class="ee-modal-title">Technical Design Writeup</h3>
+							<span class="project-card-badge badge-safety">BSPD v3.0</span>
+							<h3 class="ee-modal-title">Hardware Safety Interlock — Technical Design Writeup</h3>
 						</div>
-						<button class="ee-modal-close" data-close title="Close Modal"><i class="icon solid fa-times"></i></button>
+						<div style="display: flex; align-items: center; gap: 0.6em;">
+							<button class="project-btn modal-trigger" data-modal="modal-schematic-bspd" style="padding: 0.45em 0.9em; font-size: 0.82em; font-weight: 500;">
+								<i class="icon solid fa-file-pdf"></i> View Schematic
+							</button>
+							<button class="project-btn btn-3d modal-trigger" data-modal="modal-3d-bspd" style="padding: 0.45em 0.9em; font-size: 0.82em; font-weight: 500;">
+								<i class="icon solid fa-cube"></i> View 3D CAD
+							</button>
+							<button class="ee-modal-close" data-close title="Close Modal"><i class="icon solid fa-times"></i></button>
+						</div>
 					</div>
-					<div class="ee-modal-body" style="align-items: center; justify-content: center;">
-						<div class="wip-container">
-							<div class="wip-icon-wrapper" style="border-color: rgba(251, 113, 133, 0.3);">
-								<i class="icon solid fa-book-open" style="color: #fb7185;"></i>
+					<div class="ee-modal-body" style="padding: 2.2em 2.5em; overflow-y: auto;">
+						<article class="writeup-article">
+							
+							<!-- Hero Summary Banner -->
+							<div class="writeup-hero">
+								<div style="display: flex; align-items: center; gap: 0.6em; margin-bottom: 0.6em;">
+									<span class="project-card-badge badge-safety" style="font-size: 0.75em; padding: 0.25em 0.7em;">FSAE Rules IC.4.8 / EV.8.7</span>
+									<span style="font-size: 0.82em; color: #94a3b8; font-weight: 600;">Hardware-Defined Vehicle Safety Interlock</span>
+								</div>
+								<h3>Formula SAE Brake System Plausibility Device (BSPD v3.0)</h3>
+								<p>
+									A custom, hardware-defined safety interlock engineered to comply with strict Formula SAE vehicle safety mandates. The circuit continuously monitors critical powertrain and braking dynamics, asserting an immediate and irreversible shutdown when simultaneous hard braking and high throttle/power demand is detected, or upon a sensor Loss of Signal (LOS) fault.
+								</p>
 							</div>
-							<h3 class="wip-title">Design Writeup In Progress</h3>
-							<div class="wip-badge">
-								<span class="pulse-dot" style="background: #fb7185; box-shadow: 0 0 8px #fb7185;"></span>
-								Work In Progress
-							</div>
-						</div>
+
+							<!-- Executive Summary -->
+							<section class="writeup-section">
+								<h4 class="writeup-section-title"><i class="icon solid fa-shield-alt"></i> 1. Executive Summary &amp; Design Objectives</h4>
+								<p>
+									To comply with the Formula SAE non-programmable safety mandate, the BSPD v3.0 is implemented entirely using discrete analog and digital logic components—eliminating microcontrollers, FPGAs, and configurable CPLDs.
+								</p>
+								<p>
+									Conventional student designs typically rely on analog RC integration for fault timing, leaving them vulnerable to dielectric aging, engine-bay thermal drift, and nuisance trips caused by the rapid braking "pump-up" effect. BSPD v3.0 completely replaces analog timing circuits with a <strong>deterministic, clock-driven digital counter architecture</strong>, active dynamic range expansion stages, an asymmetric fast-discharge startup interlock, and a hardware-latched high-side shutdown driver.
+								</p>
+								<div class="writeup-callout">
+									<div class="writeup-callout-title"><i class="icon solid fa-check-circle" style="color: #fb7185;"></i> Core Safety Mandate:</div>
+									The system must open the vehicle's hardwired Shutdown Circuit (SDC) if hard braking (BSE active) occurs concurrently with &gt;10% throttle (or &gt;5 kW EV power) for more than the specified plausibility delay, or if any analog sensor line falls out of valid voltage bounds (&lt;0.5V or &gt;4.5V) for &gt;100ms.
+								</div>
+							</section>
+
+							<!-- Specifications Table -->
+							<section class="writeup-section">
+								<h4 class="writeup-section-title"><i class="icon solid fa-table"></i> 2. Technical Specifications &amp; Rule Compliance</h4>
+								<div class="writeup-table-wrapper">
+									<table class="writeup-table">
+										<thead>
+											<tr>
+												<th>Parameter</th>
+												<th>Specification / Value</th>
+												<th>Design Context &amp; Standard</th>
+											</tr>
+										</thead>
+										<tbody>
+											<tr>
+												<td><strong>Plausibility Delay (IC)</strong></td>
+												<td><span style="color: #38bdf8; font-weight: 600;">1.00 s ± 1.5%</span></td>
+												<td>FSAE IC.4.8.4 (BSE Active + TPS &gt; 10%)</td>
+											</tr>
+											<tr>
+												<td><strong>Plausibility Delay (EV)</strong></td>
+												<td><span style="color: #38bdf8; font-weight: 600;">0.50 s ± 1.5%</span></td>
+												<td>FSAE EV.8.7.2 (BSE Active + Power &gt; 5 kW)</td>
+											</tr>
+											<tr>
+												<td><strong>Loss of Signal (LOS) Delay</strong></td>
+												<td><span style="color: #fb7185; font-weight: 600;">100 ms ± 1.5%</span></td>
+												<td>FSAE IC.4.8.5 (Sensor Out-of-Range &lt;0.5V or &gt;4.5V)</td>
+											</tr>
+											<tr>
+												<td><strong>Logic Architecture</strong></td>
+												<td>100% Non-Programmable Discrete</td>
+												<td>Zero firmware / microcontrollers (FSAE Compliant)</td>
+											</tr>
+											<tr>
+												<td><strong>Reset Behavior</strong></td>
+												<td>Power cycle Primary Master Switch</td>
+												<td>FSAE IC.4.8.6 (No dashboard/cockpit reset allowed)</td>
+											</tr>
+											<tr>
+												<td><strong>Supply Voltage</strong></td>
+												<td>+12V Nominal (LV Bus), +5.0V Regulated Logic</td>
+												<td>Automotive transient protection &amp; reverse polarity clamp</td>
+											</tr>
+											<tr>
+												<td><strong>Sensor Channels</strong></td>
+												<td>4-Channel Analog (0.50V – 4.50V)</td>
+												<td>BSE Primary, TPS Primary, BSE Comp, TPS Comp</td>
+											</tr>
+											<tr>
+												<td><strong>Telemetry Interface</strong></td>
+												<td>Dual Open-Drain Reporting Lines</td>
+												<td>Isolated Active-Low reporting to vehicle PDM / Datalogger</td>
+											</tr>
+										</tbody>
+									</table>
+								</div>
+							</section>
+
+							<!-- Architectural Overview & Topology -->
+							<section class="writeup-section">
+								<h4 class="writeup-section-title"><i class="icon solid fa-project-diagram"></i> 3. Architectural Overview &amp; Signal Flow</h4>
+								<p>
+									The board architecture divides signal processing into distinct stages: sensor conditioning, window comparators, differential expansion, dual synchronous timing engines, power-on blanking, and the safety shutdown latch.
+								</p>
+								<div class="writeup-diagram-block">
++-------------------------------------------------------------------------------------------------+
+|                                        BSPD v3.0 TOPOLOGY                                       |
++-------------------------------------------------------------------------------------------------+
+
+ [BSE Signal] ----+---> [ Window / Threshold ] --+
+                  |     [    Comparators     ]   |
+ [TPS / Current]-+--+                           |
+                  |  |                          |
+ [Comp Channels] -+  +-> [ 10x Op-Amp Gain ] ---+---> [ Wired-AND / Logic ]
+                         (Narrow Delta Expand)        [ Fault Aggregation ]
+                                                               |
+                                                   +-----------+-----------+
+                                                   | (Fault Trigger Active)|
+                                                   v                       v
+                                            [ 100ms LOS Timer ]    [ 0.5s/1.0s Plausibility ]
+                                            (Synchronous Clock)    (Synchronous Clock)
+                                                   |                       |
+                                                   +-----------+-----------+
+                                                               | (Terminal Count Reached)
+                                                               v
+ [Startup Interlock] ----------------------------------> [ Hardware Latch ]
+ (1.39s Power-On Blanking)                               [ (Open-Drain)  ]
+                                                               |
+                                                               v
+                                                    [ Shutdown Circuit (SDC) ]
+                                                    &amp; [ Isolated Telemetry ]</div>
+							</section>
+
+							<!-- Trade Studies -->
+							<section class="writeup-section">
+								<h4 class="writeup-section-title"><i class="icon solid fa-balance-scale"></i> 4. Engineering Design Decisions &amp; Trade Studies</h4>
+								
+								<h5 class="writeup-subsection-title"><i class="icon solid fa-clock" style="color: #38bdf8;"></i> 4.1 Timing Engine: Deterministic Digital Counter vs. Analog RC Integrator</h5>
+								<p>
+									Conventional student designs often employ analog RC charging circuits with threshold comparators. BSPD v3.0 eliminates this failure mode by replacing analog RC integration with a <strong>digital binary counter driven by a precision silicon clock reference</strong>.
+								</p>
+								<div class="trade-study-grid">
+									<div class="trade-card">
+										<h5 style="color: #94a3b8;"><i class="icon solid fa-exclamation-triangle" style="color: #e2e8f0;"></i> Conventional Analog RC Timing</h5>
+										<ul>
+											<li><strong>Timing Accuracy:</strong> Poor (±15% to ±25% across capacitor dielectric tolerances).</li>
+											<li><strong>Thermal Drift:</strong> High susceptibility to engine-bay thermal swings and dielectric aging.</li>
+											<li><strong>Reset Dynamics (Pump-Up):</strong> Slow exponential decay (5τ). Rapid intermittent pedal taps cause charge accumulation and premature false trips.</li>
+											<li><strong>Verification:</strong> Difficult to guarantee exact compliance windows during tech inspection.</li>
+										</ul>
+									</div>
+									<div class="trade-card highlight">
+										<h5 style="color: #38bdf8;"><i class="icon solid fa-check-circle" style="color: #38bdf8;"></i> BSPD v3.0 Digital Counter Engine</h5>
+										<ul>
+											<li><strong>Timing Accuracy:</strong> Precision (±1.5%), governed strictly by silicon oscillator stability.</li>
+											<li><strong>Thermal Drift:</strong> Frequency-locked silicon timebase across -40°C to +125°C.</li>
+											<li><strong>Instantaneous Clear:</strong> Asynchronous clear resets counter to zero in nanoseconds when fault drops (zero pump-up memory).</li>
+											<li><strong>Deterministic Verification:</strong> Guaranteed cycle count: <code>t_trip = (2^(n-1)) / f_clk</code>.</li>
+										</ul>
+									</div>
+								</div>
+
+								<h5 class="writeup-subsection-title"><i class="icon solid fa-microchip" style="color: #facc15;"></i> 4.2 Clock Generation &amp; Distribution Network</h5>
+								<p>
+									Generating synchronous timebases for both the 100 ms LOS channel and the 500 ms / 1.0 s Plausibility channels required evaluating multiple clock topologies:
+								</p>
+								<div class="writeup-table-wrapper">
+									<table class="writeup-table">
+										<thead>
+											<tr>
+												<th>Approach</th>
+												<th>BOM &amp; Assembly Cost</th>
+												<th>Footprint</th>
+												<th>Thermal &amp; Frequency Stability</th>
+												<th>Tradeoff Decision</th>
+											</tr>
+										</thead>
+										<tbody>
+											<tr>
+												<td><strong>555 Timer RC Network</strong></td>
+												<td>Low IC cost; expensive precision C0G caps</td>
+												<td>Large</td>
+												<td>Poor (&gt;5% drift over temperature)</td>
+												<td>Rejected due to temperature jitter</td>
+											</tr>
+											<tr>
+												<td><strong>Dual Silicon Oscillators (LTC6900 x 2)</strong></td>
+												<td>High (&gt;$12.00 incremental BOM)</td>
+												<td>Compact</td>
+												<td>Excellent (&lt;0.09% / °C)</td>
+												<td>Rejected due to unnecessary BOM cost</td>
+											</tr>
+											<tr>
+												<td><strong>Single LTC6900 + Logic Divider</strong></td>
+												<td><span style="color: #38bdf8; font-weight: 600;">Optimal BOM Balance</span></td>
+												<td><span style="color: #38bdf8; font-weight: 600;">Compact (SOIC-8)</span></td>
+												<td><span style="color: #38bdf8; font-weight: 600;">Excellent (Sub-1% accuracy)</span></td>
+												<td><span style="color: #38bdf8; font-weight: 600;">Selected Architecture</span></td>
+											</tr>
+										</tbody>
+									</table>
+								</div>
+
+								<h5 class="writeup-subsection-title"><i class="icon solid fa-network-wired" style="color: #a78bfa;"></i> 4.3 Logic Synthesis: Open-Drain Bus vs. Dedicated Logic ICs</h5>
+								<p>
+									To aggregate multi-channel faults while optimizing Design for Manufacturing (DFM) on prototype SMT lines:
+								</p>
+								<ul>
+									<li><strong>Open-Drain Bus Aggregation:</strong> Comparators utilize open-drain output stages tied to a shared pull-up bus. This allows wired-OR fault detection across multiple sensor channels without risk of output stage contention or supply-to-ground shoot-through.</li>
+									<li><strong>Discrete Dual Series N-Channel MOSFET AND:</strong> Rather than adding dedicated 74-series logic gate ICs—which incur unique part tooling surcharges—series low-side N-channel MOSFETs synthesize the plausibility interlock.</li>
+								</ul>
+							</section>
+
+							<!-- Detailed Circuit Implementation -->
+							<section class="writeup-section">
+								<h4 class="writeup-section-title"><i class="icon solid fa-cogs"></i> 5. Detailed Circuit Block Implementation</h4>
+
+								<!-- 5.1 Sensor Front-End & LOS -->
+								<h5 class="writeup-subsection-title">5.1 Multi-Stage Sensor Interface &amp; Loss of Signal (LOS) Detection</h5>
+								<p>
+									The analog front-end processes four sensor channels: Primary and Complementary Brake System Encoder (BSE) and Throttle Position Sensor (TPS).
+								</p>
+								<ul>
+									<li><strong>Operating Range:</strong> 0.50 V to 4.50 V nominal.</li>
+									<li><strong>LOS Fault Detection:</strong> Pull-up and pull-down networks ensure that an open circuit, disconnected sensor connector, or short-to-rail immediately forces the line into out-of-bounds bands (&lt;0.50V or &gt;4.50V).</li>
+									<li><strong>Resistive Divider Calibration:</strong> Standardized <strong>1206 SMD packages</strong> were deliberately selected for all divider ladders to allow rapid benchtop and trackside re-biasing during vehicle calibration without requiring board respins.</li>
+								</ul>
+
+								<!-- Figure 1 -->
+								<div class="writeup-figure">
+									<div class="writeup-figure-img-frame">
+										<img src="assets/PCB3d_Models/BSPD_TopView.png" alt="BSPD Top View Board Layout" style="max-height: 280px;" />
+									</div>
+									<div class="writeup-figure-caption">
+										<strong>Figure 1:</strong> Altium 3D render of the BSPD v3.0 PCB layout, highlighting the discrete analog window comparators, 1206 divider arrays, and central automotive TE header.
+									</div>
+								</div>
+
+								<!-- 5.2 Active Dynamic Range Expansion -->
+								<h5 class="writeup-subsection-title">5.2 Active Dynamic Range Expansion (Differential-Summing Front-End)</h5>
+								<p>
+									In electric powertrain configurations, DC current sensor outputs exhibit a narrow differential output voltage (2.50 V zero-current reference to 2.60 V at the 5 kW fault threshold). To avoid false trips caused by electrical noise in a high-voltage inverter environment, a custom two-stage op-amp front-end amplifies the fault delta by 10× while preserving the nominal zero-current baseline for LOS monitoring.
+								</p>
+								<div class="writeup-math-box">
+V_out = V_in + 10 * (V_in - 2.50V)   [for V_in >= 2.50V]
+V_out = V_in                         [for V_in < 2.50V]
+								</div>
+								<p>
+									<strong>Design Impact:</strong> Expands a narrow 100 mV fault margin into an easily detected 1.00 V swing above baseline, completely eliminating comparator sensitivity jitter without distorting the lower 0.0 V – 2.5 V range required for open-circuit LOS detection.
+								</p>
+
+								<!-- 5.3 Startup Interlock -->
+								<h5 class="writeup-subsection-title">5.3 Startup Interlock with Asymmetric Fast-Discharge</h5>
+								<p>
+									To prevent spurious shutdown assertions while power rails and sensor analog outputs stabilize during vehicle boot-up, an analog startup interlock circuit forces a <strong>1.39 s blanking window</strong>.
+								</p>
+								<div class="writeup-math-box">
+tau_charge    = R_charge * C1 = 200 kOhm * 10 uF = 2.00 s
+t_blanking    = tau_charge * ln(12V / 6V) = 2.0 s * 0.693 = 1.39 s
+tau_discharge = R_discharge * C1 = 10 kOhm * 10 uF = 100 ms (Fast Reset via Schottky D3)
+								</div>
+								<p>
+									When the vehicle master switch is cycled off, Schottky diode D3 forward-biases, routing stored charge through a 10 kΩ resistor to reset the capacitor in under 500 ms (5τ), guaranteeing proper blanking protection even during rapid consecutive power cycles.
+								</p>
+
+								<!-- 5.4 Safety Latch & Master Shutdown -->
+								<h5 class="writeup-subsection-title">5.4 Safety Latch &amp; Master Shutdown Loop Interfacing</h5>
+								<ul>
+									<li><strong>Hardware Latch:</strong> Built around a high-speed comparator with positive feedback. Once the active-low SHUTDOWN net is driven low, the latch transitions low and cuts off gate bias (V_GS = 0V) to the high-side shutdown pass-through switch.</li>
+									<li><strong>FSAE Rule IC.4.8.6 Compliance:</strong> The latch contains zero manual reset paths or buttons. Recovery requires cycling the vehicle Primary Master Switch to remove logic power.</li>
+									<li><strong>High-Side SDC Switch:</strong> P-channel MOSFET placed in series with the vehicle's Brake Over-Travel Switch (BOTS) loop.</li>
+									<li><strong>Isolated Telemetry:</strong> Independent open-drain N-channel MOSFETs report fault status to the vehicle Power Distribution Module (PDM) with complete electrical isolation.</li>
+								</ul>
+							</section>
+
+							<!-- Key Achievements -->
+							<section class="writeup-section" style="margin-bottom: 1em;">
+								<h4 class="writeup-section-title"><i class="icon solid fa-trophy"></i> 6. Key Achievements &amp; Engineering Impact</h4>
+								<div class="writeup-callout callout-blue">
+									<ul style="margin: 0; padding-left: 1.2em; line-height: 1.8;">
+										<li><strong>Deterministic Reliability:</strong> Replaced non-deterministic analog RC timers with synchronous digital counters, eliminating nuisance trips caused by thermal drift and rapid braking cycles.</li>
+										<li><strong>100% Rule Compliance:</strong> Fully verified against Formula SAE non-programmable mandates with integrated dynamic range expansion for EV current sensing.</li>
+										<li><strong>Optimized DFM &amp; SMT Assembly:</strong> Standardized 1206 resistor tuning networks, open-drain bus aggregation, and discrete SOT-23 MOSFET logic to minimize prototype tooling costs.</li>
+									</ul>
+								</div>
+							</section>
+
+						</article>
 					</div>
 				</div>
 			</div>
