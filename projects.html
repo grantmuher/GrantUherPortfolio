@@ -49,108 +49,129 @@
 
 							<!-- Project 1: Digital Board -->
 							<div class="project-card" id="project-card-1">
-								<div class="project-card-top">
-									<div class="project-card-header">
-										<div class="project-card-icon" style="color: #38bdf8;">
-											<i class="icon solid fa-microchip"></i>
-										</div>
-										<span class="project-card-badge badge-daq">DAQ &amp; High-Speed</span>
-									</div>
-									<h3>Digital Board</h3>
-									<p class="project-card-desc">
-										Custom PCB for Mines Formula SAE's data acquisition system, featuring a dual-band GNSS module, 100-BaseTX Ethernet utilizing discrete termination, and a STM32H5 microcontroller for high-speed data processing and logging.
-									</p>
-									<div class="project-card-tech">
-										<span class="tech-badge">Altium Designer</span>
-										<span class="tech-badge">STM32H5</span>
-										<span class="tech-badge">100-BaseTX</span>
-										<span class="tech-badge">MDI / RMII</span>
-										<span class="tech-badge">Dual-Band L1/L5 GNSS</span>
-										<span class="tech-badge">Differential Routing</span>
-										<span class="tech-badge">Controlled Impedance</span>
-										<span class="tech-badge">Length Matching</span>
-									</div>
+								<div class="project-card-media modal-trigger" data-modal="modal-3d-digital" title="Click to view interactive 3D model & renders">
+									<span class="project-card-media-badge"><i class="icon solid fa-layer-group"></i> Top View</span>
+									<img src="assets/PCB3d_Models/Digital_TopView.png" alt="Digital Board Top View Render" />
+									<span class="project-card-media-overlay"><i class="icon solid fa-cube"></i> View 3D / CAD</span>
 								</div>
-								<div class="project-card-actions">
-									<button class="project-btn modal-trigger" data-modal="modal-schematic-digital" id="btn-schematic-digital">
-										<i class="icon solid fa-file-pdf"></i> Schematic
-									</button>
-									<button class="project-btn btn-3d modal-trigger" data-modal="modal-3d-digital" id="btn-3d-digital">
-										<i class="icon solid fa-cube"></i> 3D Board View
-									</button>
-									<button class="project-btn secondary modal-trigger" data-modal="modal-writeup-digital" id="btn-writeup-digital">
-										<i class="icon solid fa-book-open"></i> Writeup
-									</button>
+								<div class="project-card-body">
+									<div class="project-card-top">
+										<div class="project-card-header">
+											<div class="project-card-icon" style="color: #38bdf8;">
+												<i class="icon solid fa-microchip"></i>
+											</div>
+											<span class="project-card-badge badge-daq">DAQ &amp; High-Speed</span>
+										</div>
+										<h3>Digital Board</h3>
+										<p class="project-card-desc">
+											Custom PCB for Mines Formula SAE's data acquisition system, featuring a dual-band GNSS module, 100-BaseTX Ethernet utilizing discrete termination, and a STM32H5 microcontroller for high-speed data processing and logging.
+										</p>
+										<div class="project-card-tech">
+											<span class="tech-badge">Altium Designer</span>
+											<span class="tech-badge">STM32H5</span>
+											<span class="tech-badge">100-BaseTX</span>
+											<span class="tech-badge">MDI / RMII</span>
+											<span class="tech-badge">Dual-Band L1/L5 GNSS</span>
+											<span class="tech-badge">Differential Routing</span>
+											<span class="tech-badge">Controlled Impedance</span>
+											<span class="tech-badge">Length Matching</span>
+										</div>
+									</div>
+									<div class="project-card-actions">
+										<button class="project-btn modal-trigger" data-modal="modal-schematic-digital" id="btn-schematic-digital">
+											<i class="icon solid fa-file-pdf"></i> Schematic
+										</button>
+										<button class="project-btn btn-3d modal-trigger" data-modal="modal-3d-digital" id="btn-3d-digital">
+											<i class="icon solid fa-cube"></i> 3D Board View
+										</button>
+										<button class="project-btn secondary modal-trigger" data-modal="modal-writeup-digital" id="btn-writeup-digital">
+											<i class="icon solid fa-book-open"></i> Writeup
+										</button>
+									</div>
 								</div>
 							</div>
 
 							<!-- Project 2: BSPD -->
 							<div class="project-card" id="project-card-2">
-								<div class="project-card-top">
-									<div class="project-card-header">
-										<div class="project-card-icon" style="color: #fb7185;">
-											<i class="icon solid fa-shield-alt"></i>
-										</div>
-										<span class="project-card-badge badge-safety">Safety Circuit</span>
-									</div>
-									<h3>BSPD</h3>
-									<p class="project-card-desc">
-										The Brake System Plausibility Device (BSPD) is a custom PCB safety circuit using pure non-programmable analog comparators, binary counters, and decade counters to trigger a time-delayed emergency shutdown signal.
-									</p>
-									<div class="project-card-tech">
-										<span class="tech-badge">Altium Designer</span>
-										<span class="tech-badge">Analog Design</span>
-										<span class="tech-badge">Discrete Digital Logic</span>
-										<span class="tech-badge">LTSpice Simulation</span>
-										<span class="tech-badge">FSAE Rules Compliant</span>
-										<span class="tech-badge">Latching Shutdown</span>
-									</div>
+								<div class="project-card-media modal-trigger" data-modal="modal-3d-bspd" title="Click to view interactive 3D model & renders">
+									<span class="project-card-media-badge"><i class="icon solid fa-layer-group"></i> Top View</span>
+									<img src="assets/PCB3d_Models/BSPD_TopView.png" alt="BSPD Top View Render" />
+									<span class="project-card-media-overlay"><i class="icon solid fa-cube"></i> View 3D / CAD</span>
 								</div>
-								<div class="project-card-actions">
-									<button class="project-btn modal-trigger" data-modal="modal-schematic-bspd" id="btn-schematic-bspd">
-										<i class="icon solid fa-file-pdf"></i> Schematic
-									</button>
-									<button class="project-btn btn-3d modal-trigger" data-modal="modal-3d-bspd" id="btn-3d-bspd">
-										<i class="icon solid fa-cube"></i> 3D Board View
-									</button>
-									<button class="project-btn secondary modal-trigger" data-modal="modal-writeup-bspd" id="btn-writeup-bspd">
-										<i class="icon solid fa-book-open"></i> Writeup
-									</button>
+								<div class="project-card-body">
+									<div class="project-card-top">
+										<div class="project-card-header">
+											<div class="project-card-icon" style="color: #fb7185;">
+												<i class="icon solid fa-shield-alt"></i>
+											</div>
+											<span class="project-card-badge badge-safety">Safety Circuit</span>
+										</div>
+										<h3>BSPD</h3>
+										<p class="project-card-desc">
+											The Brake System Plausibility Device (BSPD) is a custom PCB safety circuit using pure non-programmable analog comparators, binary counters, and decade counters to trigger a time-delayed emergency shutdown signal.
+										</p>
+										<div class="project-card-tech">
+											<span class="tech-badge">Altium Designer</span>
+											<span class="tech-badge">Analog Design</span>
+											<span class="tech-badge">Discrete Digital Logic</span>
+											<span class="tech-badge">LTSpice Simulation</span>
+											<span class="tech-badge">FSAE Rules Compliant</span>
+											<span class="tech-badge">Latching Shutdown</span>
+										</div>
+									</div>
+									<div class="project-card-actions">
+										<button class="project-btn modal-trigger" data-modal="modal-schematic-bspd" id="btn-schematic-bspd">
+											<i class="icon solid fa-file-pdf"></i> Schematic
+										</button>
+										<button class="project-btn btn-3d modal-trigger" data-modal="modal-3d-bspd" id="btn-3d-bspd">
+											<i class="icon solid fa-cube"></i> 3D Board View
+										</button>
+										<button class="project-btn secondary modal-trigger" data-modal="modal-writeup-bspd" id="btn-writeup-bspd">
+											<i class="icon solid fa-book-open"></i> Writeup
+										</button>
+									</div>
 								</div>
 							</div>
 
 							<!-- Project 3: BSPD Relay -->
 							<div class="project-card" id="project-card-3">
-								<div class="project-card-top">
-									<div class="project-card-header">
-										<div class="project-card-icon" style="color: #facc15;">
-											<i class="icon solid fa-bolt"></i>
-										</div>
-										<span class="project-card-badge badge-power">Power &amp; SSR</span>
-									</div>
-									<h3>BSPD Relay</h3>
-									<p class="project-card-desc">
-										BSPD Relay is a custom PCB designed to interface with BSPD to switch off the necessary vehicle shutdown lines. It includes a custom bi-directional MOSFET Solid State Relay (SSR) with trace sizing to handle up to 7A continuous current.
-									</p>
-									<div class="project-card-tech">
-										<span class="tech-badge">Altium Designer</span>
-										<span class="tech-badge">High Current (7A)</span>
-										<span class="tech-badge">Bi-Directional MOSFETs</span>
-										<span class="tech-badge">Solid State Relay (SSR)</span>
-										<span class="tech-badge">Thermal Management</span>
-										<span class="tech-badge">Galvanic Isolation</span>
-									</div>
+								<div class="project-card-media modal-trigger" data-modal="modal-3d-relay" title="Click to view interactive 3D model & renders">
+									<span class="project-card-media-badge"><i class="icon solid fa-layer-group"></i> Top View</span>
+									<img src="assets/PCB3d_Models/Relay_Top.png" alt="BSPD Relay Top View Render" />
+									<span class="project-card-media-overlay"><i class="icon solid fa-cube"></i> View 3D / CAD</span>
 								</div>
-								<div class="project-card-actions">
-									<button class="project-btn modal-trigger" data-modal="modal-schematic-relay" id="btn-schematic-relay">
-										<i class="icon solid fa-file-pdf"></i> Schematic
-									</button>
-									<button class="project-btn btn-3d modal-trigger" data-modal="modal-3d-relay" id="btn-3d-relay">
-										<i class="icon solid fa-cube"></i> 3D Board View
-									</button>
-									<button class="project-btn secondary modal-trigger" data-modal="modal-writeup-relay" id="btn-writeup-relay">
-										<i class="icon solid fa-book-open"></i> Writeup
-									</button>
+								<div class="project-card-body">
+									<div class="project-card-top">
+										<div class="project-card-header">
+											<div class="project-card-icon" style="color: #facc15;">
+												<i class="icon solid fa-bolt"></i>
+											</div>
+											<span class="project-card-badge badge-power">Power &amp; SSR</span>
+										</div>
+										<h3>BSPD Relay</h3>
+										<p class="project-card-desc">
+											BSPD Relay is a custom PCB designed to interface with BSPD to switch off the necessary vehicle shutdown lines. It includes a custom bi-directional MOSFET Solid State Relay (SSR) with trace sizing to handle up to 7A continuous current.
+										</p>
+										<div class="project-card-tech">
+											<span class="tech-badge">Altium Designer</span>
+											<span class="tech-badge">High Current (7A)</span>
+											<span class="tech-badge">Bi-Directional MOSFETs</span>
+											<span class="tech-badge">Solid State Relay (SSR)</span>
+											<span class="tech-badge">Thermal Management</span>
+											<span class="tech-badge">Galvanic Isolation</span>
+										</div>
+									</div>
+									<div class="project-card-actions">
+										<button class="project-btn modal-trigger" data-modal="modal-schematic-relay" id="btn-schematic-relay">
+											<i class="icon solid fa-file-pdf"></i> Schematic
+										</button>
+										<button class="project-btn btn-3d modal-trigger" data-modal="modal-3d-relay" id="btn-3d-relay">
+											<i class="icon solid fa-cube"></i> 3D Board View
+										</button>
+										<button class="project-btn secondary modal-trigger" data-modal="modal-writeup-relay" id="btn-writeup-relay">
+											<i class="icon solid fa-book-open"></i> Writeup
+										</button>
+									</div>
 								</div>
 							</div>
 
@@ -211,7 +232,7 @@
 					<div class="ee-modal-header">
 						<div class="ee-modal-header-left">
 							<span class="project-card-badge badge-daq">Digital Board</span>
-							<h3 class="ee-modal-title">Interactive 3D Hardware Model</h3>
+							<h3 class="ee-modal-title">3D Board &amp; Hardware Views</h3>
 						</div>
 						<div style="display: flex; align-items: center; gap: 0.6em;">
 							<a href="assets/3d/digital_glb.glb" download="Digital_Board_3D_Model.glb" class="project-btn" style="padding: 0.45em 0.9em; font-size: 0.82em; font-weight: 500;">
@@ -224,16 +245,21 @@
 						<div class="cad-viewer-container">
 							<div class="cad-stage-wrapper">
 								<div class="cad-stage-toolbar">
-									<div style="display: flex; align-items: center; gap: 0.5em;">
-										<span style="font-size: 0.88em; color: #94a3b8; font-weight: 600;">
-											<i class="icon solid fa-cube" style="color: #38bdf8; margin-right: 0.3em;"></i> 3D WebGL Render
-										</span>
-										<span style="font-size: 0.78em; color: #38bdf8; background: rgba(56, 189, 248, 0.12); padding: 0.2em 0.6em; border-radius: 12px; border: 1px solid rgba(56, 189, 248, 0.25);">
-											Interactive 360°
-										</span>
+									<!-- View Tabs -->
+									<div class="cad-view-tabs">
+										<button class="cad-view-tab active tab-daq" data-target="pane-3d-digital" data-controls="ctrls-digital">
+											<i class="icon solid fa-cube"></i> 3D Interactive
+										</button>
+										<button class="cad-view-tab tab-daq" data-target="pane-top-digital" data-controls="ctrls-digital">
+											<i class="icon solid fa-image"></i> Top View
+										</button>
+										<button class="cad-view-tab tab-daq" data-target="pane-bot-digital" data-controls="ctrls-digital">
+											<i class="icon solid fa-layer-group"></i> Bottom View
+										</button>
 									</div>
-									<div class="cad-stage-controls">
-										<button class="mv-ctrl-btn active" id="btn-rotate-digital" title="Toggle Auto Rotation">
+									<!-- 3D Camera Controls -->
+									<div class="cad-stage-controls" id="ctrls-digital">
+										<button class="mv-ctrl-btn active btn-rotate-toggle" data-mv="mv-digital" title="Toggle Auto Rotation">
 											<i class="icon solid fa-sync-alt"></i> Auto Rotate
 										</button>
 										<button class="mv-ctrl-btn" data-mv="mv-digital" data-orbit="45deg 55deg 105%" title="Isometric View">
@@ -251,45 +277,86 @@
 									</div>
 								</div>
 								<div class="cad-stage-body" id="stage-3d-digital">
-									<model-viewer
-										src="assets/3d/digital_glb.glb"
-										alt="Digital Board 3D Interactive Model"
-										auto-rotate
-										rotation-per-second="18deg"
-										camera-controls
-										touch-action="pan-y"
-										shadow-intensity="1.2"
-										shadow-softness="0.8"
-										exposure="1.05"
-										camera-orbit="45deg 60deg auto"
-										min-camera-orbit="auto auto 5%"
-										max-camera-orbit="auto auto 500%"
-										interaction-prompt="auto"
-										class="cad-model-viewer"
-										id="mv-digital"
-									>
-										<div class="mv-progress-bar" slot="progress-bar">
-											<div class="mv-update-bar"></div>
+									<!-- 1. 3D WebGL Pane -->
+									<div class="cad-stage-pane active" id="pane-3d-digital">
+										<model-viewer
+											src="assets/3d/digital_glb.glb"
+											alt="Digital Board 3D Interactive Model"
+											auto-rotate
+											rotation-per-second="18deg"
+											camera-controls
+											touch-action="pan-y"
+											shadow-intensity="1.2"
+											shadow-softness="0.8"
+											exposure="1.05"
+											camera-orbit="45deg 60deg auto"
+											min-camera-orbit="auto auto 5%"
+											max-camera-orbit="auto auto 500%"
+											interaction-prompt="auto"
+											class="cad-model-viewer"
+											id="mv-digital"
+										>
+											<div class="mv-progress-bar" slot="progress-bar">
+												<div class="mv-update-bar"></div>
+											</div>
+										</model-viewer>
+									</div>
+									<!-- 2. Top View PNG Pane -->
+									<div class="cad-stage-pane" id="pane-top-digital">
+										<div class="cad-image-frame">
+											<img src="assets/PCB3d_Models/Digital_TopView.png" alt="Digital Board 3D Top View Render" />
+											<a href="assets/PCB3d_Models/Digital_TopView.png" target="_blank" class="cad-image-overlay-btn">
+												<i class="icon solid fa-external-link-alt"></i> View Full Resolution
+											</a>
 										</div>
-									</model-viewer>
+									</div>
+									<!-- 3. Bottom View PNG Pane -->
+									<div class="cad-stage-pane" id="pane-bot-digital">
+										<div class="cad-image-frame">
+											<img src="assets/PCB3d_Models/Digital_BotView.png" alt="Digital Board 3D Bottom View Render" />
+											<a href="assets/PCB3d_Models/Digital_BotView.png" target="_blank" class="cad-image-overlay-btn">
+												<i class="icon solid fa-external-link-alt"></i> View Full Resolution
+											</a>
+										</div>
+									</div>
 								</div>
 							</div>
 							<div class="cad-info-panel">
 								<div>
-									<h4 style="color: #ffffff; font-size: 1.1em; margin-bottom: 0.4em;">Digital Board 3D Model</h4>
-									<p style="font-size: 0.88em; color: #94a3b8; line-height: 1.6em; margin-bottom: 0;">
-										Real-time WebGL rendering of the full Altium 3D hardware assembly. Rotate 360°, pan, and zoom to inspect component layout, high-speed differential routing, and layer stackup.
+									<h4 style="color: #ffffff; font-size: 1.1em; margin-bottom: 0.4em;">Digital Board 3D Hardware</h4>
+									<p style="font-size: 0.88em; color: #94a3b8; line-height: 1.6em; margin-bottom: 0.8em;">
+										Explore the interactive 3D WebGL model or switch between high-definition Altium Top and Bottom layer renders.
 									</p>
+									<!-- Quick View Switcher Thumbnails -->
+									<div style="margin-bottom: 0.8em;">
+										<span style="font-size: 0.78em; color: #94a3b8; font-weight: 600; text-transform: uppercase; letter-spacing: 0.05em;">Quick View Switcher:</span>
+										<div class="cad-thumb-grid">
+											<div class="cad-thumb-btn active" data-target="pane-3d-digital">
+												<div style="height: 64px; display: flex; align-items: center; justify-content: center; background: #1e293b; width: 100%; border-radius: 2px;">
+													<i class="icon solid fa-cube" style="font-size: 1.8em; color: #38bdf8;"></i>
+												</div>
+												<span class="cad-thumb-label">3D Interactive</span>
+											</div>
+											<div class="cad-thumb-btn" data-target="pane-top-digital">
+												<img src="assets/PCB3d_Models/Digital_TopView.png" alt="Top View Thumbnail" />
+												<span class="cad-thumb-label">Top View</span>
+											</div>
+											<div class="cad-thumb-btn" data-target="pane-bot-digital" style="grid-column: span 2;">
+												<img src="assets/PCB3d_Models/Digital_BotView.png" alt="Bottom View Thumbnail" style="height: 52px;" />
+												<span class="cad-thumb-label">Bottom View</span>
+											</div>
+										</div>
+									</div>
 									<div class="cad-instructions-box" style="border-color: rgba(56, 189, 248, 0.35); background: rgba(15, 23, 42, 0.7);">
-										<h5 style="color: #38bdf8;"><i class="icon solid fa-mouse-pointer"></i> 3D Viewer Navigation:</h5>
-										<ul style="margin: 0; padding-left: 1.2em; color: #cbd5e1; font-size: 0.9em; line-height: 1.6em;">
-											<li><strong>Rotate:</strong> Click &amp; drag (or 1-finger swipe on mobile)</li>
-											<li><strong>Pan:</strong> Right-click &amp; drag (or 2-finger drag)</li>
-											<li><strong>Zoom:</strong> Scroll wheel (or pinch to zoom)</li>
+										<h5 style="color: #38bdf8;"><i class="icon solid fa-mouse-pointer"></i> 3D Navigation Controls:</h5>
+										<ul style="margin: 0; padding-left: 1.2em; color: #cbd5e1; font-size: 0.88em; line-height: 1.5em;">
+											<li><strong>Rotate:</strong> Click &amp; drag / 1-finger swipe</li>
+											<li><strong>Pan:</strong> Right-click &amp; drag / 2-finger drag</li>
+											<li><strong>Zoom:</strong> Scroll wheel / pinch</li>
 										</ul>
 									</div>
 								</div>
-								<div style="display: flex; flex-direction: column; gap: 0.6em;">
+								<div style="display: flex; flex-direction: column; gap: 0.5em;">
 									<a href="assets/3d/digital_glb.glb" download="Digital_Board_3D_Model.glb" class="project-btn" style="width: 100%; justify-content: center;">
 										<i class="icon solid fa-download"></i> Download .GLB Model
 									</a>
@@ -366,49 +433,124 @@
 
 			<!-- 2. BSPD 3D CAD Modal -->
 			<div class="ee-modal-backdrop" id="modal-3d-bspd">
-				<div class="ee-modal modal-large">
+				<div class="ee-modal modal-large" style="max-width: 1240px; height: 90vh;">
 					<div class="ee-modal-header">
 						<div class="ee-modal-header-left">
 							<span class="project-card-badge badge-safety">BSPD</span>
-							<h3 class="ee-modal-title">3D Board &amp; CAD View</h3>
+							<h3 class="ee-modal-title">3D Board &amp; Hardware Views</h3>
 						</div>
-						<button class="ee-modal-close" data-close title="Close Modal"><i class="icon solid fa-times"></i></button>
+						<div style="display: flex; align-items: center; gap: 0.6em;">
+							<a href="assets/3d/BSPD_glb.glb" download="BSPD_3D_Model.glb" class="project-btn" style="padding: 0.45em 0.9em; font-size: 0.82em; font-weight: 500;">
+								<i class="icon solid fa-cube"></i> Download .GLB
+							</a>
+							<button class="ee-modal-close" data-close title="Close Modal"><i class="icon solid fa-times"></i></button>
+						</div>
 					</div>
 					<div class="ee-modal-body">
 						<div class="cad-viewer-container">
 							<div class="cad-stage-wrapper">
 								<div class="cad-stage-toolbar">
-									<span style="font-size: 0.88em; color: #94a3b8; font-weight: 600;"><i class="icon solid fa-cube" style="color: #fb7185; margin-right: 0.4em;"></i> 3D Hardware Render</span>
-									<span style="font-size: 0.8em; color: #64748b;">Mines FSAE Safety Circuit</span>
+									<!-- View Tabs -->
+									<div class="cad-view-tabs">
+										<button class="cad-view-tab active tab-safety" data-target="pane-3d-bspd" data-controls="ctrls-bspd">
+											<i class="icon solid fa-cube"></i> 3D Interactive
+										</button>
+										<button class="cad-view-tab tab-safety" data-target="pane-top-bspd" data-controls="ctrls-bspd">
+											<i class="icon solid fa-image"></i> Top View
+										</button>
+									</div>
+									<!-- 3D Camera Controls -->
+									<div class="cad-stage-controls" id="ctrls-bspd">
+										<button class="mv-ctrl-btn active btn-rotate-toggle" data-mv="mv-bspd" title="Toggle Auto Rotation">
+											<i class="icon solid fa-sync-alt"></i> Auto Rotate
+										</button>
+										<button class="mv-ctrl-btn" data-mv="mv-bspd" data-orbit="45deg 55deg 105%" title="Isometric View">
+											<i class="icon solid fa-cube"></i> Iso
+										</button>
+										<button class="mv-ctrl-btn" data-mv="mv-bspd" data-orbit="0deg 0deg 105%" title="Top Down View">
+											<i class="icon solid fa-arrow-down"></i> Top
+										</button>
+										<button class="mv-ctrl-btn" data-mv="mv-bspd" data-orbit="0deg 180deg 105%" title="Bottom View">
+											<i class="icon solid fa-arrow-up"></i> Bottom
+										</button>
+										<button class="mv-ctrl-btn" data-mv="mv-bspd" data-reset title="Reset Camera View">
+											<i class="icon solid fa-compress-arrows-alt"></i> Reset
+										</button>
+									</div>
 								</div>
 								<div class="cad-stage-body" id="stage-3d-bspd">
-									<img src="images/bspd-3d.png" alt="BSPD 3D Board Render" class="cad-stage-image" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';" />
-									<div class="cad-placeholder-box" style="display: none;">
-										<i class="icon solid fa-cube" style="color: #fb7185;"></i>
-										<h4 style="color: #ffffff; margin-bottom: 0.4em;">3D Render Ready for Image</h4>
-										<p style="font-size: 0.9em; line-height: 1.6em; margin-bottom: 0;">
-											Drop your Altium 3D isometric render into the images folder as described on the right.
-										</p>
+									<!-- 1. 3D WebGL Pane -->
+									<div class="cad-stage-pane active" id="pane-3d-bspd">
+										<model-viewer
+											src="assets/3d/BSPD_glb.glb"
+											alt="BSPD 3D Interactive Model"
+											auto-rotate
+											rotation-per-second="18deg"
+											camera-controls
+											touch-action="pan-y"
+											shadow-intensity="1.2"
+											shadow-softness="0.8"
+											exposure="1.05"
+											camera-orbit="45deg 60deg auto"
+											min-camera-orbit="auto auto 5%"
+											max-camera-orbit="auto auto 500%"
+											interaction-prompt="auto"
+											class="cad-model-viewer"
+											id="mv-bspd"
+										>
+											<div class="mv-progress-bar" slot="progress-bar">
+												<div class="mv-update-bar"></div>
+											</div>
+										</model-viewer>
+									</div>
+									<!-- 2. Top View PNG Pane -->
+									<div class="cad-stage-pane" id="pane-top-bspd">
+										<div class="cad-image-frame">
+											<img src="assets/PCB3d_Models/BSPD_TopView.png" alt="BSPD 3D Top View Render" />
+											<a href="assets/PCB3d_Models/BSPD_TopView.png" target="_blank" class="cad-image-overlay-btn">
+												<i class="icon solid fa-external-link-alt"></i> View Full Resolution
+											</a>
+										</div>
 									</div>
 								</div>
 							</div>
 							<div class="cad-info-panel">
 								<div>
-									<h4 style="color: #ffffff; font-size: 1.1em; margin-bottom: 0.4em;">BSPD Board 3D CAD</h4>
-									<p style="font-size: 0.88em; color: #94a3b8; line-height: 1.6em; margin-bottom: 0;">
-										Compact 2-layer safety PCB designed for vehicle harness integration with TE automotive header and discrete IC placement.
+									<h4 style="color: #ffffff; font-size: 1.1em; margin-bottom: 0.4em;">BSPD Safety Circuit 3D</h4>
+									<p style="font-size: 0.88em; color: #94a3b8; line-height: 1.6em; margin-bottom: 0.8em;">
+										Compact 2-layer safety PCB designed for vehicle harness integration with TE automotive header and discrete analog timing ICs.
 									</p>
-									<div class="cad-instructions-box">
-										<h5><i class="icon solid fa-info-circle"></i> Where to put your files:</h5>
-										<ol>
-											<li><strong>3D Render Image:</strong><br/>Place image at:<br/><code>images/bspd-3d.png</code></li>
-											<li><strong>Raw .STEP CAD Model:</strong><br/>Place STEP file at:<br/><code>assets/cad/bspd-model.step</code></li>
-										</ol>
+									<!-- Quick View Switcher Thumbnails -->
+									<div style="margin-bottom: 0.8em;">
+										<span style="font-size: 0.78em; color: #94a3b8; font-weight: 600; text-transform: uppercase; letter-spacing: 0.05em;">Quick View Switcher:</span>
+										<div class="cad-thumb-grid">
+											<div class="cad-thumb-btn active" data-target="pane-3d-bspd">
+												<div style="height: 64px; display: flex; align-items: center; justify-content: center; background: #1e293b; width: 100%; border-radius: 2px;">
+													<i class="icon solid fa-cube" style="font-size: 1.8em; color: #fb7185;"></i>
+												</div>
+												<span class="cad-thumb-label">3D Interactive</span>
+											</div>
+											<div class="cad-thumb-btn" data-target="pane-top-bspd">
+												<img src="assets/PCB3d_Models/BSPD_TopView.png" alt="Top View Thumbnail" />
+												<span class="cad-thumb-label">Top View</span>
+											</div>
+										</div>
+									</div>
+									<div class="cad-instructions-box" style="border-color: rgba(251, 113, 133, 0.35); background: rgba(15, 23, 42, 0.7);">
+										<h5 style="color: #fb7185;"><i class="icon solid fa-mouse-pointer"></i> 3D Navigation Controls:</h5>
+										<ul style="margin: 0; padding-left: 1.2em; color: #cbd5e1; font-size: 0.88em; line-height: 1.5em;">
+											<li><strong>Rotate:</strong> Click &amp; drag / 1-finger swipe</li>
+											<li><strong>Pan:</strong> Right-click &amp; drag / 2-finger drag</li>
+											<li><strong>Zoom:</strong> Scroll wheel / pinch</li>
+										</ul>
 									</div>
 								</div>
-								<div>
-									<a href="assets/cad/bspd-model.step" download class="project-btn" style="width: 100%; justify-content: center;" onclick="if(!this.getAttribute('data-exists')){ alert('Place your STEP file at /assets/cad/bspd-model.step to enable visitor downloads.'); return false; }">
-										<i class="icon solid fa-download"></i> Download .STEP Model
+								<div style="display: flex; flex-direction: column; gap: 0.5em;">
+									<a href="assets/3d/BSPD_glb.glb" download="BSPD_3D_Model.glb" class="project-btn" style="width: 100%; justify-content: center;">
+										<i class="icon solid fa-download"></i> Download .GLB Model
+									</a>
+									<a href="assets/cad/bspd-model.step" download class="project-btn secondary" style="width: 100%; justify-content: center;" onclick="if(!this.getAttribute('data-exists')){ alert('Place your STEP file at /assets/cad/bspd-model.step to enable visitor downloads.'); return false; }">
+										<i class="icon solid fa-file-export"></i> Download .STEP Model
 									</a>
 								</div>
 							</div>
@@ -479,49 +621,124 @@
 
 			<!-- 3. BSPD Relay 3D CAD Modal -->
 			<div class="ee-modal-backdrop" id="modal-3d-relay">
-				<div class="ee-modal modal-large">
+				<div class="ee-modal modal-large" style="max-width: 1240px; height: 90vh;">
 					<div class="ee-modal-header">
 						<div class="ee-modal-header-left">
 							<span class="project-card-badge badge-power">BSPD Relay</span>
-							<h3 class="ee-modal-title">3D Board &amp; CAD View</h3>
+							<h3 class="ee-modal-title">3D Board &amp; Hardware Views</h3>
 						</div>
-						<button class="ee-modal-close" data-close title="Close Modal"><i class="icon solid fa-times"></i></button>
+						<div style="display: flex; align-items: center; gap: 0.6em;">
+							<a href="assets/3d/relay_glb.glb" download="BSPD_Relay_3D_Model.glb" class="project-btn" style="padding: 0.45em 0.9em; font-size: 0.82em; font-weight: 500;">
+								<i class="icon solid fa-cube"></i> Download .GLB
+							</a>
+							<button class="ee-modal-close" data-close title="Close Modal"><i class="icon solid fa-times"></i></button>
+						</div>
 					</div>
 					<div class="ee-modal-body">
 						<div class="cad-viewer-container">
 							<div class="cad-stage-wrapper">
 								<div class="cad-stage-toolbar">
-									<span style="font-size: 0.88em; color: #94a3b8; font-weight: 600;"><i class="icon solid fa-cube" style="color: #facc15; margin-right: 0.4em;"></i> 3D Hardware Render</span>
-									<span style="font-size: 0.8em; color: #64748b;">Mines FSAE Power Stage</span>
+									<!-- View Tabs -->
+									<div class="cad-view-tabs">
+										<button class="cad-view-tab active tab-power" data-target="pane-3d-relay" data-controls="ctrls-relay">
+											<i class="icon solid fa-cube"></i> 3D Interactive
+										</button>
+										<button class="cad-view-tab tab-power" data-target="pane-top-relay" data-controls="ctrls-relay">
+											<i class="icon solid fa-image"></i> Top View
+										</button>
+									</div>
+									<!-- 3D Camera Controls -->
+									<div class="cad-stage-controls" id="ctrls-relay">
+										<button class="mv-ctrl-btn active btn-rotate-toggle" data-mv="mv-relay" title="Toggle Auto Rotation">
+											<i class="icon solid fa-sync-alt"></i> Auto Rotate
+										</button>
+										<button class="mv-ctrl-btn" data-mv="mv-relay" data-orbit="45deg 55deg 105%" title="Isometric View">
+											<i class="icon solid fa-cube"></i> Iso
+										</button>
+										<button class="mv-ctrl-btn" data-mv="mv-relay" data-orbit="0deg 0deg 105%" title="Top Down View">
+											<i class="icon solid fa-arrow-down"></i> Top
+										</button>
+										<button class="mv-ctrl-btn" data-mv="mv-relay" data-orbit="0deg 180deg 105%" title="Bottom View">
+											<i class="icon solid fa-arrow-up"></i> Bottom
+										</button>
+										<button class="mv-ctrl-btn" data-mv="mv-relay" data-reset title="Reset Camera View">
+											<i class="icon solid fa-compress-arrows-alt"></i> Reset
+										</button>
+									</div>
 								</div>
 								<div class="cad-stage-body" id="stage-3d-relay">
-									<img src="images/bspd-relay-3d.png" alt="BSPD Relay 3D Render" class="cad-stage-image" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';" />
-									<div class="cad-placeholder-box" style="display: none;">
-										<i class="icon solid fa-cube" style="color: #facc15;"></i>
-										<h4 style="color: #ffffff; margin-bottom: 0.4em;">3D Render Ready for Image</h4>
-										<p style="font-size: 0.9em; line-height: 1.6em; margin-bottom: 0;">
-											Place your Altium 3D isometric screenshot in the images folder as described on the right.
-										</p>
+									<!-- 1. 3D WebGL Pane -->
+									<div class="cad-stage-pane active" id="pane-3d-relay">
+										<model-viewer
+											src="assets/3d/relay_glb.glb"
+											alt="BSPD Relay 3D Interactive Model"
+											auto-rotate
+											rotation-per-second="18deg"
+											camera-controls
+											touch-action="pan-y"
+											shadow-intensity="1.2"
+											shadow-softness="0.8"
+											exposure="1.05"
+											camera-orbit="45deg 60deg auto"
+											min-camera-orbit="auto auto 5%"
+											max-camera-orbit="auto auto 500%"
+											interaction-prompt="auto"
+											class="cad-model-viewer"
+											id="mv-relay"
+										>
+											<div class="mv-progress-bar" slot="progress-bar">
+												<div class="mv-update-bar"></div>
+											</div>
+										</model-viewer>
+									</div>
+									<!-- 2. Top View PNG Pane -->
+									<div class="cad-stage-pane" id="pane-top-relay">
+										<div class="cad-image-frame">
+											<img src="assets/PCB3d_Models/Relay_Top.png" alt="BSPD Relay 3D Top View Render" />
+											<a href="assets/PCB3d_Models/Relay_Top.png" target="_blank" class="cad-image-overlay-btn">
+												<i class="icon solid fa-external-link-alt"></i> View Full Resolution
+											</a>
+										</div>
 									</div>
 								</div>
 							</div>
 							<div class="cad-info-panel">
 								<div>
-									<h4 style="color: #ffffff; font-size: 1.1em; margin-bottom: 0.4em;">BSPD Relay 3D CAD</h4>
-									<p style="font-size: 0.88em; color: #94a3b8; line-height: 1.6em; margin-bottom: 0;">
-										Bi-directional power MOSFET Solid State Relay (SSR) engineered for 7A continuous current handling and thermal dissipation.
+									<h4 style="color: #ffffff; font-size: 1.1em; margin-bottom: 0.4em;">BSPD Relay 3D Power Stage</h4>
+									<p style="font-size: 0.88em; color: #94a3b8; line-height: 1.6em; margin-bottom: 0.8em;">
+										Bi-directional power MOSFET Solid State Relay (SSR) engineered for 7A continuous current handling with optimized copper thermal dissipation.
 									</p>
-									<div class="cad-instructions-box">
-										<h5><i class="icon solid fa-info-circle"></i> Where to put your files:</h5>
-										<ol>
-											<li><strong>3D Render Image:</strong><br/>Place image at:<br/><code>images/bspd-relay-3d.png</code></li>
-											<li><strong>Raw .STEP CAD Model:</strong><br/>Place STEP file at:<br/><code>assets/cad/bspd-relay-model.step</code></li>
-										</ol>
+									<!-- Quick View Switcher Thumbnails -->
+									<div style="margin-bottom: 0.8em;">
+										<span style="font-size: 0.78em; color: #94a3b8; font-weight: 600; text-transform: uppercase; letter-spacing: 0.05em;">Quick View Switcher:</span>
+										<div class="cad-thumb-grid">
+											<div class="cad-thumb-btn active" data-target="pane-3d-relay">
+												<div style="height: 64px; display: flex; align-items: center; justify-content: center; background: #1e293b; width: 100%; border-radius: 2px;">
+													<i class="icon solid fa-cube" style="font-size: 1.8em; color: #facc15;"></i>
+												</div>
+												<span class="cad-thumb-label">3D Interactive</span>
+											</div>
+											<div class="cad-thumb-btn" data-target="pane-top-relay">
+												<img src="assets/PCB3d_Models/Relay_Top.png" alt="Top View Thumbnail" />
+												<span class="cad-thumb-label">Top View</span>
+											</div>
+										</div>
+									</div>
+									<div class="cad-instructions-box" style="border-color: rgba(250, 204, 21, 0.35); background: rgba(15, 23, 42, 0.7);">
+										<h5 style="color: #facc15;"><i class="icon solid fa-mouse-pointer"></i> 3D Navigation Controls:</h5>
+										<ul style="margin: 0; padding-left: 1.2em; color: #cbd5e1; font-size: 0.88em; line-height: 1.5em;">
+											<li><strong>Rotate:</strong> Click &amp; drag / 1-finger swipe</li>
+											<li><strong>Pan:</strong> Right-click &amp; drag / 2-finger drag</li>
+											<li><strong>Zoom:</strong> Scroll wheel / pinch</li>
+										</ul>
 									</div>
 								</div>
-								<div>
-									<a href="assets/cad/bspd-relay-model.step" download class="project-btn" style="width: 100%; justify-content: center;" onclick="if(!this.getAttribute('data-exists')){ alert('Place your STEP file at /assets/cad/bspd-relay-model.step to enable visitor downloads.'); return false; }">
-										<i class="icon solid fa-download"></i> Download .STEP Model
+								<div style="display: flex; flex-direction: column; gap: 0.5em;">
+									<a href="assets/3d/relay_glb.glb" download="BSPD_Relay_3D_Model.glb" class="project-btn" style="width: 100%; justify-content: center;">
+										<i class="icon solid fa-download"></i> Download .GLB Model
+									</a>
+									<a href="assets/cad/bspd-relay-model.step" download class="project-btn secondary" style="width: 100%; justify-content: center;" onclick="if(!this.getAttribute('data-exists')){ alert('Place your STEP file at /assets/cad/bspd-relay-model.step to enable visitor downloads.'); return false; }">
+										<i class="icon solid fa-file-export"></i> Download .STEP Model
 									</a>
 								</div>
 							</div>
@@ -634,20 +851,72 @@
 						}
 					});
 
-					// --- 3D Model Viewer Controls ---
-					// Auto Rotate Toggle
-					var rotateBtn = document.getElementById('btn-rotate-digital');
-					var mvDigital = document.getElementById('mv-digital');
-					if (rotateBtn && mvDigital) {
-						rotateBtn.addEventListener('click', function() {
-							mvDigital.autoRotate = !mvDigital.autoRotate;
-							if (mvDigital.autoRotate) {
-								rotateBtn.classList.add('active');
+					// --- 3D / 2D Stage View Tab Switcher & Thumbnails ---
+					function switchCadView(targetPaneId, contextModal) {
+						if (!contextModal) return;
+						// Switch active pane
+						contextModal.querySelectorAll('.cad-stage-pane').forEach(function(pane) {
+							if (pane.id === targetPaneId) {
+								pane.classList.add('active');
 							} else {
-								rotateBtn.classList.remove('active');
+								pane.classList.remove('active');
 							}
 						});
+						// Switch active tab
+						contextModal.querySelectorAll('.cad-view-tab').forEach(function(tab) {
+							if (tab.getAttribute('data-target') === targetPaneId) {
+								tab.classList.add('active');
+							} else {
+								tab.classList.remove('active');
+							}
+						});
+						// Switch active thumbnail
+						contextModal.querySelectorAll('.cad-thumb-btn').forEach(function(thumb) {
+							if (thumb.getAttribute('data-target') === targetPaneId) {
+								thumb.classList.add('active');
+							} else {
+								thumb.classList.remove('active');
+							}
+						});
+						// Show/hide 3D camera controls
+						var is3D = targetPaneId.indexOf('3d') !== -1;
+						contextModal.querySelectorAll('.cad-stage-controls').forEach(function(ctrls) {
+							ctrls.style.display = is3D ? 'flex' : 'none';
+						});
 					}
+
+					document.querySelectorAll('.cad-view-tab').forEach(function(tab) {
+						tab.addEventListener('click', function() {
+							var targetPaneId = this.getAttribute('data-target');
+							var contextModal = this.closest('.ee-modal');
+							switchCadView(targetPaneId, contextModal);
+						});
+					});
+
+					document.querySelectorAll('.cad-thumb-btn').forEach(function(thumb) {
+						thumb.addEventListener('click', function() {
+							var targetPaneId = this.getAttribute('data-target');
+							var contextModal = this.closest('.ee-modal');
+							switchCadView(targetPaneId, contextModal);
+						});
+					});
+
+					// --- 3D Model Viewer Controls ---
+					// Auto Rotate Toggle for all models
+					document.querySelectorAll('.btn-rotate-toggle').forEach(function(btn) {
+						btn.addEventListener('click', function() {
+							var mvId = this.getAttribute('data-mv');
+							var mv = document.getElementById(mvId);
+							if (mv) {
+								mv.autoRotate = !mv.autoRotate;
+								if (mv.autoRotate) {
+									btn.classList.add('active');
+								} else {
+									btn.classList.remove('active');
+								}
+							}
+						});
+					});
 
 					// Preset Orbit Views (Isometric, Top, Bottom)
 					document.querySelectorAll('.mv-ctrl-btn[data-orbit]').forEach(function(btn) {
