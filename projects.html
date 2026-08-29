@@ -565,14 +565,14 @@
 					<div class="ee-modal-header">
 						<div class="ee-modal-header-left">
 							<span class="project-card-badge badge-safety">BSPD v3.0</span>
-							<h3 class="ee-modal-title">Hardware Safety Interlock — Technical Design Writeup</h3>
+							<h3 class="ee-modal-title">Design Writeup</h3>
 						</div>
 						<div style="display: flex; align-items: center; gap: 0.6em;">
 							<button class="project-btn modal-trigger" data-modal="modal-schematic-bspd" style="padding: 0.45em 0.9em; font-size: 0.82em; font-weight: 500;">
 								<i class="icon solid fa-file-pdf"></i> View Schematic
 							</button>
 							<button class="project-btn btn-3d modal-trigger" data-modal="modal-3d-bspd" style="padding: 0.45em 0.9em; font-size: 0.82em; font-weight: 500;">
-								<i class="icon solid fa-cube"></i> View 3D CAD
+								<i class="icon solid fa-cube"></i> View 3D Model
 							</button>
 							<button class="ee-modal-close" data-close title="Close Modal"><i class="icon solid fa-times"></i></button>
 						</div>
@@ -582,31 +582,13 @@
 							
 							<!-- Hero Summary Banner -->
 							<div class="writeup-hero">
-								<div style="display: flex; align-items: center; gap: 0.6em; margin-bottom: 0.6em;">
-									<span class="project-card-badge badge-safety" style="font-size: 0.75em; padding: 0.25em 0.7em;">FSAE Rules IC.4.8 / EV.8.7</span>
-									<span style="font-size: 0.82em; color: #94a3b8; font-weight: 600;">Hardware-Defined Vehicle Safety Interlock</span>
-								</div>
 								<h3>Formula SAE Brake System Plausibility Device (BSPD v3.0)</h3>
 								<p>
-									A custom, hardware-defined safety interlock engineered to comply with strict Formula SAE vehicle safety mandates. The circuit continuously monitors critical powertrain and braking dynamics, asserting an immediate and irreversible shutdown when simultaneous hard braking and high throttle/power demand is detected, or upon a sensor Loss of Signal (LOS) fault.
+									A custom, safety circuit engineered to comply with both IC and EV BSPD Formula SAE rules. 
+									The circuit monitors throttle position (or current in EV configuration) and brake pedal position sensors,
+									causing shutdown when simultaneous hard braking and high throttle/power demand is detected, or upon a sensor Loss of Signal (LOS) fault.
 								</p>
 							</div>
-
-							<!-- Executive Summary -->
-							<section class="writeup-section">
-								<h4 class="writeup-section-title"><i class="icon solid fa-shield-alt"></i> 1. Executive Summary &amp; Design Objectives</h4>
-								<p>
-									To comply with the Formula SAE non-programmable safety mandate, the BSPD v3.0 is implemented entirely using discrete analog and digital logic components—eliminating microcontrollers, FPGAs, and configurable CPLDs.
-								</p>
-								<p>
-									Conventional student designs typically rely on analog RC integration for fault timing, leaving them vulnerable to dielectric aging, engine-bay thermal drift, and nuisance trips caused by the rapid braking "pump-up" effect. BSPD v3.0 completely replaces analog timing circuits with a <strong>deterministic, clock-driven digital counter architecture</strong>, active dynamic range expansion stages, an asymmetric fast-discharge startup interlock, and a hardware-latched high-side shutdown driver.
-								</p>
-								<div class="writeup-callout">
-									<div class="writeup-callout-title"><i class="icon solid fa-check-circle" style="color: #fb7185;"></i> Core Safety Mandate:</div>
-									The system must open the vehicle's hardwired Shutdown Circuit (SDC) if hard braking (BSE active) occurs concurrently with &gt;10% throttle (or &gt;5 kW EV power) for more than the specified plausibility delay, or if any analog sensor line falls out of valid voltage bounds (&lt;0.5V or &gt;4.5V) for &gt;100ms.
-								</div>
-							</section>
-
 							<!-- Specifications Table -->
 							<section class="writeup-section">
 								<h4 class="writeup-section-title"><i class="icon solid fa-table"></i> 2. Technical Specifications &amp; Rule Compliance</h4>
