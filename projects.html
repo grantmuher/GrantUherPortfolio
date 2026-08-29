@@ -6,6 +6,8 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
 		<link rel="stylesheet" href="assets/css/main.css" />
 		<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
+		<!-- 3D WebGL GLB Model Viewer -->
+		<script type="module" src="https://ajax.googleapis.com/ajax/libs/model-viewer/3.5.0/model-viewer.min.js"></script>
 	</head>
 	<body class="no-sidebar is-preload">
 		<div id="page-wrapper">
@@ -205,50 +207,94 @@
 
 			<!-- 1. Digital Board 3D CAD Modal -->
 			<div class="ee-modal-backdrop" id="modal-3d-digital">
-				<div class="ee-modal modal-large">
+				<div class="ee-modal modal-large" style="max-width: 1240px; height: 90vh;">
 					<div class="ee-modal-header">
 						<div class="ee-modal-header-left">
 							<span class="project-card-badge badge-daq">Digital Board</span>
-							<h3 class="ee-modal-title">3D Board &amp; CAD View</h3>
+							<h3 class="ee-modal-title">Interactive 3D Hardware Model</h3>
 						</div>
-						<button class="ee-modal-close" data-close title="Close Modal"><i class="icon solid fa-times"></i></button>
+						<div style="display: flex; align-items: center; gap: 0.6em;">
+							<a href="assets/3d/digital_glb.glb" download="Digital_Board_3D_Model.glb" class="project-btn" style="padding: 0.45em 0.9em; font-size: 0.82em; font-weight: 500;">
+								<i class="icon solid fa-cube"></i> Download .GLB
+							</a>
+							<button class="ee-modal-close" data-close title="Close Modal"><i class="icon solid fa-times"></i></button>
+						</div>
 					</div>
 					<div class="ee-modal-body">
 						<div class="cad-viewer-container">
 							<div class="cad-stage-wrapper">
 								<div class="cad-stage-toolbar">
-									<span style="font-size: 0.88em; color: #94a3b8; font-weight: 600;"><i class="icon solid fa-cube" style="color: #38bdf8; margin-right: 0.4em;"></i> 3D Hardware Render</span>
-									<span style="font-size: 0.8em; color: #64748b;">Mines FSAE DAQ</span>
+									<div style="display: flex; align-items: center; gap: 0.5em;">
+										<span style="font-size: 0.88em; color: #94a3b8; font-weight: 600;">
+											<i class="icon solid fa-cube" style="color: #38bdf8; margin-right: 0.3em;"></i> 3D WebGL Render
+										</span>
+										<span style="font-size: 0.78em; color: #38bdf8; background: rgba(56, 189, 248, 0.12); padding: 0.2em 0.6em; border-radius: 12px; border: 1px solid rgba(56, 189, 248, 0.25);">
+											Interactive 360°
+										</span>
+									</div>
+									<div class="cad-stage-controls">
+										<button class="mv-ctrl-btn active" id="btn-rotate-digital" title="Toggle Auto Rotation">
+											<i class="icon solid fa-sync-alt"></i> Auto Rotate
+										</button>
+										<button class="mv-ctrl-btn" data-mv="mv-digital" data-orbit="45deg 55deg 105%" title="Isometric View">
+											<i class="icon solid fa-cube"></i> Iso
+										</button>
+										<button class="mv-ctrl-btn" data-mv="mv-digital" data-orbit="0deg 0deg 105%" title="Top Down View">
+											<i class="icon solid fa-arrow-down"></i> Top
+										</button>
+										<button class="mv-ctrl-btn" data-mv="mv-digital" data-orbit="0deg 180deg 105%" title="Bottom View">
+											<i class="icon solid fa-arrow-up"></i> Bottom
+										</button>
+										<button class="mv-ctrl-btn" data-mv="mv-digital" data-reset title="Reset Camera View">
+											<i class="icon solid fa-compress-arrows-alt"></i> Reset
+										</button>
+									</div>
 								</div>
 								<div class="cad-stage-body" id="stage-3d-digital">
-									<img src="images/digital-board-3d.png" alt="Digital Board 3D Render" class="cad-stage-image" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';" />
-									<div class="cad-placeholder-box" style="display: none;">
-										<i class="icon solid fa-cube"></i>
-										<h4 style="color: #ffffff; margin-bottom: 0.4em;">3D Render Placeholder</h4>
-										<p style="font-size: 0.9em; line-height: 1.6em; margin-bottom: 0;">
-											Follow the instructions on the right to place your Altium 3D isometric screenshot or STEP CAD file.
-										</p>
-									</div>
+									<model-viewer
+										src="assets/3d/digital_glb.glb"
+										alt="Digital Board 3D Interactive Model"
+										auto-rotate
+										rotation-per-second="18deg"
+										camera-controls
+										touch-action="pan-y"
+										shadow-intensity="1.2"
+										shadow-softness="0.8"
+										exposure="1.05"
+										camera-orbit="45deg 60deg auto"
+										min-camera-orbit="auto auto 5%"
+										max-camera-orbit="auto auto 500%"
+										interaction-prompt="auto"
+										class="cad-model-viewer"
+										id="mv-digital"
+									>
+										<div class="mv-progress-bar" slot="progress-bar">
+											<div class="mv-update-bar"></div>
+										</div>
+									</model-viewer>
 								</div>
 							</div>
 							<div class="cad-info-panel">
 								<div>
-									<h4 style="color: #ffffff; font-size: 1.1em; margin-bottom: 0.4em;">Digital Board 3D CAD</h4>
+									<h4 style="color: #ffffff; font-size: 1.1em; margin-bottom: 0.4em;">Digital Board 3D Model</h4>
 									<p style="font-size: 0.88em; color: #94a3b8; line-height: 1.6em; margin-bottom: 0;">
-										High-density STM32H5 microcontroller layout with differential Ethernet pairs and integrated GNSS antenna placement.
+										Real-time WebGL rendering of the full Altium 3D hardware assembly. Rotate 360°, pan, and zoom to inspect component layout, high-speed differential routing, and layer stackup.
 									</p>
-									<div class="cad-instructions-box">
-										<h5><i class="icon solid fa-info-circle"></i> How to add your 3D Render:</h5>
-										<ol>
-											<li>In Altium, press <code>3</code> to enter 3D view.</li>
-											<li>Take a high-res screenshot or export image.</li>
-											<li>Save the image file to:<br/><code>images/digital-board-3d.png</code></li>
-										</ol>
+									<div class="cad-instructions-box" style="border-color: rgba(56, 189, 248, 0.35); background: rgba(15, 23, 42, 0.7);">
+										<h5 style="color: #38bdf8;"><i class="icon solid fa-mouse-pointer"></i> 3D Viewer Navigation:</h5>
+										<ul style="margin: 0; padding-left: 1.2em; color: #cbd5e1; font-size: 0.9em; line-height: 1.6em;">
+											<li><strong>Rotate:</strong> Click &amp; drag (or 1-finger swipe on mobile)</li>
+											<li><strong>Pan:</strong> Right-click &amp; drag (or 2-finger drag)</li>
+											<li><strong>Zoom:</strong> Scroll wheel (or pinch to zoom)</li>
+										</ul>
 									</div>
 								</div>
-								<div>
-									<a href="assets/cad/digital-board-model.step" download class="project-btn" style="width: 100%; justify-content: center;" onclick="if(!this.getAttribute('data-exists')){ alert('Place your STEP file at /assets/cad/digital-board-model.step to enable visitor downloads.'); return false; }">
-										<i class="icon solid fa-download"></i> Download .STEP Model
+								<div style="display: flex; flex-direction: column; gap: 0.6em;">
+									<a href="assets/3d/digital_glb.glb" download="Digital_Board_3D_Model.glb" class="project-btn" style="width: 100%; justify-content: center;">
+										<i class="icon solid fa-download"></i> Download .GLB Model
+									</a>
+									<a href="assets/cad/digital-board-model.step" download class="project-btn secondary" style="width: 100%; justify-content: center;" onclick="if(!this.getAttribute('data-exists')){ alert('Place your STEP CAD file at /assets/cad/digital-board-model.step to enable visitor downloads.'); return false; }">
+										<i class="icon solid fa-file-export"></i> Download .STEP Model
 									</a>
 								</div>
 							</div>
@@ -586,6 +632,46 @@
 								closeModal(openModal);
 							}
 						}
+					});
+
+					// --- 3D Model Viewer Controls ---
+					// Auto Rotate Toggle
+					var rotateBtn = document.getElementById('btn-rotate-digital');
+					var mvDigital = document.getElementById('mv-digital');
+					if (rotateBtn && mvDigital) {
+						rotateBtn.addEventListener('click', function() {
+							mvDigital.autoRotate = !mvDigital.autoRotate;
+							if (mvDigital.autoRotate) {
+								rotateBtn.classList.add('active');
+							} else {
+								rotateBtn.classList.remove('active');
+							}
+						});
+					}
+
+					// Preset Orbit Views (Isometric, Top, Bottom)
+					document.querySelectorAll('.mv-ctrl-btn[data-orbit]').forEach(function(btn) {
+						btn.addEventListener('click', function() {
+							var mvId = this.getAttribute('data-mv');
+							var orbit = this.getAttribute('data-orbit');
+							var mv = document.getElementById(mvId);
+							if (mv && orbit) {
+								mv.cameraOrbit = orbit;
+							}
+						});
+					});
+
+					// Reset Camera
+					document.querySelectorAll('.mv-ctrl-btn[data-reset]').forEach(function(btn) {
+						btn.addEventListener('click', function() {
+							var mvId = this.getAttribute('data-mv');
+							var mv = document.getElementById(mvId);
+							if (mv) {
+								mv.cameraOrbit = '45deg 60deg auto';
+								mv.cameraTarget = 'auto auto auto';
+								mv.fieldOfView = 'auto';
+							}
+						});
 					});
 				})();
 			</script>

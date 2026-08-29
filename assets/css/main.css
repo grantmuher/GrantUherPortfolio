@@ -3739,16 +3739,85 @@ body.homepage #header:after {
 	display: flex;
 	align-items: center;
 	justify-content: space-between;
+	flex-wrap: wrap;
+	gap: 0.5em;
+}
+
+.cad-stage-controls {
+	display: flex;
+	align-items: center;
+	gap: 0.35em;
+	flex-wrap: wrap;
+}
+
+.mv-ctrl-btn {
+	background: #1e2433;
+	border: 1px solid rgba(255, 255, 255, 0.15);
+	color: #cbd5e1;
+	padding: 0.35em 0.7em;
+	font-size: 0.8em;
+	font-weight: 500;
+	cursor: pointer;
+	border-radius: 3px;
+	display: inline-flex;
+	align-items: center;
+	gap: 0.35em;
+	transition: all 0.2s ease;
+}
+
+.mv-ctrl-btn:hover, .mv-ctrl-btn.active {
+	background: #2b3347;
+	border-color: #38bdf8;
+	color: #ffffff;
 }
 
 .cad-stage-body {
 	flex: 1;
-	min-height: 380px;
+	min-height: 480px;
 	display: flex;
 	align-items: center;
 	justify-content: center;
-	padding: 1.5em;
+	padding: 0;
 	position: relative;
+	background: radial-gradient(circle at center, #151b28 0%, #080b11 100%);
+}
+
+model-viewer.cad-model-viewer {
+	width: 100%;
+	height: 100%;
+	min-height: 480px;
+	--poster-color: transparent;
+	outline: none;
+	display: block;
+}
+
+.mv-progress-bar {
+	display: block;
+	width: 33%;
+	height: 6px;
+	max-height: 2%;
+	position: absolute;
+	left: 50%;
+	top: 50%;
+	transform: translate3d(-50%, -50%, 0);
+	border-radius: 4px;
+	background-color: rgba(255, 255, 255, 0.15);
+	overflow: hidden;
+}
+
+.mv-progress-bar.hide {
+	transition: opacity 0.3s;
+	opacity: 0;
+	pointer-events: none;
+}
+
+.mv-update-bar {
+	background-color: #38bdf8;
+	width: 0%;
+	height: 100%;
+	border-radius: 4px;
+	transition: width 0.3s;
+	box-shadow: 0 0 10px #38bdf8;
 }
 
 .cad-stage-image {
@@ -3762,6 +3831,7 @@ body.homepage #header:after {
 	text-align: center;
 	max-width: 440px;
 	color: #94a3b8;
+	padding: 2em;
 }
 
 .cad-placeholder-box i {
@@ -3815,6 +3885,7 @@ body.homepage #header:after {
 .cad-instructions-box li {
 	margin-bottom: 0.4em;
 }
+
 
 @media screen and (max-width: 900px) {
 	.cad-viewer-container {
