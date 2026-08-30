@@ -1,0 +1,709 @@
+<!DOCTYPE HTML>
+<html lang="en">
+	<head>
+		<title>Technical Writeup - Grant Uher</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<link rel="stylesheet" href="assets/css/main.css" />
+		<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
+		<script src="assets/js/marked.min.js"></script>
+		<style>
+			/* Writeup Dedicated Page Styling */
+			.writeup-page-hero {
+				background: linear-gradient(180deg, rgba(15, 23, 42, 0.95) 0%, rgba(30, 41, 59, 0.85) 100%), #0f172a;
+				padding: 3.5em 0 2.5em 0;
+				border-bottom: 1px solid rgba(56, 189, 248, 0.15);
+				position: relative;
+			}
+			.writeup-nav-bar {
+				display: flex;
+				justify-content: space-between;
+				align-items: center;
+				flex-wrap: wrap;
+				gap: 1em;
+				margin-bottom: 2em;
+			}
+			.writeup-back-btn {
+				display: inline-flex;
+				align-items: center;
+				gap: 0.6em;
+				background: rgba(30, 41, 59, 0.8);
+				border: 1px solid rgba(148, 163, 184, 0.25);
+				color: #e2e8f0 !important;
+				padding: 0.6em 1.2em;
+				border-radius: 6px;
+				font-size: 0.9em;
+				font-weight: 500;
+				text-decoration: none;
+				transition: all 0.2s ease;
+			}
+			.writeup-back-btn:hover {
+				background: rgba(56, 189, 248, 0.15);
+				border-color: #38bdf8;
+				color: #38bdf8 !important;
+				transform: translateX(-3px);
+			}
+			.writeup-project-switcher {
+				display: inline-flex;
+				align-items: center;
+				gap: 0.5em;
+				background: rgba(15, 23, 42, 0.8);
+				border: 1px solid rgba(148, 163, 184, 0.2);
+				padding: 0.35em 0.5em;
+				border-radius: 6px;
+			}
+			.writeup-switch-tab {
+				padding: 0.4em 0.9em;
+				border-radius: 4px;
+				font-size: 0.82em;
+				font-weight: 500;
+				color: #94a3b8 !important;
+				text-decoration: none;
+				transition: all 0.2s ease;
+			}
+			.writeup-switch-tab:hover {
+				color: #e2e8f0 !important;
+				background: rgba(255, 255, 255, 0.05);
+			}
+			.writeup-switch-tab.active {
+				background: rgba(56, 189, 248, 0.2);
+				color: #38bdf8 !important;
+				font-weight: 600;
+				border: 1px solid rgba(56, 189, 248, 0.35);
+			}
+			.writeup-hero-badge-row {
+				display: flex;
+				align-items: center;
+				gap: 0.8em;
+				margin-bottom: 0.9em;
+				flex-wrap: wrap;
+			}
+			.writeup-hero-title {
+				font-size: 2.3em;
+				font-weight: 700;
+				color: #ffffff;
+				line-height: 1.25em;
+				margin: 0 0 0.4em 0;
+			}
+			.writeup-hero-subtitle {
+				font-size: 1.15em;
+				color: #94a3b8;
+				line-height: 1.6em;
+				max-width: 850px;
+				margin-bottom: 1.5em;
+			}
+			.writeup-hero-actions {
+				display: flex;
+				flex-wrap: wrap;
+				gap: 0.75em;
+				align-items: center;
+			}
+			.writeup-action-link {
+				display: inline-flex;
+				align-items: center;
+				gap: 0.5em;
+				padding: 0.55em 1.1em;
+				border-radius: 6px;
+				font-size: 0.88em;
+				font-weight: 600;
+				text-decoration: none;
+				transition: all 0.2s ease;
+			}
+			.writeup-action-primary {
+				background: #0284c7;
+				color: #ffffff !important;
+				border: 1px solid #38bdf8;
+			}
+			.writeup-action-primary:hover {
+				background: #0369a1;
+				box-shadow: 0 0 12px rgba(56, 189, 248, 0.4);
+			}
+			.writeup-action-secondary {
+				background: rgba(30, 41, 59, 0.9);
+				color: #cbd5e1 !important;
+				border: 1px solid rgba(148, 163, 184, 0.3);
+			}
+			.writeup-action-secondary:hover {
+				background: rgba(51, 65, 85, 0.9);
+				color: #ffffff !important;
+				border-color: rgba(148, 163, 184, 0.5);
+			}
+			.writeup-content-layout {
+				display: grid;
+				grid-template-columns: minmax(0, 1fr) 280px;
+				gap: 2.5em;
+				padding: 3em 0 5em 0;
+			}
+			@media (max-width: 1024px) {
+				.writeup-content-layout {
+					grid-template-columns: minmax(0, 1fr);
+				}
+				.writeup-toc-sidebar {
+					display: none;
+				}
+			}
+			.writeup-main-article {
+				background: rgba(15, 23, 42, 0.65);
+				border: 1px solid rgba(148, 163, 184, 0.15);
+				border-radius: 12px;
+				padding: 2.5em;
+				color: #cbd5e1;
+				line-height: 1.8em;
+				font-size: 1.02em;
+			}
+			@media (max-width: 768px) {
+				.writeup-main-article {
+					padding: 1.5em;
+				}
+				.writeup-hero-title {
+					font-size: 1.8em;
+				}
+			}
+			.writeup-main-article h1,
+			.writeup-main-article h2,
+			.writeup-main-article h3,
+			.writeup-main-article h4 {
+				color: #f8fafc;
+				font-weight: 700;
+				margin-top: 1.8em;
+				margin-bottom: 0.6em;
+				line-height: 1.3em;
+				scroll-margin-top: 2em;
+			}
+			.writeup-main-article h1 { font-size: 1.9em; border-bottom: 1px solid rgba(148, 163, 184, 0.2); padding-bottom: 0.3em; }
+			.writeup-main-article h2 { font-size: 1.45em; border-bottom: 1px solid rgba(148, 163, 184, 0.15); padding-bottom: 0.25em; color: #38bdf8; }
+			.writeup-main-article h3 { font-size: 1.2em; color: #93c5fd; }
+			.writeup-main-article h4 { font-size: 1.05em; color: #cbd5e1; }
+			.writeup-main-article p {
+				margin-bottom: 1.4em;
+				color: #cbd5e1;
+			}
+			.writeup-main-article strong {
+				color: #ffffff;
+				font-weight: 600;
+			}
+			.writeup-main-article hr {
+				border: 0;
+				border-top: 1px solid rgba(148, 163, 184, 0.2);
+				margin: 2em 0;
+			}
+			.writeup-main-article ul, .writeup-main-article ol {
+				padding-left: 1.5em;
+				margin-bottom: 1.4em;
+			}
+			.writeup-main-article li {
+				margin-bottom: 0.5em;
+			}
+			.writeup-main-article blockquote {
+				border-left: 4px solid #38bdf8;
+				background: rgba(56, 189, 248, 0.08);
+				padding: 1em 1.4em;
+				margin: 1.5em 0;
+				border-radius: 0 8px 8px 0;
+				color: #e2e8f0;
+				font-style: normal;
+			}
+			.writeup-main-article blockquote p:last-child {
+				margin-bottom: 0;
+			}
+			.writeup-main-article code {
+				background: rgba(15, 23, 42, 0.9);
+				color: #38bdf8;
+				padding: 0.2em 0.45em;
+				border-radius: 4px;
+				font-size: 0.9em;
+				border: 1px solid rgba(56, 189, 248, 0.2);
+				font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+			}
+			.writeup-main-article pre {
+				background: #0b1120;
+				border: 1px solid rgba(56, 189, 248, 0.25);
+				border-radius: 8px;
+				padding: 1.2em;
+				overflow-x: auto;
+				margin: 1.5em 0;
+			}
+			.writeup-main-article pre code {
+				background: transparent;
+				padding: 0;
+				border: none;
+				color: #f1f5f9;
+			}
+			.writeup-table-wrapper {
+				width: 100%;
+				overflow-x: auto;
+				margin: 1.6em 0;
+				border-radius: 8px;
+				border: 1px solid rgba(148, 163, 184, 0.2);
+			}
+			.writeup-table {
+				width: 100%;
+				border-collapse: collapse;
+				font-size: 0.92em;
+				background: rgba(15, 23, 42, 0.8);
+			}
+			.writeup-table th {
+				background: rgba(30, 41, 59, 0.95);
+				color: #f8fafc;
+				font-weight: 600;
+				text-align: left;
+				padding: 0.85em 1em;
+				border-bottom: 2px solid rgba(56, 189, 248, 0.3);
+			}
+			.writeup-table td {
+				padding: 0.8em 1em;
+				border-bottom: 1px solid rgba(148, 163, 184, 0.12);
+				color: #cbd5e1;
+			}
+			.writeup-table tr:hover td {
+				background: rgba(56, 189, 248, 0.05);
+			}
+			.writeup-diagram-block {
+				background: rgba(15, 23, 42, 0.9);
+				border: 1px solid rgba(56, 189, 248, 0.25);
+				border-radius: 8px;
+				padding: 1.5em;
+				margin: 1.8em 0;
+				text-align: center;
+			}
+			.writeup-toc-sidebar {
+				position: sticky;
+				top: 2em;
+				align-self: start;
+				background: rgba(15, 23, 42, 0.7);
+				border: 1px solid rgba(148, 163, 184, 0.15);
+				border-radius: 10px;
+				padding: 1.4em;
+			}
+			.writeup-toc-title {
+				font-size: 0.82em;
+				text-transform: uppercase;
+				letter-spacing: 0.08em;
+				color: #94a3b8;
+				font-weight: 700;
+				margin-bottom: 1em;
+				display: flex;
+				align-items: center;
+				gap: 0.5em;
+			}
+			.writeup-toc-list {
+				list-style: none;
+				padding: 0;
+				margin: 0;
+			}
+			.writeup-toc-list li {
+				margin-bottom: 0.6em;
+			}
+			.writeup-toc-list a {
+				color: #94a3b8 !important;
+				text-decoration: none;
+				font-size: 0.88em;
+				display: block;
+				transition: all 0.2s ease;
+				line-height: 1.4em;
+			}
+			.writeup-toc-list a:hover {
+				color: #38bdf8 !important;
+				padding-left: 4px;
+			}
+			.writeup-toc-list a.toc-h3 {
+				padding-left: 1em;
+				font-size: 0.82em;
+				color: #64748b !important;
+			}
+			.writeup-tech-tag {
+				display: inline-block;
+				background: rgba(30, 41, 59, 0.8);
+				border: 1px solid rgba(148, 163, 184, 0.2);
+				color: #94a3b8;
+				font-size: 0.78em;
+				padding: 0.25em 0.65em;
+				border-radius: 4px;
+				margin-right: 0.4em;
+				margin-bottom: 0.4em;
+			}
+			.writeup-loading-state,
+			.writeup-error-state {
+				text-align: center;
+				padding: 4em 1em;
+			}
+			.writeup-loading-spinner {
+				display: inline-block;
+				width: 42px;
+				height: 42px;
+				border: 3px solid rgba(56, 189, 248, 0.2);
+				border-top-color: #38bdf8;
+				border-radius: 50%;
+				animation: spin 0.8s linear infinite;
+				margin-bottom: 1em;
+			}
+			@keyframes spin {
+				to { transform: rotate(360deg); }
+			}
+		</style>
+	</head>
+	<body class="no-sidebar is-preload">
+		<div id="page-wrapper">
+
+			<!-- Top Navigation Header -->
+			<div id="header" style="padding-bottom: 1.5em;">
+				<nav id="nav">
+					<ul>
+						<li><a href="index.html">Home</a></li>
+						<li><a href="index.html#about">About Me</a></li>
+						<li><a href="projects.html">Projects</a></li>
+						<li><a href="https://www.linkedin.com/in/grant-uher/" target="_blank" rel="noopener noreferrer">LinkedIn</a></li>
+					</ul>
+				</nav>
+			</div>
+
+			<!-- Dynamic Hero Section -->
+			<div class="writeup-page-hero" id="writeup-hero">
+				<div class="container">
+					<div class="writeup-nav-bar">
+						<a href="projects.html" class="writeup-back-btn">
+							<i class="icon solid fa-arrow-left"></i> Back to All Projects
+						</a>
+						<!-- Project Switcher Tabs -->
+						<div class="writeup-project-switcher" id="project-switcher">
+							<a href="writeup.html?project=bspd" class="writeup-switch-tab" data-proj="bspd">BSPD</a>
+							<a href="writeup.html?project=digital" class="writeup-switch-tab" data-proj="digital">Digital Board</a>
+							<a href="writeup.html?project=relay" class="writeup-switch-tab" data-proj="relay">BSPD Relay</a>
+						</div>
+					</div>
+
+					<div id="hero-dynamic-content">
+						<div class="writeup-hero-badge-row" id="hero-badges">
+							<span class="project-card-badge badge-safety" id="hero-badge">Technical Writeup</span>
+							<span style="color: #64748b; font-size: 0.88em;" id="hero-date"><i class="icon solid fa-calendar-alt"></i> Markdown Source</span>
+						</div>
+						<h1 class="writeup-hero-title" id="hero-title">Loading Project Writeup...</h1>
+						<p class="writeup-hero-subtitle" id="hero-subtitle">Fetching technical design document from Markdown repository...</p>
+						
+						<div class="writeup-hero-actions" id="hero-actions">
+							<!-- Populated dynamically -->
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<!-- Main Article Section -->
+			<div class="wrapper style-dark">
+				<div class="container">
+					<div class="writeup-content-layout">
+						<!-- Main Markdown Output -->
+						<main class="writeup-main-article" id="markdown-container">
+							<div class="writeup-loading-state" id="loading-state">
+								<div class="writeup-loading-spinner"></div>
+								<h3 style="color: #ffffff; margin-bottom: 0.3em;">Loading Writeup Markdown...</h3>
+								<p style="color: #94a3b8; font-size: 0.9em;">Parsing documentation and technical specifications</p>
+							</div>
+						</main>
+
+						<!-- Table of Contents & Quick Meta Sidebar -->
+						<aside class="writeup-toc-sidebar" id="sidebar-container">
+							<div class="writeup-toc-title">
+								<i class="icon solid fa-list-ul" style="color: #38bdf8;"></i> Table of Contents
+							</div>
+							<ul class="writeup-toc-list" id="toc-list">
+								<li style="color: #64748b; font-size: 0.85em;">Loading sections...</li>
+							</ul>
+
+							<div style="margin-top: 2em; padding-top: 1.5em; border-top: 1px solid rgba(148, 163, 184, 0.15);" id="sidebar-tech-section">
+								<div class="writeup-toc-title">
+									<i class="icon solid fa-microchip" style="color: #38bdf8;"></i> Technologies
+								</div>
+								<div id="sidebar-tech-tags"></div>
+							</div>
+
+							<div style="margin-top: 1.8em; padding-top: 1.5em; border-top: 1px solid rgba(148, 163, 184, 0.15);">
+								<div class="writeup-toc-title">
+									<i class="icon solid fa-edit" style="color: #38bdf8;"></i> Markdown Source
+								</div>
+								<p style="font-size: 0.82em; color: #94a3b8; line-height: 1.5em; margin-bottom: 0.8em;">
+									This document is rendered dynamically from Markdown in <code id="source-filename" style="font-size: 0.8em;">/writeups/</code>.
+								</p>
+								<a href="#" id="view-raw-btn" target="_blank" class="writeup-action-link writeup-action-secondary" style="width: 100%; justify-content: center; font-size: 0.8em; padding: 0.45em 0.8em;">
+									<i class="icon solid fa-file-code"></i> View Raw .md
+								</a>
+							</div>
+						</aside>
+					</div>
+				</div>
+			</div>
+
+			<!-- Footer -->
+			<div id="footer">
+				<div class="container">
+					<ul class="icons">
+						<li><a href="https://www.linkedin.com/in/grant-uher/" target="_blank" rel="noopener noreferrer" class="icon brands fa-linkedin-in" title="LinkedIn"><span class="label">LinkedIn</span></a></li>
+						<li><a href="mailto:grantuher@gmail.com" class="icon solid fa-envelope" title="Email"><span class="label">Email</span></a></li>
+					</ul>
+					<div class="copyright">
+						&copy; Grant Uher. All rights reserved.
+					</div>
+				</div>
+			</div>
+
+		</div>
+
+		<!-- Scripts -->
+		<script src="assets/js/jquery.min.js"></script>
+		<script src="assets/js/jquery.dropotron.min.js"></script>
+		<script src="assets/js/jquery.scrolly.min.js"></script>
+		<script src="assets/js/jquery.scrollex.min.js"></script>
+		<script src="assets/js/browser.min.js"></script>
+		<script src="assets/js/breakpoints.min.js"></script>
+		<script src="assets/js/util.js"></script>
+		<script src="assets/js/main.js"></script>
+
+		<!-- Markdown Loader & Dynamic Renderer Script -->
+		<script>
+			(function() {
+				// 1. Determine which project markdown to load from URL parameters or path
+				var project = '';
+				var pathParts = window.location.pathname.split('/').filter(Boolean);
+				if (pathParts[0] === 'writeup' && pathParts[1]) {
+					project = pathParts[1];
+				}
+				if (!project) {
+					var urlParams = new URLSearchParams(window.location.search);
+					project = urlParams.get('project') || urlParams.get('p') || urlParams.get('file') || 'bspd';
+				}
+				
+				// Clean project name
+				project = project.toLowerCase().replace('.md', '').trim();
+
+				// Highlight active switcher tab
+				document.querySelectorAll('.writeup-switch-tab').forEach(function(tab) {
+					if (tab.getAttribute('data-proj') === project) {
+						tab.classList.add('active');
+					} else {
+						tab.classList.remove('active');
+					}
+				});
+
+				var mdPath = 'writeups/' + project + '.md';
+				document.getElementById('source-filename').textContent = 'writeups/' + project + '.md';
+				document.getElementById('view-raw-btn').href = mdPath;
+
+				// 2. Simple Frontmatter parser helper
+				function parseFrontmatter(rawText) {
+					var meta = {};
+					var body = rawText;
+
+					if (rawText.startsWith('---')) {
+						var endIndex = rawText.indexOf('\n---', 3);
+						if (endIndex !== -1) {
+							var frontmatterText = rawText.substring(3, endIndex).trim();
+							body = rawText.substring(endIndex + 4).trim();
+
+							var lines = frontmatterText.split('\n');
+							var currentKey = null;
+							var currentArray = null;
+
+							lines.forEach(function(line) {
+								line = line.trimEnd();
+								if (!line || line.startsWith('#')) return;
+
+								if (line.startsWith('- ') && currentArray) {
+									currentArray.push(line.substring(2).trim());
+									return;
+								}
+
+								var colonIndex = line.indexOf(':');
+								if (colonIndex !== -1) {
+									var key = line.substring(0, colonIndex).trim();
+									var value = line.substring(colonIndex + 1).trim();
+
+									if (value === '') {
+										currentKey = key;
+										currentArray = [];
+										meta[key] = currentArray;
+									} else {
+										currentKey = null;
+										currentArray = null;
+										// Strip surrounding quotes if present
+										if ((value.startsWith('"') && value.endsWith('"')) || (value.startsWith("'") && value.endsWith("'"))) {
+											value = value.substring(1, value.length - 1);
+										}
+										meta[key] = value;
+									}
+								}
+							});
+						}
+					}
+					return { meta: meta, body: body };
+				}
+
+				// 3. Fallback dictionary for known project metadata if frontmatter is missing
+				var defaultMeta = {
+					bspd: {
+						title: "Brake System Plausibility Device (BSPD)",
+						subtitle: "Formula SAE Rule-Mandated Hard-Wired Analog Safety System",
+						badge: "Safety-Critical",
+						badgeClass: "badge-safety",
+						schematic: "assets/docs/bspd-schematic.pdf",
+						model3d: "projects.html#project-card-2",
+						topView: "assets/PCB3d_Models/BSPD_TopView.png",
+						date: "2024 - 2025",
+						tech: ["Altium Designer", "Discrete Analog", "Active Filtering", "555 Timer Latch", "Automotive Hall Effect"]
+					},
+					digital: {
+						title: "Digital Board — Data Acquisition & Telemetry",
+						subtitle: "High-speed STM32H5 MCU telemetry PCB with dual-band GNSS and 100-BaseTX Ethernet",
+						badge: "DAQ & High-Speed",
+						badgeClass: "badge-daq",
+						schematic: "assets/docs/digital-board-schematic.pdf",
+						model3d: "projects.html#project-card-1",
+						topView: "assets/PCB3d_Models/Digital_TopView.png",
+						date: "2024 - 2025",
+						tech: ["Altium Designer", "STM32H5 MCU", "100-BaseTX Ethernet", "Dual-Band GNSS", "CAN FD", "Controlled Impedance"]
+					},
+					relay: {
+						title: "BSPD Relay — Solid State Power Interfacing",
+						subtitle: "High-current bi-directional MOSFET Solid State Relay (SSR) for Formula SAE shutdown loops",
+						badge: "Power & SSR",
+						badgeClass: "badge-power",
+						schematic: "assets/docs/bspd-relay-schematic.pdf",
+						model3d: "projects.html#project-card-3",
+						topView: "assets/PCB3d_Models/Relay_Top.png",
+						date: "2024 - 2025",
+						tech: ["Altium Designer", "7A Continuous Current", "Bi-Directional MOSFETs", "Solid State Relay", "Thermal Dissipation"]
+					}
+				};
+
+				// 4. Fetch and render Markdown
+				fetch(mdPath)
+					.then(function(res) {
+						if (!res.ok) {
+							throw new Error('HTTP status ' + res.status + ' while fetching ' + mdPath);
+						}
+						return res.text();
+					})
+					.then(function(markdownText) {
+						var parsed = parseFrontmatter(markdownText);
+						var meta = parsed.meta;
+						var fallback = defaultMeta[project] || {};
+
+						var title = meta.title || fallback.title || (project.toUpperCase() + ' Technical Writeup');
+						var subtitle = meta.subtitle || fallback.subtitle || 'Engineering documentation and hardware design notes.';
+						var badge = meta.badge || fallback.badge || 'Project Writeup';
+						var badgeClass = meta.badgeClass || fallback.badgeClass || 'badge-safety';
+						var schematic = meta.schematic || fallback.schematic;
+						var model3d = meta.model3d || fallback.model3d;
+						var date = meta.date || fallback.date || '2024 - 2025';
+						var tech = meta.tech || fallback.tech || [];
+
+						// Update Page Title
+						document.title = title + ' - Grant Uher Portfolio';
+
+						// Update Hero section
+						document.getElementById('hero-title').textContent = title;
+						document.getElementById('hero-subtitle').textContent = subtitle;
+						
+						var heroBadge = document.getElementById('hero-badge');
+						heroBadge.textContent = badge;
+						heroBadge.className = 'project-card-badge ' + badgeClass;
+
+						document.getElementById('hero-date').innerHTML = '<i class="icon solid fa-calendar-alt"></i> ' + date;
+
+						// Build Action buttons
+						var actionsContainer = document.getElementById('hero-actions');
+						actionsContainer.innerHTML = '';
+
+						if (schematic) {
+							var schemBtn = document.createElement('a');
+							schemBtn.href = schematic;
+							schemBtn.target = '_blank';
+							schemBtn.className = 'writeup-action-link writeup-action-primary';
+							schemBtn.innerHTML = '<i class="icon solid fa-file-pdf"></i> View Schematic PDF';
+							actionsContainer.appendChild(schemBtn);
+						}
+
+						if (model3d) {
+							var modelBtn = document.createElement('a');
+							modelBtn.href = model3d;
+							modelBtn.className = 'writeup-action-link writeup-action-secondary';
+							modelBtn.innerHTML = '<i class="icon solid fa-cube"></i> Interactive 3D Model';
+							actionsContainer.appendChild(modelBtn);
+						}
+
+						var mdBtn = document.createElement('a');
+						mdBtn.href = mdPath;
+						mdBtn.target = '_blank';
+						mdBtn.className = 'writeup-action-link writeup-action-secondary';
+						mdBtn.innerHTML = '<i class="icon solid fa-file-alt"></i> Source .md';
+						actionsContainer.appendChild(mdBtn);
+
+						// Render Tech Tags in Sidebar
+						var techContainer = document.getElementById('sidebar-tech-tags');
+						techContainer.innerHTML = '';
+						if (Array.isArray(tech) && tech.length > 0) {
+							tech.forEach(function(t) {
+								var span = document.createElement('span');
+								span.className = 'writeup-tech-tag';
+								span.textContent = t;
+								techContainer.appendChild(span);
+							});
+						} else {
+							document.getElementById('sidebar-tech-section').style.display = 'none';
+						}
+
+						// Configure Marked options
+						if (window.marked) {
+							marked.setOptions({
+								gfm: true,
+								breaks: true
+							});
+							var htmlContent = marked.parse(parsed.body);
+							var markdownContainer = document.getElementById('markdown-container');
+							markdownContainer.innerHTML = htmlContent;
+
+							// Generate Table of Contents from rendered headings
+							var headings = markdownContainer.querySelectorAll('h2, h3');
+							var tocList = document.getElementById('toc-list');
+							tocList.innerHTML = '';
+
+							if (headings.length > 0) {
+								headings.forEach(function(h, idx) {
+									var text = h.textContent.trim();
+									var anchorId = 'section-' + idx + '-' + text.toLowerCase().replace(/[^a-z0-9]+/g, '-');
+									h.id = anchorId;
+
+									var li = document.createElement('li');
+									var a = document.createElement('a');
+									a.href = '#' + anchorId;
+									a.textContent = text;
+									if (h.tagName.toLowerCase() === 'h3') {
+										a.className = 'toc-h3';
+									}
+									li.appendChild(a);
+									tocList.appendChild(li);
+								});
+							} else {
+								tocList.innerHTML = '<li style="color: #64748b; font-size: 0.85em;">Single section overview</li>';
+							}
+						}
+					})
+					.catch(function(err) {
+						console.error("Markdown load error:", err);
+						var container = document.getElementById('markdown-container');
+						container.innerHTML = [
+							'<div class="writeup-error-state">',
+							'  <div style="font-size: 3em; color: #ef4444; margin-bottom: 0.3em;"><i class="icon solid fa-exclamation-triangle"></i></div>',
+							'  <h2 style="color: #ffffff; margin-bottom: 0.4em;">Writeup File Not Found</h2>',
+							'  <p style="color: #94a3b8; max-width: 500px; margin: 0 auto 1.5em auto;">Could not load markdown file <code>' + mdPath + '</code>. Please check that the file exists in the <code>/writeups/</code> directory.</p>',
+							'  <div style="display: flex; gap: 0.8em; justify-content: center; flex-wrap: wrap;">',
+							'    <a href="writeup.html?project=bspd" class="writeup-action-link writeup-action-primary">View BSPD Writeup</a>',
+							'    <a href="writeup.html?project=digital" class="writeup-action-link writeup-action-secondary">View Digital Board Writeup</a>',
+							'    <a href="writeup.html?project=relay" class="writeup-action-link writeup-action-secondary">View BSPD Relay Writeup</a>',
+							'    <a href="projects.html" class="writeup-action-link writeup-action-secondary">Back to Projects</a>',
+							'  </div>',
+							'</div>'
+						].join('\n');
+					});
+			})();
+		</script>
+	</body>
+</html>
