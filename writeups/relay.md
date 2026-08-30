@@ -17,7 +17,4 @@ tech:
   - Galvanic Isolation
   - Fast Overcurrent Protection
 ---
-
-The **BSPD Relay** is a custom power electronics board designed to interface with the Brake System Plausibility Device (BSPD) to reliably interrupt the vehicle's Shutdown Circuit (SDC). Engineered to replace bulky electromechanical relays with a fast, vibration-proof **bi-directional MOSFET Solid State Relay (SSR)**, it handles up to **7A continuous current** with minimal voltage drop and rapid response time.
-
----
+To be completed
