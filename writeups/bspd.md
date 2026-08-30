@@ -41,9 +41,10 @@ For the first step in the design process, I defined the requirements for the cir
 | REQ-ICBSPD-012| Should| BSPD should provide a discrete signal to indicate the status of the fault latch to an external monitoring system.  | Necessary to distinguish a BSPD trip from other engine management or fuel system failures. | Trigger a BSPD fault and verify that the external system records a state transition  |
 | REQ-ICBSPD-013 | Shall| The status signal interface shall be electrically buffered or isolated to prevent an external failure (e.g., a shorted DAQ input) from compromising the BSPD’s safety function. | Rule IC.4.8.2: Hardware independence is required to ensure the safety circuit remains a "standalone" device.                                 | Demonstrate that a short-to-ground or short-to-VCC on the status output line does not prevent the BSPD from opening the SDC.|
 
-## 3. Arcitecture & Trade Studies
+## 3. Architecture & Trade Studies
 It was decided early on that because the rules were very similar between IC and EV cars that only one board was to be created with 0 ohm configuration straps to switch between IC and EV Cars to reduce the cost of order multiple boards with very similar functions.
 
+### Delay Method
 The first trade study involved the timing mechanism for the latching fault. The Rules allow for up to 1s delay for IC and 0.5s delay for EV. An RC Timer with a comparator and a Binary Counter were compared.
 
 | Criteria| RC Timer| Binary Counter|
@@ -57,6 +58,7 @@ The first trade study involved the timing mechanism for the latching fault. The 
 
 Decision: Binary Counters, temperature stability and reset speed lead to the benefits of a binary counter outweighing the cost offset, and added complexity. 
 
+### Clock Generation
 Once Binary Counters were decided on. Clock Generation then had to be evaluated. 3 solutions were evaluated: 555 Timer, Silicon Adjustable Clock w/o clock divider, Silicon Adjustable Clock w/ clock divider. 
 | Criteria| 555 Timer| LTC6900 (or other comparable silicon adjustable clock) w/o clock divider |LTC6900 (or other comparable silicon adjustable clock) w/ clock divider|
 |:-------|:-------------------|:-------------------|:-------------------|
@@ -68,6 +70,7 @@ Once Binary Counters were decided on. Clock Generation then had to be evaluated.
 
 Decision: LTC6900 (or other comparable silicon adjustable clock) w/ clock divider, for its cheaper BOM cost without sacrificing SI through temperature variation. At the relatively low frequencies of the clock signal clock skew is not a major factor.
 
+### Latching Method
 The final major trade study evaulated was for the latching method. Two solutions were evaluted. A D-Flip-Flop latch, compared with a comparator with positive feedback.  
 
 | Criteria|Positive Feedback Comparator|D-Flip-Flop|
