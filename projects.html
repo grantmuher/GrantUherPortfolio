@@ -84,9 +84,9 @@
 										<button class="project-btn btn-3d modal-trigger" data-modal="modal-3d-digital" id="btn-3d-digital">
 											<i class="icon solid fa-cube"></i> 3D Board View
 										</button>
-										<button class="project-btn secondary modal-trigger" data-modal="modal-writeup-digital" id="btn-writeup-digital">
+										<a href="writeup.html?project=digital" class="project-btn secondary" id="btn-writeup-digital">
 											<i class="icon solid fa-book-open"></i> Writeup
-										</button>
+										</a>
 									</div>
 								</div>
 							</div>
@@ -126,9 +126,9 @@
 										<button class="project-btn btn-3d modal-trigger" data-modal="modal-3d-bspd" id="btn-3d-bspd">
 											<i class="icon solid fa-cube"></i> 3D Board View
 										</button>
-										<button class="project-btn secondary modal-trigger" data-modal="modal-writeup-bspd" id="btn-writeup-bspd">
+										<a href="writeup.html?project=bspd" class="project-btn secondary" id="btn-writeup-bspd">
 											<i class="icon solid fa-book-open"></i> Writeup
-										</button>
+										</a>
 									</div>
 								</div>
 							</div>
@@ -168,9 +168,9 @@
 										<button class="project-btn btn-3d modal-trigger" data-modal="modal-3d-relay" id="btn-3d-relay">
 											<i class="icon solid fa-cube"></i> 3D Board View
 										</button>
-										<button class="project-btn secondary modal-trigger" data-modal="modal-writeup-relay" id="btn-writeup-relay">
+										<a href="writeup.html?project=relay" class="project-btn secondary" id="btn-writeup-relay">
 											<i class="icon solid fa-book-open"></i> Writeup
-										</button>
+										</a>
 									</div>
 								</div>
 							</div>
@@ -269,7 +269,7 @@
 									</div>
 								</div>
 								<div class="cad-stage-body" id="stage-3d-digital">
-									<!-- 1. 3D WebGL Pane -->
+									<!-- 1. 3D WebGL Pane (Default Active) -->
 									<div class="cad-stage-pane active" id="pane-3d-digital">
 										<model-viewer
 											src="assets/3d/digital_glb.glb"
@@ -356,30 +356,6 @@
 				</div>
 			</div>
 
-			<!-- 1. Digital Board Writeup Modal -->
-			<div class="ee-modal-backdrop" id="modal-writeup-digital">
-				<div class="ee-modal">
-					<div class="ee-modal-header">
-						<div class="ee-modal-header-left">
-							<span class="project-card-badge badge-daq">Digital Board</span>
-							<h3 class="ee-modal-title">Technical Design Writeup</h3>
-						</div>
-						<button class="ee-modal-close" data-close title="Close Modal"><i class="icon solid fa-times"></i></button>
-					</div>
-					<div class="ee-modal-body" style="align-items: center; justify-content: center;">
-						<div class="wip-container">
-							<div class="wip-icon-wrapper" style="border-color: rgba(56, 189, 248, 0.3);">
-								<i class="icon solid fa-book-open" style="color: #38bdf8;"></i>
-							</div>
-							<h3 class="wip-title">Design Writeup In Progress</h3>
-							<div class="wip-badge">
-								<span class="pulse-dot" style="background: #38bdf8; box-shadow: 0 0 8px #38bdf8;"></span>
-								Work In Progress
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
 
 			<!-- 2. BSPD Schematic Modal (Direct Original PDF Viewer) -->
 			<div class="ee-modal-backdrop" id="modal-schematic-bspd">
@@ -529,216 +505,13 @@
 				</div>
 			</div>
 
-			<!-- 2. BSPD Writeup Modal -->
-			<div class="ee-modal-backdrop" id="modal-writeup-bspd">
-				<div class="ee-modal modal-large" style="max-width: 1180px; height: 90vh;">
-					<div class="ee-modal-header">
-						<div class="ee-modal-header-left">
-							<span class="project-card-badge badge-safety">BSPD v3.0</span>
-							<h3 class="ee-modal-title">Design Writeup</h3>
-						</div>
-						<div style="display: flex; align-items: center; gap: 0.6em;">
-							<button class="project-btn modal-trigger" data-modal="modal-schematic-bspd" style="padding: 0.45em 0.9em; font-size: 0.82em; font-weight: 500;">
-								<i class="icon solid fa-file-pdf"></i> View Schematic
-							</button>
-							<button class="project-btn btn-3d modal-trigger" data-modal="modal-3d-bspd" style="padding: 0.45em 0.9em; font-size: 0.82em; font-weight: 500;">
-								<i class="icon solid fa-cube"></i> View 3D Model
-							</button>
-							<button class="ee-modal-close" data-close title="Close Modal"><i class="icon solid fa-times"></i></button>
-						</div>
-					</div>
-					<div class="ee-modal-body" style="padding: 2.2em 2.5em; overflow-y: auto;">
-						<article class="writeup-article">
-							
-							<!-- Hero Summary Banner -->
-							<div class="writeup-hero">
-								<h3>Formula SAE Brake System Plausibility Device (BSPD v3.0)</h3>
-								<p>
-									A custom, safety circuit engineered to comply with both IC and EV BSPD Formula SAE rules. 
-									The circuit monitors throttle position (or current in EV configuration) and brake pedal position sensors,
-									causing shutdown when simultaneous hard braking and high throttle/power demand is detected, or upon a sensor Loss of Signal (LOS) fault.
-								</p>
-							</div>
 
-					<!-- Specifications Table -->
-					<section class="writeup-section">
-						<h4 class="writeup-section-title"><i class="icon solid fa-list-check"></i> 1. System Requirements &amp; Verification Matrix</h4>
-						<div class="writeup-table-wrapper">
-							<table class="writeup-table">
-								<thead>
-									<tr>
-										<th>Requirement ID</th>
-										<th>Requirement</th>
-										<th>Justification</th>
-										<th>Validation Plan</th>
-									</tr>
-								</thead>
-								<tbody>
-									<tr>
-										<td><strong>REQ-ICBSPD-001</strong></td>
-										<td>BSPD shall be non-programmable.</td>
-										<td>Compliance with FSAE Rule IC.4.8.2.</td>
-										<td>Review the Bill of Materials (BOM) and Altium Schematics to verify that all integrated circuits are analog.</td>
-									</tr>
-									<tr>
-										<td><strong>REQ-ICBSPD-002</strong></td>
-										<td>BSPD shall latch within 1s when both of the following conditions are met simultaneously:<br>1. Brake pressure &gt; the defined "Hard Braking" threshold (see REQ-ICBSPD-003).<br>2. Throttle &gt; 10% TPS signal.</td>
-										<td>Compliance with FSAE Rule IC.4.8.4.a</td>
-										<td>Use an oscilloscope to measure the delay between threshold crossing and SDC relay opening.</td>
-									</tr>
-									<tr>
-										<td><strong>REQ-ICBSPD-003</strong></td>
-										<td>BSPD should incorporate a tuning mechanism to calibrate the "Demand for Hard Braking" threshold between 20% and 80% of the Brake System Encoder (BSE) output.</td>
-										<td>To allow for adjustments based on driver driving style or preferences without violating the non-programmable constraint of Rule IC.4.8.2.</td>
-										<td>Power BSPD with a stabilized LV supply, then use a multimeter to measure the Reference Node of BSE. Adjust the mechanism from the minimum to maximum setting.</td>
-									</tr>
-									<tr>
-										<td><strong>REQ-ICBSPD-004</strong></td>
-										<td>BSPD should incorporate a calibration mechanism capable of adjusting the TPS Threshold by at least ±20% of its nominal 10% calculated setpoint.</td>
-										<td>To provide means of nulling the DC current sensor's idle offset voltage. This ensures the system triggers at the true 10% throttle position.</td>
-										<td>Power BSPD with a stabilized LV supply, then use a multimeter to measure the Reference Node of TPS. Adjust the mechanism from the minimum to maximum setting.</td>
-									</tr>
-									<tr>
-										<td><strong>REQ-ICBSPD-005</strong></td>
-										<td>BSPD shall latch within 100ms if an Open Circuit or Short Circuit fault is detected on BSE or TPS.</td>
-										<td>Compliance with FSAE Rule IC.4.8.4.b &amp; IC.4.8.4.c</td>
-										<td>Disconnect sensor leads during operation and verify SDC opens within the 100ms window on a scope.</td>
-									</tr>
-									<tr>
-										<td><strong>REQ-ICBSPD-006</strong></td>
-										<td>BSPD shall monitor raw sensor signals from TPS and BSE directly.</td>
-										<td>Compliance with FSAE Rule IC.4.8.3</td>
-										<td>Verify wiring harness schematic shows direct taps from sensors to BSPD input pins without passing through the ECU.</td>
-									</tr>
-									<tr>
-										<td><strong>REQ-ICBSPD-007</strong></td>
-										<td>BSPD shall latch the fault state such that the SDC remains open until the primary master switch is cycled.</td>
-										<td>Compliance with FSAE Rule IC.4.8.6</td>
-										<td>Trigger a fault, then return sensors to normal range. Verify SDC stays open until the main power is cut.</td>
-									</tr>
-									<tr>
-										<td><strong>REQ-ICBSPD-008</strong></td>
-										<td>BSPD shall maintain a fault state even if Cockpit Master Switch is cycled OFF and ON.</td>
-										<td>Compliance with FSAE Rule IC.4.8.7</td>
-										<td>Trigger a fault, toggle the cockpit switch, and verify the BSPD remains latched in the fault state.</td>
-									</tr>
-									<tr>
-										<td><strong>REQ-ICBSPD-009</strong></td>
-										<td>BSPD shall open the SDC immediately upon removal of power to the BSPD circuit.</td>
-										<td>Compliance with FSAE Rule IC.4.8.8</td>
-										<td>Pull the BSPD power fuse/connector and verify the SDC opens.</td>
-									</tr>
-									<tr>
-										<td><strong>REQ-ICBSPD-010</strong></td>
-										<td>BSPD shall provide a method (connectors or breakout box) to allow inspectors to disconnect signals individually.</td>
-										<td>Compliance with FSAE Rule IC.4.8.9</td>
-										<td>Demonstrate the use of the breakout box or detachable connectors during a mock Tech Inspection.</td>
-									</tr>
-									<tr>
-										<td><strong>REQ-ICBSPD-011</strong></td>
-										<td>BSPD should include status LEDs for power, fault, latched fault.</td>
-										<td>Facilitates rapid debugging during trackside failures or tech inspection.</td>
-										<td>Visual confirmation during bench testing.</td>
-									</tr>
-									<tr>
-										<td><strong>REQ-ICBSPD-012</strong></td>
-										<td>BSPD should provide a discrete signal to indicate the status of the fault latch to an external monitoring system.</td>
-										<td>Necessary to distinguish a BSPD trip from other engine management or fuel system failures.</td>
-										<td>Trigger a BSPD fault and verify that the external system records a state transition.</td>
-									</tr>
-									<tr>
-										<td><strong>REQ-ICBSPD-013</strong></td>
-										<td>The status signal interface shall be electrically buffered or isolated to prevent an external failure (e.g., a shorted DAQ input) from compromising the BSPD’s safety function.</td>
-										<td>Rule IC.4.8.2: Hardware independence is required to ensure the safety circuit remains a "standalone" device.</td>
-										<td>Demonstrate that a short-to-ground or short-to-VCC on the status output line does not prevent the BSPD from opening the SDC.</td>
-									</tr>
-								</tbody>
-							</table>
-						</div>
-					</section>
 
-					<!-- Architectural Overview / Block Diagram -->
-					<section class="writeup-section">
-						<h4 class="writeup-section-title"><i class="icon solid fa-project-diagram"></i> 2. Architectural Overview &amp; Signal Flow</h4>
-						<div class="writeup-diagram-block">
-							<img src="\images\BSPD_Block_Diagram.png" alt="BSPD v3.0 Topology Block Diagram" style="max-width: 100%; height: auto;" />
-						</div>
-					</section>
 
-							<!-- Trade Studies -->
-							<section class="writeup-section">
-								<h4 class="writeup-section-title"><i class="icon solid fa-balance-scale"></i> 3. Engineering Design Decisions &amp; Trade Studies</h4>
-								
-								<h5 class="writeup-subsection-title"><i class="icon solid fa-clock" style="color: #38bdf8;"></i> 3.1 Timing: Deterministic Digital Counter vs. RC Timer</h5>
-								<p>
-									Other teams often use analog RC charging circuits with threshold comparators. 
-									BSPD v3.0 does not follow this approach by replacing RC timers with 
-									<strong>binary counters driven by a silicon clock reference</strong>.
-								</p>
-								<div class="trade-study-grid">
-									<div class="trade-card">
-										<h5 style="color: #94a3b8;"><i class="icon solid fa-exclamation-triangle" style="color: #e2e8f0;"></i> Conventional Analog RC Timing</h5>
-										<ul>
-											<li><strong>Timing Accuracy:</strong> Poor (Heavily dependent on passive tolerances (C/R variation) and thermal drift.).</li>
-											<li><strong>Reset Dynamics:</strong> Slow exponential decay (5τ). Rapid intermittent pedal taps cause charge accumulation and premature false trips.</li>
-											<li><strong>BOM Cost: </strong> Very Low: Standard discrete passive components.</li>
-										</ul>
-									</div>
-									<div class="trade-card highlight">
-										<h5 style="color: #38bdf8;"><i class="icon solid fa-check-circle" style="color: #38bdf8;"></i> BSPD v3.0 Digital Counter Engine</h5>
-										<ul>
-											<li><strong>Timing Accuracy:</strong> High, Governed directly by reference clock frequency stability (crystal/oscillator)..</li>
-											<li><strong>Reset Dynamics:</strong> Asynchronous clear resets counter to zero in nanoseconds when fault drops (zero memory).</li>
-											<li><strong>BOM Cost: </strong> Moderate: Cost increase for dedicated logic ICs and oscillator.</li>
-										</ul>
-									</div>
-								</div>
 
-								<h5 class="writeup-subsection-title"><i class="icon solid fa-microchip" style="color: #facc15;"></i> 3.2 Clock Generation &amp; Distribution Network</h5>
-								<p>
-									Generating timing for both the 100 ms LOS channel and the 500 ms / 1.0 s Plausibility channels required evaluating multiple clock topologies:
-								</p>
-								<div class="writeup-table-wrapper">
-									<table class="writeup-table">
-										<thead>
-											<tr>
-												<th>Approach</th>
-												<th>BOM &amp; Assembly Cost</th>
-												<th>Footprint</th>
-												<th>Thermal &amp; Frequency Stability</th>
-												<th>Tradeoff Decision</th>
-											</tr>
-										</thead>
-										<tbody>
-											<tr>
-												<td><strong>555 Timer RC Network</strong></td>
-												<td>Low IC cost; expensive precision C0G caps or thermal drift</td>
-												<td>Large</td>
-												<td>Poor (drift over temperature)</td>
-												<td>Rejected due to temperature drift</td>
-											</tr>
-											<tr>
-												<td><strong>Dual Silicon Oscillators (LTC6900 x 2)</strong></td>
-												<td>High (&gt;$12.00 incremental BOM)</td>
-												<td>Compact</td>
-												<td>Excellent</td>
-												<td>Rejected due to unnecessary BOM cost</td>
-											</tr>
-											<tr>
-												<td><strong>Single LTC6900 + Logic Divider</strong></td>
-												<td><span style="color: #38bdf8; font-weight: 600;">Optimal BOM Balance</span></td>
-												<td><span style="color: #38bdf8; font-weight: 600;">Moderate (2 ICs required)</span></td>
-												<td><span style="color: #38bdf8; font-weight: 600;">Excellent (Sub-1% accuracy)</span></td>
-												<td><span style="color: #38bdf8; font-weight: 600;">Selected Architecture</span></td>
-											</tr>
-										</tbody>
-									</table>
-								</div>
-							</section>
-						</article>
-					</div>
-				</div>
-			</div>
+
+
+
 
 			<!-- 3. BSPD Relay Schematic Modal -->
 			<div class="ee-modal-backdrop" id="modal-schematic-relay">
@@ -889,30 +662,6 @@
 				</div>
 			</div>
 
-			<!-- 3. BSPD Relay Writeup Modal -->
-			<div class="ee-modal-backdrop" id="modal-writeup-relay">
-				<div class="ee-modal">
-					<div class="ee-modal-header">
-						<div class="ee-modal-header-left">
-							<span class="project-card-badge badge-power">BSPD Relay</span>
-							<h3 class="ee-modal-title">Technical Design Writeup</h3>
-						</div>
-						<button class="ee-modal-close" data-close title="Close Modal"><i class="icon solid fa-times"></i></button>
-					</div>
-					<div class="ee-modal-body" style="align-items: center; justify-content: center;">
-						<div class="wip-container">
-							<div class="wip-icon-wrapper" style="border-color: rgba(250, 204, 21, 0.3);">
-								<i class="icon solid fa-book-open" style="color: #facc15;"></i>
-							</div>
-							<h3 class="wip-title">Design Writeup In Progress</h3>
-							<div class="wip-badge">
-								<span class="pulse-dot" style="background: #facc15; box-shadow: 0 0 8px #facc15;"></span>
-								Work In Progress
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
 
 			<!-- Footer -->
 				<div id="footer">
