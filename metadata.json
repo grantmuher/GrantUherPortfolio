@@ -1,0 +1,8 @@
+{
+  "name": "Grant Uher Portfolio",
+  "description": "Portfolio website for Grant Uher based on the Helios HTML5 UP template.",
+  "requestFramePermissions": [],
+  "majorCapabilities": [
+    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
+  ]
+}
