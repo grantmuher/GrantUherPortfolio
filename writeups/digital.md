@@ -71,14 +71,17 @@ These decisions lead to this block diagram.
 
 
 ## 4. Implementation
-### Ethernet Implemenation
+### Ethernet
+![Digital Split Ground](images/Digital_Split_Gnd.png)
+Routing ethernet required learning about Bob Smith Termination, High Speed Digital Design Practices including length matching and impedance matching. The most difficult part was the grounding concepts used in ethernet with a split Chassis GND from Board GND. The routing of this is seen above. 
 
 ### Bias Tee Circuit
+![Digital Bias TEE](images/Digital_BIAS_TEE.png)
+Designing the Bias Tee increased my understanding of frequency-domain impedance, requiring me to evaluate how the network behaves across distinct frequency bands, a low resistance path for DC power while isolating the L1 (1575.42 MHz) and L5 (1176.45 MHz) GNSS frequencies. The primary challenge was selecting an RF choke capable of covering both GPS bands without suffering performance loss from its Self Resonant Frequency (SRF). Using Murata’s SimSurfing tool, I looked at component impedance curves to select an inductor that sustained greater than $500\,\Omega$ of isolation across both L1 and L5 bands.
 
 ### Buck Converter Layout
-
-
-
+![Digital Bias TEE](images/Digital_Buck.png)
+Designing the buck converter layout was critical to the board’s power delivery performance and overall efficiency. Minimizing parasitic loop inductance in the high-$\text{d}i/\text{d}t$ input switching loop was essential to reduce switching losses, and prevent radiated noise. I maintained a compact switch node, tightly coupled the power components to a solid reference ground return, and implemented ground via stitching around the power stage to isolate switching EMI from sensitive circuitry.
 
 
 ## 5. Testing / Validation
