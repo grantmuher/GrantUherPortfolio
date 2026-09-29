@@ -90,4 +90,4 @@ These decision resulted in this final block diagram
 The current sensor amplification circuit was particularly challenging. I simulated it in LTSpice calulating the output with the equations that govern a differntial op amp and a non-inverting summing op amp. I was confused as my intial calculations, shown on the schematic did not line up with what was simulated. After some trial and error changing how inputs were created, I found my errror. The inputput impedance coming into the inverting side of U6A was incorrect. I found that my voltage dividers were adding impedance, which looking back at I should've seen, but through Thevinin Analysis I included the voltage divider into the calculatations giving the circuit seen above.
 
 ## 5. Testing / Validation
-The board is currently being manufactured. Bring up will begin September 2026.
+Bring Up has been completed and board has been validated. Writeup coming soon!
