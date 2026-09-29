@@ -85,4 +85,4 @@ Designing the buck converter layout was critical to the board’s power delivery
 
 
 ## 5. Testing / Validation
-The board is currently being manufactured. Bring up will begin September 2026.
+Bring Up has been completed and board has been validated. Writeup coming soon!
