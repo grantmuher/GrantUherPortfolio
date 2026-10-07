@@ -17,11 +17,11 @@ tech:
   - Controlled Impedance Routing
   - High-Speed Differential Pairs
 ---
-## 1. Objective
+## Objective
 
 Digital Board is apart of an data acquisition system for MF14 & EMF1 cars (Formula SAE). Its goal is to collect all digital sensors on the car and provide GPS data for the car. It includes a STM32H563, a NEO-MAX-F10S GNSS module, LAN8742AI Ethernet PHY (for 100-BaseTDX ethernet), and discrete magnetics for the ethernet interfaces. 
 
-## 2. Requirements
+## Requirements
 
 As all boards start, I created requirements for the PCB. 
 |Requirement ID|Obligation Level|Requirement|Justification|Validation Plan|
@@ -50,7 +50,7 @@ As all boards start, I created requirements for the PCB.
 |REQ-DIG-022|Should|Specialized or expensive parts unavailable through JLCPCB should be assembled in-house.|Avoids sourcing fees for low-volume or highly specialized silicon.|Separate the BOM into "Turnkey" and "In-House" lists during the design review.|
 |REQ-DIG-023|May|System may be mountable in an enclosure , with indicators visible when mounted.|Protects the PCB while ensuring diagnostic lights remain useful.|
 
-## 3. Architecture & Trade Studies
+## Architecture & Trade Studies
 ### Ethernet Termination Method
 The Major Trade Study completed regarded discrete magnetic termination vs a integrated RJ45 magjack.
 |Criteria|RJ45|Discrete Termination|
@@ -70,7 +70,7 @@ These decisions lead to this block diagram.
 ![Digital_Block_Diagram](images/Digital_BlockDia.png)
 
 
-## 4. Implementation
+## Implementation
 ### Ethernet
 ![Digital Split Ground](images/Digital_Split_Gnd.png)
 Routing ethernet required learning about Bob Smith Termination, High Speed Digital Design Practices including length matching and impedance matching. The most difficult part was the grounding concepts used in ethernet with a split Chassis GND from Board GND. The routing of this is seen above. 
@@ -84,5 +84,5 @@ Designing the Bias Tee increased my understanding of frequency-domain impedance,
 Designing the buck converter layout was critical to the board’s power delivery performance and overall efficiency. Minimizing parasitic loop inductance in the high-$\text{d}i/\text{d}t$ input switching loop was essential to reduce switching losses, and prevent radiated noise. I maintained a compact switch node, tightly coupled the power components to a solid reference ground return, and implemented ground via stitching around the power stage to isolate switching EMI from sensitive circuitry.
 
 
-## 5. Testing / Validation
+## Testing / Validation
 Bring Up has been completed and board has been validated. Writeup coming soon!
