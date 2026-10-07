@@ -16,11 +16,11 @@ tech:
   - FSAE Rules Compliant
   - Latching Shutdown
 ---
-## 1. Objective
+## Objective
 
 FSAE Rules Mandate that for Electronic Throttle Control (ETC) a BSPD cirucit must be present. The primary function is to shut down the vehicle in the event of simultaneous hard breaking and above 10% throttle while also detecting for open circuits.
 
-## 2. Requirements
+## Requirements
 
 For the first step in the design process, I defined the requirements for the circuit. For BSPD, this is reletively easy because it comes from FSAE rules. I drafted two sets of requirements, one for EV and another for BSPD. 
 ### IC BSPD Requirements
@@ -41,7 +41,7 @@ For the first step in the design process, I defined the requirements for the cir
 | REQ-ICBSPD-012| Should| BSPD should provide a discrete signal to indicate the status of the fault latch to an external monitoring system.  | Necessary to distinguish a BSPD trip from other engine management or fuel system failures. | Trigger a BSPD fault and verify that the external system records a state transition  |
 | REQ-ICBSPD-013 | Shall| The status signal interface shall be electrically buffered or isolated to prevent an external failure (e.g., a shorted DAQ input) from compromising the BSPD’s safety function. | Rule IC.4.8.2: Hardware independence is required to ensure the safety circuit remains a "standalone" device.                                 | Demonstrate that a short-to-ground or short-to-VCC on the status output line does not prevent the BSPD from opening the SDC.|
 
-## 3. Architecture & Trade Studies
+## Architecture & Trade Studies
 It was decided early on that because the rules were very similar between IC and EV cars that only one board was to be created with 0 ohm configuration straps to switch between IC and EV Cars to reduce the cost of order multiple boards with very similar functions.
 
 ### Delay Method
@@ -84,10 +84,10 @@ Decision: Comparator is cheaper with not much added complexity, and allows to us
 These decision resulted in this final block diagram
 ![BSPD Block Diagram](/images/BSPD_Block_Diagram.png)
 
-## 4. Implementation 
+## Implementation 
 ### Current Sensor Amplification Circuit
 ![Current Sensor Amplification](/images/BSPD_Current_Sensor_Amp.png)
 The current sensor amplification circuit was particularly challenging. I simulated it in LTSpice calulating the output with the equations that govern a differntial op amp and a non-inverting summing op amp. I was confused as my intial calculations, shown on the schematic did not line up with what was simulated. After some trial and error changing how inputs were created, I found my errror. The inputput impedance coming into the inverting side of U6A was incorrect. I found that my voltage dividers were adding impedance, which looking back at I should've seen, but through Thevinin Analysis I included the voltage divider into the calculatations giving the circuit seen above.
 
-## 5. Testing / Validation
+## Testing / Validation
 Bring Up has been completed and board has been validated. Writeup coming soon!
